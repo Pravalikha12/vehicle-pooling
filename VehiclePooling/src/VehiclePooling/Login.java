@@ -63,18 +63,6 @@ public class Login extends JFrame {
 		JButton btnLogin = new JButton("Login");
 		btnLogin.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0){
-				try{
-					Class.forName("com.mysql.jdbc.Driver");
-					Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/VehiclePoolingDb","root","");
-					Statement stmt=con.createStatement();
-					String sql="Select * from user where name='"+name.getText()+"' and passwd='"+passwd.getText().toString()+"'";
-					ResultSet rs=stmt.executeQuery(sql);
-					if(rs.next())
-						JOptionPane.showMessageDialog(null,"Login Successfully...");
-					else
-						JOptionPane.showMessageDialog(null, "Incorrect password");
-					con.close();
-				} catch(Exception e) {System.out.println(e);}
 			}
 		});
 		btnLogin.setBounds(206, 130, 89, 23);
