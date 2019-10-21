@@ -47,7 +47,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.Label;
 import java.awt.Window.Type;
 
-public class Login extends JFrame {
+public class Sample extends JFrame {
 	private JTextField txtAllRightsReserved;
 	private JTextField txtAboutUs;
 	private JTextField txtImage;
@@ -73,7 +73,7 @@ public class Login extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Login() {
+	public Sample() {
 		setType(Type.UTILITY);
 		getContentPane().setLayout(new BoxLayout(getContentPane(), BoxLayout.X_AXIS));
 		
@@ -211,29 +211,11 @@ public class Login extends JFrame {
 		pass.setText("pass");
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent args0) {
-				
-				
-				
-				/*try {
-					Class.forName("com.mysql.jdbc.Driver");
-					Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/test","root","");
-					Statement stmt=con.createStatement();
-					String sql="Select * from tblogin where UserName='"+user.getText()+"' and Password='"+pass.getText().toString()+"'";
-					ResultSet rs=stmt.executeQuery(sql);
-					if(rs.next())
-						JOptionPane.showMessageDialog(null, "Login successful!");
-					else
-						JOptionPane.showMessageDialog(null, "Incorrect Username or Password!");
-					con.close();
-					
-				}*/
-				
-				
 				try {
 					Class.forName("com.mysql.jdbc.Driver");
-					Connection con = DriverManager.getConnection("jdbc:mysql:    //localhost:3306/vehiclepoolingdb","root","");
+					Connection con = DriverManager.getConnection("jdbc:mysql//localhost::3306/vehiclepoolingdb","root","");
 					Statement stmt = con.createStatement();
-					String sql = "Select * from user where User_id='"+userid.getText()+"' and U_passwd='"+pass.getText().toString()+"'";
+					String sql = "Select User_id,U_passwd from user where User_id='"+userid.getText()+"'and U_passwd='"+pass.getText().toString()+"'";
 					ResultSet rs = stmt.executeQuery(sql);
 					if(rs.next())
 						JOptionPane.showMessageDialog(null, "Login Succesful");
@@ -280,7 +262,7 @@ public class Login extends JFrame {
 					.addComponent(btnLogin, GroupLayout.PREFERRED_SIZE, 46, GroupLayout.PREFERRED_SIZE)
 					.addGap(26))
 		);
-		panel_5.setLayout(gl_panel_5);  
+		panel_5.setLayout(gl_panel_5);
 		
 		JLabel lblNammaRide = new JLabel("Namma Ride");
 		lblNammaRide.setFont(new Font("Liberation Serif", Font.BOLD | Font.ITALIC, 26));
