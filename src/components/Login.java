@@ -20,20 +20,20 @@ public class Login extends JFrame {
 	private JPanel contentPane;
 	private JTextField txtUsername;
 	private JPasswordField pwdPass;
-	private JTextField txtFname;
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField fname;
+	private JTextField mname;
+	private JTextField lname;
 	private JTextField textField_2;
 	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField_6;
-	private JTextField textField_7;
-	private JTextField textField_8;
+	private JTextField address;
+	private JTextField city;
+	private JTextField state;
+	private JTextField pincode;
+	private JTextField role;
 	private JTextField textField_9;
-	private JTextField textField_10;
-	private JTextField textField_11;
-	private JTextField textField_12;
+	private JTextField dob;
+	private JTextField age;
+	private JPasswordField password;
 
 	/**
 	 * Launch the application.
@@ -129,19 +129,19 @@ public class Login extends JFrame {
 		panel_3.setLayout(gl_panel_3);
 		
 		JPanel panel_1 = new JPanel();
-		tabbedPane.addTab("New tab", null, panel_1, null);
+		tabbedPane.addTab("Sign Up", null, panel_1, null);
 		
-		txtFname = new JTextField();
-		txtFname.setText("fname");
-		txtFname.setColumns(10);
+		fname = new JTextField();
+		fname.setText("fname");
+		fname.setColumns(10);
 		
-		textField = new JTextField();
-		textField.setText("fname");
-		textField.setColumns(10);
+		mname = new JTextField();
+		mname.setText("mname");
+		mname.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setText("fname");
-		textField_1.setColumns(10);
+		lname = new JTextField();
+		lname.setText("lname");
+		lname.setColumns(10);
 		
 		textField_2 = new JTextField();
 		textField_2.setText("fname");
@@ -151,114 +151,113 @@ public class Login extends JFrame {
 		textField_3.setText("fname");
 		textField_3.setColumns(10);
 		
-		textField_4 = new JTextField();
-		textField_4.setText("fname");
-		textField_4.setColumns(10);
+		address = new JTextField();
+		address.setText("address");
+		address.setColumns(10);
 		
-		textField_5 = new JTextField();
-		textField_5.setText("fname");
-		textField_5.setColumns(10);
+		city = new JTextField();
+		city.setText("city");
+		city.setColumns(10);
 		
-		textField_6 = new JTextField();
-		textField_6.setText("fname");
-		textField_6.setColumns(10);
+		state = new JTextField();
+		state.setText("state");
+		state.setColumns(10);
 		
-		textField_7 = new JTextField();
-		textField_7.setText("fname");
-		textField_7.setColumns(10);
+		pincode = new JTextField();
+		pincode.setText("pincode");
+		pincode.setColumns(10);
 		
-		textField_8 = new JTextField();
-		textField_8.setText("fname");
-		textField_8.setColumns(10);
+		role = new JTextField();
+		role.setText("role");
+		role.setColumns(10);
 		
 		JButton btnRegister = new JButton("Register");
 		
-		JLabel lblFirstName = new JLabel("First Name");
+		JLabel FirstName = new JLabel("First Name");
 		
-		JLabel lblMiddleName = new JLabel("Middle Name");
+		JLabel MiddleName = new JLabel("Middle Name");
 		
-		JLabel lblLastName = new JLabel("Last Name");
+		JLabel LastName = new JLabel("Last Name");
 		
-		JLabel label = new JLabel("Last Name");
+		JLabel Email = new JLabel("Email");
 		
-		JLabel label_1 = new JLabel("Last Name");
+		JLabel Phone_no = new JLabel("Phone_no");
 		
-		JLabel label_2 = new JLabel("Last Name");
+		JLabel Address = new JLabel("Address");
 		
-		JLabel label_3 = new JLabel("Last Name");
+		JLabel City = new JLabel("City");
 		
-		JLabel label_4 = new JLabel("Last Name");
+		JLabel State = new JLabel("State");
 		
-		JLabel label_5 = new JLabel("Last Name");
+		JLabel Pincode = new JLabel("PinCode");
 		
-		JLabel label_6 = new JLabel("Last Name");
+		JLabel Role = new JLabel("Role");
 		
-		JLabel lblLastName_1 = new JLabel("Last Name");
+		JLabel Gender = new JLabel("Gender");
 		
-		JLabel label_7 = new JLabel("Last Name");
+		JLabel DOB = new JLabel("DOB");
 		
-		JLabel label_8 = new JLabel("Last Name");
+		JLabel Password = new JLabel("Password");
 		
-		JLabel label_9 = new JLabel("Last Name");
+		JLabel Age = new JLabel("Age");
 		
 		textField_9 = new JTextField();
 		textField_9.setText("fname");
 		textField_9.setColumns(10);
 		
-		textField_10 = new JTextField();
-		textField_10.setText("fname");
-		textField_10.setColumns(10);
+		dob = new JTextField();
+		dob.setText("dob");
+		dob.setColumns(10);
 		
-		textField_11 = new JTextField();
-		textField_11.setText("fname");
-		textField_11.setColumns(10);
+		age = new JTextField();
+		age.setText("age");
+		age.setColumns(10);
 		
-		textField_12 = new JTextField();
-		textField_12.setText("fname");
-		textField_12.setColumns(10);
+		password = new JPasswordField();
+		password.setText("password");
 		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
 		gl_panel_1.setHorizontalGroup(
-			gl_panel_1.createParallelGroup(Alignment.LEADING)
-				.addComponent(btnRegister, GroupLayout.DEFAULT_SIZE, 458, Short.MAX_VALUE)
-				.addGroup(Alignment.TRAILING, gl_panel_1.createSequentialGroup()
+			gl_panel_1.createParallelGroup(Alignment.TRAILING)
+				.addComponent(btnRegister, GroupLayout.DEFAULT_SIZE, 526, Short.MAX_VALUE)
+				.addGroup(gl_panel_1.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING, false)
-						.addComponent(lblFirstName)
-						.addComponent(lblMiddleName, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(label, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(lblLastName, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(label_1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(lblLastName_1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(label_7, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+						.addComponent(FirstName)
+						.addComponent(MiddleName, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(Email, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(LastName, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(Phone_no, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(Gender, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(DOB, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 					.addGap(31)
 					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING, false)
-						.addComponent(textField_10, Alignment.TRAILING)
-						.addComponent(txtFname, Alignment.TRAILING)
-						.addComponent(textField, Alignment.TRAILING)
-						.addComponent(textField_1, Alignment.TRAILING)
+						.addComponent(dob, Alignment.TRAILING)
+						.addComponent(fname, Alignment.TRAILING)
+						.addComponent(mname, Alignment.TRAILING)
+						.addComponent(lname, Alignment.TRAILING)
 						.addComponent(textField_2, Alignment.TRAILING)
 						.addComponent(textField_3, Alignment.TRAILING)
 						.addComponent(textField_9, Alignment.TRAILING))
-					.addPreferredGap(ComponentPlacement.RELATED, 116, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
 					.addGroup(gl_panel_1.createParallelGroup(Alignment.TRAILING, false)
 						.addGroup(gl_panel_1.createSequentialGroup()
-							.addComponent(label_2, GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)
+							.addComponent(Address, GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)
 							.addPreferredGap(ComponentPlacement.RELATED))
-						.addComponent(label_3, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(label_4, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(label_5, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(label_6, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(label_8, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(label_9, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+						.addComponent(City, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(State, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(Pincode, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(Role, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(Password, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(Age, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 					.addGap(66)
 					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
-						.addComponent(textField_4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(textField_5, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(textField_6, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(textField_7, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(textField_8, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(textField_11, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(textField_12, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(address, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(city, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(state, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(pincode, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(role, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(age, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(password, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(21))
 		);
 		gl_panel_1.setVerticalGroup(
@@ -266,47 +265,47 @@ public class Login extends JFrame {
 				.addGroup(gl_panel_1.createSequentialGroup()
 					.addGap(21)
 					.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
-						.addComponent(textField_4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblFirstName)
-						.addComponent(txtFname, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(label_2))
+						.addComponent(address, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(FirstName)
+						.addComponent(fname, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(Address))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
-						.addComponent(textField_5, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblMiddleName)
-						.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(label_3))
+						.addComponent(city, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(MiddleName)
+						.addComponent(mname, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(City))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
-						.addComponent(textField_6, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblLastName)
-						.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(label_4))
+						.addComponent(state, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(LastName)
+						.addComponent(lname, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(State))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
-						.addComponent(textField_7, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(label)
+						.addComponent(pincode, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(Email)
 						.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(label_5))
+						.addComponent(Pincode))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
-						.addComponent(textField_8, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(label_1)
+						.addComponent(role, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(Phone_no)
 						.addComponent(textField_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(label_6))
+						.addComponent(Role))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblLastName_1)
-						.addComponent(textField_11, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(Gender)
 						.addComponent(textField_9, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(label_8))
+						.addComponent(Password)
+						.addComponent(password, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_panel_1.createParallelGroup(Alignment.BASELINE)
-							.addComponent(textField_10)
-							.addComponent(textField_12, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addComponent(label_9))
-						.addComponent(label_7))
+							.addComponent(dob, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addComponent(age, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addComponent(Age))
+						.addComponent(DOB))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(btnRegister, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap())
@@ -314,7 +313,7 @@ public class Login extends JFrame {
 		panel_1.setLayout(gl_panel_1);
 		
 		JPanel panel_2 = new JPanel();
-		tabbedPane.addTab("New tab", null, panel_2, null);
+		tabbedPane.addTab("Sign In", null, panel_2, null);
 		
 		JLabel lblUserId = new JLabel("User id");
 		
@@ -330,15 +329,15 @@ public class Login extends JFrame {
 		JButton btnLogin = new JButton("Login");
 		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
 		gl_panel_2.setHorizontalGroup(
-			gl_panel_2.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, gl_panel_2.createSequentialGroup()
+			gl_panel_2.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_panel_2.createSequentialGroup()
 					.addGap(37)
-					.addGroup(gl_panel_2.createParallelGroup(Alignment.TRAILING)
-						.addComponent(btnLogin, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 369, Short.MAX_VALUE)
-						.addComponent(pwdPass, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 369, Short.MAX_VALUE)
-						.addComponent(txtUsername, Alignment.LEADING)
-						.addComponent(lblUserId, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 355, Short.MAX_VALUE)
-						.addComponent(lblPassword, GroupLayout.DEFAULT_SIZE, 369, Short.MAX_VALUE))
+					.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
+						.addComponent(pwdPass, GroupLayout.DEFAULT_SIZE, 479, Short.MAX_VALUE)
+						.addComponent(txtUsername, GroupLayout.DEFAULT_SIZE, 479, Short.MAX_VALUE)
+						.addComponent(lblUserId, GroupLayout.DEFAULT_SIZE, 479, Short.MAX_VALUE)
+						.addComponent(lblPassword, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 479, Short.MAX_VALUE)
+						.addComponent(btnLogin, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 479, Short.MAX_VALUE))
 					.addContainerGap())
 		);
 		gl_panel_2.setVerticalGroup(
@@ -352,9 +351,9 @@ public class Login extends JFrame {
 					.addComponent(lblPassword, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
 					.addGap(18)
 					.addComponent(pwdPass, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
-					.addGap(22)
-					.addComponent(btnLogin, GroupLayout.DEFAULT_SIZE, 39, Short.MAX_VALUE)
-					.addContainerGap())
+					.addGap(18)
+					.addComponent(btnLogin, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(27, Short.MAX_VALUE))
 		);
 		panel_2.setLayout(gl_panel_2);
 		panel.setLayout(gl_panel);
