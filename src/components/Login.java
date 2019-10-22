@@ -372,6 +372,11 @@ public class Login extends JFrame {
 		panel_1.add(pincode);
 		panel_1.add(role);
 		panel_1.add(pwdPass);
+		
+		JButton btnRegister_1 = new JButton("SIGN UP");
+		btnRegister_1.setFont(new Font("Comic Sans MS", Font.BOLD, 14));
+		btnRegister_1.setBounds(37, 233, 468, 39);
+		panel_1.add(btnRegister_1);
 
 		JPanel panel_2 = new JPanel();
 		panel_2.setFont(new Font("Baskerville Old Face", Font.BOLD, 16));
