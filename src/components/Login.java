@@ -88,6 +88,8 @@ public class Login extends JFrame {
 		setBounds(100, 100, 810, 534);
 		setBounds(100, 100, 884, 441);
 		contentPane = new JPanel();
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
 
 		JPanel panel = new JPanel();
 		panel.setFont(new Font("Monotype Corsiva", Font.ITALIC, 11));
