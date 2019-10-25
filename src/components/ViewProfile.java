@@ -10,7 +10,7 @@ public class ViewProfile extends JPanel {
 
 	/**
 	 * Create the panel.
-	 */
+	 */ 
 	public ViewProfile() {
 		setLayout(null);
 		

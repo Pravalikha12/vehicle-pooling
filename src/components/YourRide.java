@@ -4,8 +4,8 @@ import java.awt.BorderLayout;
 
 import javax.swing.JPanel;
 
-import org.jdesktop.swingx.JXMapKit;
-import org.jdesktop.swingx.JXMapKit.DefaultProviders;
+//import org.jdesktop.swingx.JXMapKit;
+//import org.jdesktop.swingx.JXMapKit.DefaultProviders;
 
 public class YourRide extends JPanel {
 
@@ -28,10 +28,11 @@ public class YourRide extends JPanel {
 		panel_1.setVisible(true);
 		
 		
-		JXMapKit kit = new JXMapKit();
+		/*JXMapKit kit = new JXMapKit();
 		kit.setDefaultProvider(org.jdesktop.swingx.JXMapKit.DefaultProviders.OpenStreetMaps);
 		kit.setDataProviderCreditShown(true);
 		panel.add(kit, BorderLayout.CENTER);
 		kit.setVisible(true);
+		*/
 	}
 }
