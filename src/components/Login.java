@@ -3,6 +3,7 @@ package components;
 import java.sql.*;
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.EventQueue;
@@ -67,6 +68,9 @@ public class Login extends JFrame {
 		}
 		return 0;
 	}
+	
+	
+	AtomicInteger count = new AtomicInteger(201);
 
 	/**
 	 * Launch the application.
@@ -89,7 +93,7 @@ public class Login extends JFrame {
 	 */
 	public Login() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 810, 534);
+		setBounds(100, 100, 905, 441);
 		setBounds(100, 100, 884, 441);
 		contentPane = new JPanel();
 		setContentPane(contentPane);
@@ -118,7 +122,7 @@ public class Login extends JFrame {
 		panel_5.add(txtpnThisAVehicle);
 
 		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Prateeka\\Desktop\\bms.png"));
+		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\pranathi\\Desktop\\bms.png"));
 		lblNewLabel.setBounds(10, 153, 208, 170);
 		panel_5.add(lblNewLabel);
 		panel.add(tabbedPane);
@@ -346,7 +350,7 @@ public class Login extends JFrame {
 		btnRegister.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					counter++;
+					counter = count.incrementAndGet();
 					Class.forName("com.mysql.jdbc.Driver");
 					Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vehiclepoolingdb", "root",
 							"");
@@ -374,7 +378,8 @@ public class Login extends JFrame {
 						JOptionPane.showMessageDialog(null, "Incorrect Username or Password!");
 					con.close();
 
-				} catch (Exception e) {
+				} 
+				catch (Exception e) {
 					System.out.println(e);
 				}
 
@@ -440,15 +445,21 @@ public class Login extends JFrame {
 		btnLogin.setBounds(37, 242, 479, 30);
 		panel_2.add(btnLogin);
 		contentPane.add(panel);
+		
+		JPanel panel_4 = new JPanel();
+		panel_4.setBackground(Color.BLACK);
+		panel_4.setBounds(0, 372, 858, 30);
+		panel.add(panel_4);
+		panel_4.setLayout(null);
 
 		JLabel lblAllRightsReserved = new JLabel("All Rights Reserved 2019 \u00A9 ");
+		lblAllRightsReserved.setForeground(Color.RED);
+		lblAllRightsReserved.setBounds(0, 0, 858, 30);
+		panel_4.add(lblAllRightsReserved);
 		lblAllRightsReserved.setHorizontalAlignment(SwingConstants.CENTER);
 		lblAllRightsReserved.setHorizontalTextPosition(SwingConstants.CENTER);
 		lblAllRightsReserved.setFont(new Font("Comic Sans MS", Font.PLAIN, 12));
-		lblAllRightsReserved.setBackground(Color.WHITE);
-		lblAllRightsReserved.setBounds(0, 372, 858, 30);
-		panel.add(lblAllRightsReserved);
-
+		lblAllRightsReserved.setBackground(Color.BLACK);
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
@@ -462,7 +473,9 @@ public class Login extends JFrame {
 					if (rs.next()) {
 						JOptionPane.showMessageDialog(null, "Login successful!");
 						HistoryFrame history=new HistoryFrame();
-						history.setVisible(true);
+						setVisible(false);
+						history.setVisible(true);		
+						setVisible(false);
 					}
 						
 					else
