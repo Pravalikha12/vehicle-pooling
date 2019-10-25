@@ -3,6 +3,7 @@ package components;
 import java.sql.*;
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.EventQueue;
@@ -54,9 +55,9 @@ public class Login extends JFrame {
 	// private JPasswordField password;
 	private JTextField userid;
 	private JPasswordField pass;
-	//private JPasswordField pass_1;
-	//private Component lblPassword;
-	//private Component lblUserName;
+	// private JPasswordField pass_1;
+	// private Component lblPassword;
+	// private Component lblUserName;
 	LocalDate today = LocalDate.now();
 	private JTextField phone2;
 
@@ -67,6 +68,8 @@ public class Login extends JFrame {
 		}
 		return 0;
 	}
+
+	AtomicInteger count = new AtomicInteger(201);
 
 	/**
 	 * Launch the application.
@@ -89,7 +92,7 @@ public class Login extends JFrame {
 	 */
 	public Login() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 810, 534);
+		setBounds(100, 100, 905, 441);
 		setBounds(100, 100, 884, 441);
 		contentPane = new JPanel();
 		setContentPane(contentPane);
@@ -118,7 +121,7 @@ public class Login extends JFrame {
 		panel_5.add(txtpnThisAVehicle);
 
 		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Prateeka\\Desktop\\bms.png"));
+		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\pranathi\\Desktop\\bms.png"));
 		lblNewLabel.setBounds(10, 153, 208, 170);
 		panel_5.add(lblNewLabel);
 		panel.add(tabbedPane);
@@ -151,7 +154,7 @@ public class Login extends JFrame {
 
 		pass = new JPasswordField();
 		pass.setText("pass");
-		
+
 		lname = new JTextField();
 		lname.setText("odinson");
 		lname.setColumns(10);
@@ -184,7 +187,6 @@ public class Login extends JFrame {
 		role.setText("stud");
 		role.setColumns(10);
 
-		
 		lname.setFont(new Font("Comic Sans MS", Font.PLAIN, 12));
 		lname.setBounds(132, 73, 86, 20);
 		lname.setText("lname");
@@ -314,7 +316,7 @@ public class Login extends JFrame {
 		passwd.setBounds(419, 177, 86, 20);
 		passwd.setText("passwd");
 		panel_1.setLayout(null);
-		//panel_1.add(btnRegister);
+		// panel_1.add(btnRegister);
 		panel_1.add(FirstName);
 		panel_1.add(MiddleName);
 		panel_1.add(Email);
@@ -341,12 +343,12 @@ public class Login extends JFrame {
 		panel_1.add(areacode);
 		panel_1.add(role);
 		panel_1.add(passwd);
-		
+
 		JButton btnRegister = new JButton("Sign Up");
 		btnRegister.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					counter++;
+					counter = count.incrementAndGet();
 					Class.forName("com.mysql.jdbc.Driver");
 					Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vehiclepoolingdb", "root",
 							"");
@@ -357,10 +359,10 @@ public class Login extends JFrame {
 							+ passwd.getText().toString() + "','" + role.getText() + "','" + dob.getText() + "',"
 							+ areacode.getText() + ")";
 					String sql1 = "Insert into user_contact(User_id,U_phone_no)" + "values(" + counter + ","
-							+ phone1.getText() + "),"+"(" + counter + ","
-									+ phone2.getText() + ")";
-					String sql2 = "Insert into user_address(Areacode,Pincode,Address,City,State)" + "values("+areacode.getText()+"," + pincode.getText()
-							+ ",'" + address.getText() + "','" + city.getText() + "','" + state.getText() + "')";
+							+ phone1.getText() + ")," + "(" + counter + "," + phone2.getText() + ")";
+					String sql2 = "Insert into user_address(Areacode,Pincode,Address,City,State)" + "values("
+							+ areacode.getText() + "," + pincode.getText() + ",'" + address.getText() + "','"
+							+ city.getText() + "','" + state.getText() + "')";
 					String sql3 = "Insert into user_age(Bdate,Age)" + "values('" + dob.getText() + "'," + getAge()
 							+ ")";
 					int rs4 = stmt.executeUpdate(sql3);
@@ -380,22 +382,22 @@ public class Login extends JFrame {
 
 			}
 		});
-		
+
 		btnRegister.setFont(new Font("Comic Sans MS", Font.BOLD, 14));
 		btnRegister.setBounds(37, 233, 468, 39);
 		panel_1.add(btnRegister);
-		
+
 		JLabel phone_no2 = new JLabel("Phone_no2");
 		phone_no2.setForeground(Color.WHITE);
 		phone_no2.setFont(new Font("Comic Sans MS", Font.PLAIN, 12));
 		phone_no2.setBounds(10, 151, 70, 14);
 		panel_1.add(phone_no2);
-		
+
 		phone2 = new JTextField();
 		phone2.setText("0000000000");
 		phone2.setFont(new Font("Comic Sans MS", Font.PLAIN, 12));
 		phone2.setColumns(10);
-		phone2.setBounds(132, 148, 86, 20); 
+		phone2.setBounds(132, 148, 86, 20);
 		panel_1.add(phone2);
 
 		JPanel panel_2 = new JPanel();
@@ -441,14 +443,20 @@ public class Login extends JFrame {
 		panel_2.add(btnLogin);
 		contentPane.add(panel);
 
+		JPanel panel_4 = new JPanel();
+		panel_4.setBackground(Color.BLACK);
+		panel_4.setBounds(0, 372, 858, 30);
+		panel.add(panel_4);
+		panel_4.setLayout(null);
+
 		JLabel lblAllRightsReserved = new JLabel("All Rights Reserved 2019 \u00A9 ");
+		lblAllRightsReserved.setForeground(Color.RED);
+		lblAllRightsReserved.setBounds(0, 0, 858, 30);
+		panel_4.add(lblAllRightsReserved);
 		lblAllRightsReserved.setHorizontalAlignment(SwingConstants.CENTER);
 		lblAllRightsReserved.setHorizontalTextPosition(SwingConstants.CENTER);
 		lblAllRightsReserved.setFont(new Font("Comic Sans MS", Font.PLAIN, 12));
-		lblAllRightsReserved.setBackground(Color.WHITE);
-		lblAllRightsReserved.setBounds(0, 372, 858, 30);
-		panel.add(lblAllRightsReserved);
-
+		lblAllRightsReserved.setBackground(Color.BLACK);
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
@@ -461,11 +469,11 @@ public class Login extends JFrame {
 					ResultSet rs = stmt.executeQuery(sql);
 					if (rs.next()) {
 						JOptionPane.showMessageDialog(null, "Login successful!");
-						HistoryFrame history=new HistoryFrame();
+						HistoryFrame history = new HistoryFrame();
 						history.setVisible(true);
 						setVisible(false);
 					}
-						
+
 					else
 						JOptionPane.showMessageDialog(null, "Incorrect Username or Password!");
 					con.close();
@@ -498,5 +506,3 @@ public class Login extends JFrame {
 		panel_3.add(lblNammaRide);
 	}
 }
-
-

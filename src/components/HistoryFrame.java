@@ -18,6 +18,8 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import org.eclipse.wb.swing.FocusTraversalOnArray;
+import java.awt.Component;
 
 public class HistoryFrame extends JFrame {
 
@@ -53,14 +55,10 @@ public class HistoryFrame extends JFrame {
 		contentPane.setBackground(Color.RED);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setLayout(null);
 		panel.setForeground(Color.RED);
 		panel.setBackground(Color.BLACK);
-		panel.setBounds(0, 0, 868, 57);
-		contentPane.add(panel);
 		
 		JLabel label = new JLabel("Namma Ride");
 		label.setVerticalTextPosition(SwingConstants.TOP);
@@ -72,86 +70,145 @@ public class HistoryFrame extends JFrame {
 		label.setFont(new Font("Monotype Corsiva", Font.BOLD | Font.ITALIC, 39));
 		label.setBorder(new LineBorder(new Color(0, 0, 0), 4));
 		label.setBackground(SystemColor.menu);
-		label.setBounds(0, 0, 424, 45);
-		panel.add(label);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(Color.BLACK);
-		panel_1.setBounds(10, 68, 238, 345);
-		contentPane.add(panel_1);
-		panel_1.setLayout(null);
 		
 		JButton btnNewButton = new JButton("Dashboard");
 		btnNewButton.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		btnNewButton.setBounds(15, 83, 206, 39);
-		panel_1.add(btnNewButton);
 		
 		JButton btnYourRide = new JButton("Your Ride");
 		btnYourRide.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		btnYourRide.setBounds(15, 32, 206, 39);
-		panel_1.add(btnYourRide);
 		
 		JButton btnViewProfile = new JButton("View Profile");
 		btnViewProfile.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		btnViewProfile.setBounds(15, 133, 206, 39);
-		panel_1.add(btnViewProfile);
 		
 		JButton btnJoinARide = new JButton("Join A Ride");
 		btnJoinARide.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		btnJoinARide.setBounds(15, 183, 206, 39);
-		panel_1.add(btnJoinARide);
 		
 		JButton btnOfferARide = new JButton("Offer A Ride");
 		btnOfferARide.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		btnOfferARide.setBounds(15, 233, 206, 39);
-		panel_1.add(btnOfferARide);
 		
 		JButton btnFeedback = new JButton("Feedback");
 		btnFeedback.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		btnFeedback.setBounds(15, 283, 206, 39);
-		panel_1.add(btnFeedback);
 		
 		txtAllRightsReserved = new JTextField();
 		txtAllRightsReserved.setFont(new Font("Comic Sans MS", Font.PLAIN, 12));
 		txtAllRightsReserved.setHorizontalAlignment(SwingConstants.CENTER);
 		txtAllRightsReserved.setText("All Rights Reserved 2019 @");
 		txtAllRightsReserved.setBackground(Color.RED);
-		txtAllRightsReserved.setBounds(0, 420, 713, 36);
-		contentPane.add(txtAllRightsReserved);
 		txtAllRightsReserved.setColumns(10);
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setForeground(Color.WHITE);
 		panel_2.setBackground(Color.BLACK);
-		panel_2.setBounds(258, 68, 455, 345);
-		contentPane.add(panel_2);
-		panel_2.setLayout(null);
 		
 		txtTrip = new JTextField();
 		txtTrip.setText("Trip1");
 		txtTrip.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		txtTrip.setBounds(10, 58, 435, 73);
-		panel_2.add(txtTrip);
 		txtTrip.setColumns(10);
 		
 		txtTrip_1 = new JTextField();
 		txtTrip_1.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		txtTrip_1.setText("Trip2");
-		txtTrip_1.setBounds(10, 156, 435, 73);
-		panel_2.add(txtTrip_1);
 		txtTrip_1.setColumns(10);
 		
 		txtTrip_2 = new JTextField();
 		txtTrip_2.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		txtTrip_2.setText("Trip3");
-		txtTrip_2.setBounds(10, 253, 435, 67);
-		panel_2.add(txtTrip_2);
 		txtTrip_2.setColumns(10);
 		
 		JLabel lblHistory = new JLabel("History");
 		lblHistory.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
 		lblHistory.setForeground(Color.WHITE);
-		lblHistory.setBounds(10, 11, 131, 28);
-		panel_2.add(lblHistory);
+		GroupLayout gl_contentPane = new GroupLayout(contentPane);
+		gl_contentPane.setHorizontalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addComponent(txtAllRightsReserved, GroupLayout.PREFERRED_SIZE, 713, GroupLayout.PREFERRED_SIZE)
+				.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING, false)
+					.addComponent(panel, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
+						.addGap(10)
+						.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 238, GroupLayout.PREFERRED_SIZE)
+						.addGap(10)
+						.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 455, GroupLayout.PREFERRED_SIZE)))
+		);
+		gl_contentPane.setVerticalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 57, GroupLayout.PREFERRED_SIZE)
+					.addGap(11)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addComponent(panel_1, GroupLayout.PREFERRED_SIZE, 345, GroupLayout.PREFERRED_SIZE)
+						.addComponent(panel_2, GroupLayout.PREFERRED_SIZE, 345, GroupLayout.PREFERRED_SIZE))
+					.addGap(7)
+					.addComponent(txtAllRightsReserved, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE))
+		);
+		GroupLayout gl_panel = new GroupLayout(panel);
+		gl_panel.setHorizontalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addComponent(label, GroupLayout.PREFERRED_SIZE, 424, GroupLayout.PREFERRED_SIZE)
+		);
+		gl_panel.setVerticalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addComponent(label, GroupLayout.PREFERRED_SIZE, 45, GroupLayout.PREFERRED_SIZE)
+		);
+		panel.setLayout(gl_panel);
+		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
+		gl_panel_1.setHorizontalGroup(
+			gl_panel_1.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_1.createSequentialGroup()
+					.addGap(15)
+					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
+						.addComponent(btnYourRide, GroupLayout.PREFERRED_SIZE, 206, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 206, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnViewProfile, GroupLayout.PREFERRED_SIZE, 206, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnJoinARide, GroupLayout.PREFERRED_SIZE, 206, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnOfferARide, GroupLayout.PREFERRED_SIZE, 206, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnFeedback, GroupLayout.PREFERRED_SIZE, 206, GroupLayout.PREFERRED_SIZE)))
+		);
+		gl_panel_1.setVerticalGroup(
+			gl_panel_1.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_1.createSequentialGroup()
+					.addGap(32)
+					.addComponent(btnYourRide, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
+					.addGap(12)
+					.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
+					.addGap(11)
+					.addComponent(btnViewProfile, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
+					.addGap(11)
+					.addComponent(btnJoinARide, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
+					.addGap(11)
+					.addComponent(btnOfferARide, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE)
+					.addGap(11)
+					.addComponent(btnFeedback, GroupLayout.PREFERRED_SIZE, 39, GroupLayout.PREFERRED_SIZE))
+		);
+		panel_1.setLayout(gl_panel_1);
+		GroupLayout gl_panel_2 = new GroupLayout(panel_2);
+		gl_panel_2.setHorizontalGroup(
+			gl_panel_2.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_2.createSequentialGroup()
+					.addGap(10)
+					.addGroup(gl_panel_2.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblHistory, GroupLayout.PREFERRED_SIZE, 131, GroupLayout.PREFERRED_SIZE)
+						.addComponent(txtTrip, GroupLayout.PREFERRED_SIZE, 435, GroupLayout.PREFERRED_SIZE)
+						.addComponent(txtTrip_1, GroupLayout.PREFERRED_SIZE, 435, GroupLayout.PREFERRED_SIZE)
+						.addComponent(txtTrip_2, GroupLayout.PREFERRED_SIZE, 435, GroupLayout.PREFERRED_SIZE)))
+		);
+		gl_panel_2.setVerticalGroup(
+			gl_panel_2.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel_2.createSequentialGroup()
+					.addGap(11)
+					.addComponent(lblHistory, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
+					.addGap(19)
+					.addComponent(txtTrip, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE)
+					.addGap(25)
+					.addComponent(txtTrip_1, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE)
+					.addGap(24)
+					.addComponent(txtTrip_2, GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE))
+		);
+		panel_2.setLayout(gl_panel_2);
+		contentPane.setLayout(gl_contentPane);
+		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{contentPane, panel, label, panel_1, btnNewButton, btnYourRide, btnViewProfile, btnJoinARide, btnOfferARide, btnFeedback, txtAllRightsReserved, panel_2, txtTrip, txtTrip_1, txtTrip_2, lblHistory}));
 	}
 }
