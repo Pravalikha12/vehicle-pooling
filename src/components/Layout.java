@@ -51,6 +51,11 @@ public class Layout extends JFrame {
 		contentPane.setLayout(null);
 		
 		YourRide yourRide = new YourRide();
+		Dashboard dashboard = new Dashboard();
+		JoinARide joinARide = new JoinARide();
+		OfferARide offerARide = new OfferARide();
+		ViewProfile viewProfile = new ViewProfile();
+		Feedback feedback = new Feedback();
 		
 		JPanel panel = new JPanel();
 		panel.setBounds(0, 45, 221, 299);
@@ -59,9 +64,10 @@ public class Layout extends JFrame {
 		
 		JInternalFrame internalFrame = new JInternalFrame("New JInternalFrame");
 		internalFrame.setBackground(Color.YELLOW);
-		internalFrame.setBounds(219, 45, 1200, 1200);
+		internalFrame.setBounds(219, 45, 1200, 800);
 		contentPane.add(internalFrame);
 		internalFrame.setVisible(true);
+		internalFrame.setContentPane(viewProfile);
 		
 		JButton btnFeedback = new JButton("Feedback");
 		btnFeedback.setFont(new Font("Comic Sans MS", Font.PLAIN, 12));
@@ -69,6 +75,15 @@ public class Layout extends JFrame {
 		btnFeedback.setForeground(SystemColor.infoText);
 		btnFeedback.setBounds(21, 257, 175, 31);
 		panel.add(btnFeedback);
+		btnFeedback.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					internalFrame.setContentPane(feedback);
+				}
+				catch(Exception e){
+					
+				}
+			}});
 				
 		JButton btnOfferARide = new JButton("Offer A Ride");
 		btnOfferARide.setForeground(Color.BLACK);
@@ -76,6 +91,15 @@ public class Layout extends JFrame {
 		btnOfferARide.setBackground(Color.RED);
 		btnOfferARide.setBounds(21, 215, 175, 31);
 		panel.add(btnOfferARide);
+		btnOfferARide.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					internalFrame.setContentPane(offerARide);
+				}
+				catch(Exception e){
+					
+				}
+			}});
 		
 		JButton btnJoinARide = new JButton("Join A Ride");
 		btnJoinARide.setForeground(Color.BLACK);
@@ -83,6 +107,15 @@ public class Layout extends JFrame {
 		btnJoinARide.setBackground(Color.RED);
 		btnJoinARide.setBounds(21, 173, 175, 31);
 		panel.add(btnJoinARide);
+		btnJoinARide.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					internalFrame.setContentPane(joinARide);
+				}
+				catch(Exception e){
+					
+				}
+			}});
 		
 		JButton btnViewProfile = new JButton("View Profile");
 		btnViewProfile.setForeground(Color.BLACK);
@@ -90,6 +123,15 @@ public class Layout extends JFrame {
 		btnViewProfile.setBackground(Color.RED);
 		btnViewProfile.setBounds(21, 131, 175, 31);
 		panel.add(btnViewProfile);
+		btnViewProfile.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					internalFrame.setContentPane(viewProfile);
+				}
+				catch(Exception e){
+					
+				}
+			}});
 		
 		JButton btnDashboard = new JButton("Dashboard");
 		btnDashboard.setForeground(Color.BLACK);
@@ -97,6 +139,15 @@ public class Layout extends JFrame {
 		btnDashboard.setBackground(Color.RED);
 		btnDashboard.setBounds(21, 89, 175, 31);
 		panel.add(btnDashboard);
+		btnDashboard.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					internalFrame.setContentPane(dashboard);
+				}
+				catch(Exception e){
+					
+				}
+			}});
 		
 		JButton btnYourRide = new JButton("Your Ride");
 		btnYourRide.setForeground(Color.BLACK);
@@ -104,7 +155,6 @@ public class Layout extends JFrame {
 		btnYourRide.setBackground(Color.RED);
 		btnYourRide.setBounds(21, 47, 175, 31);
 		panel.add(btnYourRide);
-		
 		btnYourRide.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {

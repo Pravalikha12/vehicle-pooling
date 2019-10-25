@@ -373,7 +373,7 @@ public class Login extends JFrame {
 					if (rs > 0 && rs2 > 0 && rs3 > 0 && rs4 > 0)
 						JOptionPane.showMessageDialog(null, "Registration successful!");
 					else
-						JOptionPane.showMessageDialog(null, "Incorrect Username or Password!");
+						JOptionPane.showMessageDialog(null, "Registration unsuccessful, try again!");
 					con.close();
 
 				} catch (Exception e) {
@@ -469,8 +469,8 @@ public class Login extends JFrame {
 					ResultSet rs = stmt.executeQuery(sql);
 					if (rs.next()) {
 						JOptionPane.showMessageDialog(null, "Login successful!");
-						HistoryFrame history = new HistoryFrame();
-						history.setVisible(true);
+						Layout layout = new Layout();
+						layout.setVisible(true);
 						setVisible(false);
 					}
 
