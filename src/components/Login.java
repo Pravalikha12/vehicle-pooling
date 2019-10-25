@@ -463,6 +463,7 @@ public class Login extends JFrame {
 						JOptionPane.showMessageDialog(null, "Login successful!");
 						HistoryFrame history=new HistoryFrame();
 						history.setVisible(true);
+						setVisible(false);
 					}
 						
 					else

@@ -27,7 +27,7 @@ public class HistoryFrame extends JFrame {
 	private JTextField txtTrip_1;
 	private JTextField txtTrip_2;
 
-	/**
+	/** 
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
