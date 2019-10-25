@@ -469,8 +469,8 @@ public class Login extends JFrame {
 					ResultSet rs = stmt.executeQuery(sql);
 					if (rs.next()) {
 						JOptionPane.showMessageDialog(null, "Login successful!");
-						HistoryFrame history = new HistoryFrame();
-						history.setVisible(true);
+						Layout layout = new Layout();
+						layout.setVisible(true);
 						setVisible(false);
 					}
 
