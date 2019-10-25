@@ -51,7 +51,7 @@ public class Layout extends JFrame {
 		contentPane.setLayout(null);
 		
 		YourRide yourRide = new YourRide();
-		HistoryFrame historyFrame = new HistoryFrame();
+		Dashboard dashboard = new Dashboard();
 		JoinARide joinARide = new JoinARide();
 		OfferARide offerARide = new OfferARide();
 		ViewProfile viewProfile = new ViewProfile();
@@ -142,7 +142,7 @@ public class Layout extends JFrame {
 		btnDashboard.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					internalFrame.setContentPane(historyFrame);
+					internalFrame.setContentPane(dashboard);
 				}
 				catch(Exception e){
 					
