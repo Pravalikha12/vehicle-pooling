@@ -36,27 +36,27 @@ import java.awt.Dimension;
 public class Login extends JFrame {
 
 	private JPanel contentPane;
-	private int counter = 100;
-	private JPasswordField pwdPass;
-	private JPasswordField passwd;
-	private JTextField fname;
-	private JTextField mname;
-	private JTextField lname;
-	private JTextField email;
-	private JTextField phoneno;
-	private JTextField phone1;
-	private JTextField address;
-	private JTextField city;
-	private JTextField state;
-	private JTextField pincode;
-	private JTextField areacode;
-	private JTextField role;
-	private JTextField gender;
-	private JTextField dob;
-	private JTextField userid;
-	private JPasswordField pass;
+	public int counter = 100;
+	public static JPasswordField pwdPass;
+	public static JPasswordField passwd;
+	public static JTextField fname;
+	public static JTextField mname;
+	public static JTextField lname;
+	public static JTextField email;
+	public static JTextField phoneno;
+	public static JTextField phone1;
+	public static JTextField address;
+	public static JTextField city;
+	public static JTextField state;
+	public static JTextField pincode;
+	public static JTextField areacode;
+	public static JTextField role;
+	public static JTextField gender;
+	public static JTextField dob;
+	public static JTextField userid;
+	public static JPasswordField pass;
 	LocalDate today = LocalDate.now();
-	private JTextField phone2;
+	public JTextField phone2;
 
 	int getAge() {
 		LocalDate age = LocalDate.parse(dob.getText());
@@ -91,7 +91,7 @@ public class Login extends JFrame {
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(200, 150, 1328, 831);
-		
+
 		contentPane = new JPanel();
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -169,14 +169,14 @@ public class Login extends JFrame {
 		userid = new JTextField();
 		userid.setText("username");
 		userid.setColumns(10);
-																																																																												
+
 		JPanel panel_1 = new JPanel();
 		panel_1.setFont(new Font("Tahoma", Font.PLAIN, 26));
 		panel_1.setBounds(new Rectangle(10, 500, 700, 901));
 		panel_1.setBackground(Color.BLACK);
 		panel_1.setForeground(Color.WHITE);
 		tabbedPane.addTab("Sign Up", null, panel_1, null);
-		
+
 		fname = new JTextField();
 		fname.setText("thor");
 		fname.setColumns(10);
@@ -184,74 +184,74 @@ public class Login extends JFrame {
 		fname.setBounds(171, 33, 215, 35);
 		fname.setText("fname");
 		fname.setColumns(10);
-		
+
 		mname = new JTextField();
 		mname.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		mname.setBounds(171, 83, 215, 35);
 		mname.setText("mname");
 		mname.setColumns(10);
-		
+
 		lname = new JTextField();
 		lname.setText("odinson");
 		lname.setColumns(10);
-						
+
 		lname.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		lname.setBounds(171, 133, 215, 35);
 		lname.setText("lname");
 		lname.setColumns(10);
-								
+
 		email = new JTextField();
 		email.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		email.setBounds(171, 183, 215, 35);
 		email.setText("email");
 		email.setColumns(10);
-		
+
 		phone1 = new JTextField();
 		phone1.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		phone1.setBounds(171, 233, 215, 35);
 		phone1.setText("phone1");
 		phone1.setColumns(10);
-		
+
 		address = new JTextField();
 		address.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		address.setBounds(662, 33, 215, 35);
 		address.setText("address");
 		address.setColumns(10);
-												
+
 		city = new JTextField();
 		city.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		city.setBounds(662, 83, 215, 35);
 		city.setText("Bangalore");
 		city.setColumns(10);
-																
+
 		state = new JTextField();
 		state.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		state.setBounds(662, 133, 215, 35);
 		state.setText("Karnataka");
 		state.setColumns(10);
-																		
+
 		areacode = new JTextField();
 		areacode.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		areacode.setBounds(662, 183, 215, 35);
 		areacode.setText("00000");
 		areacode.setColumns(10);
-																				
+
 		role = new JTextField();
 		role.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		role.setBounds(662, 233, 215, 35);
 		role.setText("role");
 		role.setColumns(10);
-																						
+
 		JLabel FirstName = new JLabel("First Name");
 		FirstName.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
 		FirstName.setForeground(Color.WHITE);
 		FirstName.setBounds(15, 33, 154, 35);
-		
+
 		JLabel MiddleName = new JLabel("Middle Name");
 		MiddleName.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
 		MiddleName.setForeground(Color.WHITE);
 		MiddleName.setBounds(15, 83, 154, 35);
-																								
+
 		JLabel LastName = new JLabel("Last Name");
 		LastName.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
 		LastName.setForeground(Color.WHITE);
@@ -261,7 +261,7 @@ public class Login extends JFrame {
 		Email.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
 		Email.setForeground(Color.WHITE);
 		Email.setBounds(15, 183, 154, 35);
-				
+
 		JLabel Phone_no1 = new JLabel("Phone_no1");
 		Phone_no1.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
 		Phone_no1.setForeground(Color.WHITE);
@@ -359,42 +359,40 @@ public class Login extends JFrame {
 					counter = count.incrementAndGet();
 					Class.forName("com.mysql.jdbc.Driver");
 					Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vehiclepoolingdb", "root",
-					"");
+							"");
 					Statement stmt = con.createStatement();
 					String sql = "Insert into user (User_id,Fname,Mname,Lname,Gender,Email_id,U_passwd,Role,Bdate,Areacode)"
-						+ " values(" + counter + ",'" + fname.getText() + "','" + mname.getText() + "','"
-						+ lname.getText() + "','" + gender.getText() + "','" + email.getText() + "','"
-						+ passwd.getText().toString() + "','" + role.getText() + "','" + dob.getText() + "',"
-						+ areacode.getText() + ")";
-						String sql1 = "Insert into user_contact(User_id,U_phone_no)" + "values(" + counter + ","
-						+ phone1.getText() + ")," + "(" + counter + "," + phone2.getText() + ")";
-						String sql2 = "Insert into user_address(Areacode,Pincode,Address,City,State)" + "values("
-						+ areacode.getText() + "," + pincode.getText() + ",'" + address.getText() + "','"
-						+ city.getText() + "','" + state.getText() + "')";
-						String sql3 = "Insert into user_age(Bdate,Age)" + "values('" + dob.getText() + "'," + getAge()
-						+ ")";
+							+ " values(" + counter + ",'" + fname.getText() + "','" + mname.getText() + "','"
+							+ lname.getText() + "','" + gender.getText() + "','" + email.getText() + "','"
+							+ passwd.getText().toString() + "','" + role.getText() + "','" + dob.getText() + "',"
+							+ areacode.getText() + ")";
+					String sql1 = "Insert into user_contact(User_id,U_phone_no)" + "values(" + counter + ","
+							+ phone1.getText() + ")," + "(" + counter + "," + phone2.getText() + ")";
+					String sql2 = "Insert into user_address(Areacode,Pincode,Address,City,State)" + "values("
+							+ areacode.getText() + "," + pincode.getText() + ",'" + address.getText() + "','"
+							+ city.getText() + "','" + state.getText() + "')";
+					String sql3 = "Insert into user_age(Bdate,Age)" + "values('" + dob.getText() + "'," + getAge()
+							+ ")";
 					int rs4 = stmt.executeUpdate(sql3);
 					int rs2 = stmt.executeUpdate(sql2);
 					int rs = stmt.executeUpdate(sql);
 					int rs3 = stmt.executeUpdate(sql1);
 
 					if (rs > 0 && rs2 > 0 && rs3 > 0 && rs4 > 0) {
-						JOptionPane.showMessageDialog(null, "Registration successful! Your user id is "+count);
-					
-						
-						
+						JOptionPane.showMessageDialog(null, "Registration successful! Your user id is " + count);
+
 					}
-	
+
 					else
 						JOptionPane.showMessageDialog(null, "Registration unsuccessful, try again!");
-								con.close();
-					
-							} catch (Exception e) {
-								System.out.println(e);
-							}
-					
-						}
-					});
+					con.close();
+
+				} catch (Exception e) {
+					System.out.println(e);
+				}
+
+			}
+		});
 
 		btnRegister.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
 		btnRegister.setBounds(299, 435, 303, 50);
@@ -471,11 +469,11 @@ public class Login extends JFrame {
 						layout.setVisible(true);
 						setVisible(false);
 					}
-		
+
 					else
 						JOptionPane.showMessageDialog(null, "Incorrect Username or Password!");
 					con.close();
-		
+
 				} catch (Exception e) {
 					System.out.println(e);
 				}

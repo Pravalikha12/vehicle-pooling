@@ -1,11 +1,13 @@
 package components;
 
+import com.bbn.openmap.*;
 import java.awt.BorderLayout;
+import java.util.Properties;
 
 import javax.swing.JPanel;
+import com.bbn.openmap.MapBean;
+import com.bbn.openmap.layer.shape.ShapeLayer;
 
-//import org.jdesktop.swingx.JXMapKit;
-//import org.jdesktop.swingx.JXMapKit.DefaultProviders;
 
 public class YourRide extends JPanel {
 
@@ -13,26 +15,23 @@ public class YourRide extends JPanel {
 	 * Create the panel.
 	 */
 	public YourRide() {
-		setLayout(null);
+		setLayout(new BorderLayout(0, 0));
 		
-		JPanel panel = new JPanel();
-		panel.setBounds(70, 48, 900, 500);
-		add(panel);
-		panel.setLayout(new BorderLayout());
-		panel.setVisible(true);
+		MapBean mapBean = new MapBean();
+		add(mapBean);
+		Properties shapeLayerProps = new Properties();
+	      shapeLayerProps.put("prettyName", "Political Solid");
+	      shapeLayerProps.put("lineColor", "000000");
+	      shapeLayerProps.put("fillColor", "BDDE83");
+	      shapeLayerProps.put("shapeFile", "resources/map/shape/dcwpo-browse.shp");
+	      shapeLayerProps.put("spatialIndex", "resources/map/shape/dcwpo-browse.ssx");
+	 
+	      ShapeLayer shapeLayer = new ShapeLayer();
+	      shapeLayer.setProperties(shapeLayerProps);
+	 
+	      // Add the political layer to the map
+	      mapBean.add(shapeLayer);
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.setLayout(null);
-		panel_1.setBounds(298, 48, 179, 300);
-		add(panel_1);
-		panel_1.setVisible(true);
 		
-		
-		/*JXMapKit kit = new JXMapKit();
-		kit.setDefaultProvider(org.jdesktop.swingx.JXMapKit.DefaultProviders.OpenStreetMaps);
-		kit.setDataProviderCreditShown(true);
-		panel.add(kit, BorderLayout.CENTER);
-		kit.setVisible(true);
-		*/
 	}
 }

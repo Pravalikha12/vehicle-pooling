@@ -44,34 +44,33 @@ public class Layout extends JFrame {
 	public Layout() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 860, 683);
-		
+
 		contentPane = new JDesktopPane();
 		contentPane.setBackground(Color.RED);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		YourRide yourRide = new YourRide();
 		Dashboard dashboard = new Dashboard();
 		JoinARide joinARide = new JoinARide();
 		OfferARide offerARide = new OfferARide();
 		ViewProfile viewProfile = new ViewProfile();
 		Feedback feedback = new Feedback();
-		
-		
+
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.RED);
 		panel.setBounds(0, 78, 336, 900);
 		contentPane.add(panel);
 		panel.setLayout(null);
-		
+
 		JInternalFrame internalFrame = new JInternalFrame("New JInternalFrame");
 		internalFrame.setBackground(Color.YELLOW);
 		internalFrame.setBounds(327, 78, 1200, 901);
 		contentPane.add(internalFrame);
 		internalFrame.setVisible(true);
 		internalFrame.setContentPane(viewProfile);
-		
+
 		JButton btnFeedback = new JButton("Feedback");
 		btnFeedback.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
 		btnFeedback.setBackground(Color.WHITE);
@@ -82,12 +81,12 @@ public class Layout extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
 					internalFrame.setContentPane(feedback);
+				} catch (Exception e) {
+
 				}
-				catch(Exception e){
-					
-				}
-			}});
-				
+			}
+		});
+
 		JButton btnOfferARide = new JButton("Offer A Ride");
 		btnOfferARide.setForeground(Color.BLACK);
 		btnOfferARide.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
@@ -98,12 +97,12 @@ public class Layout extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
 					internalFrame.setContentPane(offerARide);
+				} catch (Exception e) {
+
 				}
-				catch(Exception e){
-					
-				}
-			}});
-		
+			}
+		});
+
 		JButton btnJoinARide = new JButton("Join A Ride");
 		btnJoinARide.setForeground(Color.BLACK);
 		btnJoinARide.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
@@ -114,12 +113,12 @@ public class Layout extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
 					internalFrame.setContentPane(joinARide);
+				} catch (Exception e) {
+
 				}
-				catch(Exception e){
-					
-				}
-			}});
-		
+			}
+		});
+
 		JButton btnViewProfile = new JButton("View Profile");
 		btnViewProfile.setForeground(Color.BLACK);
 		btnViewProfile.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
@@ -130,14 +129,12 @@ public class Layout extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
 					internalFrame.setContentPane(viewProfile);
+				} catch (Exception e) {
+
 				}
-				catch(Exception e){
-					
-				}
-			}});
-		
-		
-		
+			}
+		});
+
 		JButton btnDashboard = new JButton("Dashboard");
 		btnDashboard.setForeground(Color.BLACK);
 		btnDashboard.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
@@ -148,26 +145,26 @@ public class Layout extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
 					internalFrame.setContentPane(dashboard);
+				} catch (Exception e) {
+
 				}
-				catch(Exception e){
-					
-				}
-			}});
-		
+			}
+		});
+
 		JButton btnYourRide = new JButton("Your Ride");
 		btnYourRide.setForeground(Color.BLACK);
 		btnYourRide.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
 		btnYourRide.setBackground(Color.WHITE);
 		btnYourRide.setBounds(51, 73, 226, 45);
 		panel.add(btnYourRide);
-		
+
 		JPanel panel_2 = new JPanel();
 		panel_2.setBounds(-118, 930, 1000, 40);
 		panel.add(panel_2);
 		panel_2.setForeground(Color.BLACK);
 		panel_2.setLayout(null);
 		panel_2.setBackground(Color.WHITE);
-		
+
 		JLabel label_1 = new JLabel("All Rights Reserved 2019 \u00A9 ");
 		label_1.setHorizontalTextPosition(SwingConstants.CENTER);
 		label_1.setHorizontalAlignment(SwingConstants.CENTER);
@@ -180,19 +177,19 @@ public class Layout extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
 					internalFrame.setContentPane(yourRide);
+				} catch (Exception e) {
+
 				}
-				catch(Exception e){
-					
-				}
-			}});
-		
+			}
+		});
+
 		JPanel panel_1 = new JPanel();
 		panel_1.setLayout(null);
 		panel_1.setForeground(Color.RED);
 		panel_1.setBackground(Color.BLACK);
 		panel_1.setBounds(0, 0, 2000, 78);
 		contentPane.add(panel_1);
-		
+
 		JLabel label = new JLabel("Namma Ride");
 		label.setVerticalTextPosition(SwingConstants.TOP);
 		label.setVerticalAlignment(SwingConstants.TOP);
@@ -205,8 +202,6 @@ public class Layout extends JFrame {
 		label.setBackground(SystemColor.menu);
 		label.setBounds(0, 0, 424, 78);
 		panel_1.add(label);
-		
-		
-		
+
 	}
 }
