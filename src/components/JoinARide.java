@@ -81,39 +81,39 @@ public class JoinARide extends JPanel {
 		panel_1.setLayout(null);
 		panel_1.setForeground(Color.WHITE);
 		panel_1.setBackground(Color.BLACK);
-		panel_1.setBounds(68, 72, 828, 525);
+		panel_1.setBounds(59, 16, 828, 525);
 		add(panel_1);
 		
 		textField_3 = new JTextField();
 		textField_3.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		textField_3.setColumns(10);
-		textField_3.setBounds(69, 26, 308, 56);
+		textField_3.setBounds(222, 75, 417, 81);
 		panel_1.add(textField_3);
 		
 		txtViewAvailableRides = new JTextField();
 		txtViewAvailableRides.setHorizontalAlignment(SwingConstants.CENTER);
 		txtViewAvailableRides.setText("View Available Rides");
-		txtViewAvailableRides.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
+		txtViewAvailableRides.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
 		txtViewAvailableRides.setColumns(10);
-		txtViewAvailableRides.setBounds(217, 128, 417, 67);
+		txtViewAvailableRides.setBounds(222, 384, 417, 67);
 		panel_1.add(txtViewAvailableRides);
 		
 		JLabel lblTo = new JLabel("To");
 		lblTo.setForeground(Color.WHITE);
 		lblTo.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
-		lblTo.setBounds(15, 37, 39, 28);
+		lblTo.setBounds(396, 31, 39, 28);
 		panel_1.add(lblTo);
 		
 		JLabel lblFrom = new JLabel("From");
 		lblFrom.setForeground(Color.WHITE);
 		lblFrom.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
-		lblFrom.setBounds(392, 38, 61, 28);
+		lblFrom.setBounds(396, 188, 61, 28);
 		panel_1.add(lblFrom);
 		
 		textField_6 = new JTextField();
 		textField_6.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		textField_6.setColumns(10);
-		textField_6.setBounds(468, 26, 308, 56);
+		textField_6.setBounds(222, 242, 417, 81);
 		panel_1.add(textField_6);
 
 	}

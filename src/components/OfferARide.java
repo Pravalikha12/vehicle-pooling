@@ -32,14 +32,14 @@ public class OfferARide extends JPanel {
 		panel.setLayout(null);
 		panel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		panel.setBackground(Color.RED);
-		panel.setBounds(-58, 68, 996, 557);
+		panel.setBounds(-30, 0, 968, 557);
 		add(panel);
 		
 		JPanel panel_3 = new JPanel();
 		panel_3.setLayout(null);
 		panel_3.setForeground(Color.WHITE);
 		panel_3.setBackground(Color.BLACK);
-		panel_3.setBounds(93, 34, 867, 483);
+		panel_3.setBounds(63, 36, 867, 483);
 		panel.add(panel_3);
 		
 		txtDestination = new JTextField();
@@ -95,7 +95,7 @@ public class OfferARide extends JPanel {
 		panel_3.add(lblVehicle);
 		
 		JButton btnOffer = new JButton("Offer");
-		btnOffer.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
+		btnOffer.setFont(new Font("Comic Sans MS", Font.BOLD, 14));
 		btnOffer.setBounds(365, 226, 115, 29);
 		panel_3.add(btnOffer);
 		
@@ -140,7 +140,7 @@ public class OfferARide extends JPanel {
 		panel_2.setLayout(null);
 		
 		JButton btnViewProfile = new JButton("View Profile");
-		btnViewProfile.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
+		btnViewProfile.setFont(new Font("Comic Sans MS", Font.BOLD, 14));
 		btnViewProfile.setBounds(15, 122, 115, 29);
 		panel_2.add(btnViewProfile);
 		
@@ -149,12 +149,12 @@ public class OfferARide extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnAccept.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
+		btnAccept.setFont(new Font("Comic Sans MS", Font.BOLD, 14));
 		btnAccept.setBounds(131, 122, 105, 29);
 		panel_2.add(btnAccept);
 		
 		JButton btnReject = new JButton("Reject");
-		btnReject.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
+		btnReject.setFont(new Font("Comic Sans MS", Font.BOLD, 14));
 		btnReject.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
