@@ -43,7 +43,7 @@ public class Layout extends JFrame {
 	 */
 	public Layout() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 2000, 2000);
+		setBounds(100, 100, 1000, 700);
 		contentPane = new JDesktopPane();
 		contentPane.setBackground(Color.RED);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -64,7 +64,7 @@ public class Layout extends JFrame {
 		
 		JInternalFrame internalFrame = new JInternalFrame("New JInternalFrame");
 		internalFrame.setBackground(Color.YELLOW);
-		internalFrame.setBounds(219, 45, 1200, 800);
+		internalFrame.setBounds(205, 45, 779, 460);
 		contentPane.add(internalFrame);
 		internalFrame.setVisible(true);
 		internalFrame.setContentPane(viewProfile);
@@ -197,7 +197,7 @@ public class Layout extends JFrame {
 		label_1.setForeground(Color.RED);
 		label_1.setFont(new Font("Comic Sans MS", Font.PLAIN, 12));
 		label_1.setBackground(Color.BLACK);
-		label_1.setBounds(0, 0, 858, 30);
+		label_1.setBounds(0, 0, 206, 30);
 		panel_2.add(label_1);
 		
 		
