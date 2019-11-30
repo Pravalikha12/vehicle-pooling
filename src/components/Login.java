@@ -32,6 +32,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Rectangle;
 import java.awt.Dimension;
+import com.toedter.calendar.JCalendar;
 
 public class Login extends JFrame {
 
@@ -52,11 +53,11 @@ public class Login extends JFrame {
 	public static JTextField areacode;
 	public static JTextField role;
 	public static JTextField gender;
-	public static JTextField dob;
 	public static JTextField userid;
 	public static JPasswordField pass;
 	LocalDate today = LocalDate.now();
 	public JTextField phone2;
+	private JTextField dob;
 
 	int getAge() {
 		LocalDate age = LocalDate.parse(dob.getText());
@@ -129,45 +130,43 @@ public class Login extends JFrame {
 		panel.add(tabbedPane);
 
 		mname = new JTextField();
-		mname.setText("god of thunder");
 
 		userid = new JTextField();
-		userid.setText("userid");
+		
 		userid.setColumns(10);
 
 		pass = new JPasswordField();
-		pass.setText("pass");
+		
 
 		email = new JTextField();
-		email.setText("mail");
+		
 		email.setColumns(10);
 
 		phoneno = new JTextField();
-		phoneno.setText("898989");
 		phoneno.setColumns(10);
 
 		address = new JTextField();
-		address.setText("hanu");
+		
 		address.setColumns(10);
 
 		city = new JTextField();
-		city.setText("blore");
+		
 		city.setColumns(10);
 
 		state = new JTextField();
-		state.setText("ktaka");
+		
 		state.setColumns(10);
 
 		pincode = new JTextField();
-		pincode.setText("45000");
+		
 		pincode.setColumns(10);
 
 		role = new JTextField();
-		role.setText("stud");
+		
 		role.setColumns(10);
 
 		userid = new JTextField();
-		userid.setText("username");
+		
 		userid.setColumns(10);
 
 		JPanel panel_1 = new JPanel();
@@ -178,44 +177,36 @@ public class Login extends JFrame {
 		tabbedPane.addTab("Sign Up", null, panel_1, null);
 
 		fname = new JTextField();
-		fname.setText("thor");
 		fname.setColumns(10);
 		fname.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		fname.setBounds(171, 33, 215, 35);
-		fname.setText("fname");
 		fname.setColumns(10);
 
 		mname = new JTextField();
 		mname.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		mname.setBounds(171, 83, 215, 35);
-		mname.setText("mname");
 		mname.setColumns(10);
 
 		lname = new JTextField();
-		lname.setText("odinson");
 		lname.setColumns(10);
 
 		lname.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		lname.setBounds(171, 133, 215, 35);
-		lname.setText("lname");
 		lname.setColumns(10);
 
 		email = new JTextField();
 		email.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		email.setBounds(171, 183, 215, 35);
-		email.setText("email");
 		email.setColumns(10);
 
 		phone1 = new JTextField();
 		phone1.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		phone1.setBounds(171, 233, 215, 35);
-		phone1.setText("phone1");
 		phone1.setColumns(10);
 
 		address = new JTextField();
 		address.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		address.setBounds(662, 33, 215, 35);
-		address.setText("address");
 		address.setColumns(10);
 
 		city = new JTextField();
@@ -233,13 +224,13 @@ public class Login extends JFrame {
 		areacode = new JTextField();
 		areacode.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		areacode.setBounds(662, 183, 215, 35);
-		areacode.setText("00000");
+		areacode.setText("0");
 		areacode.setColumns(10);
 
 		role = new JTextField();
 		role.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		role.setBounds(662, 233, 215, 35);
-		role.setText("role");
+		role.setText("Student/Faculty");
 		role.setColumns(10);
 
 		JLabel FirstName = new JLabel("First Name");
@@ -313,16 +304,9 @@ public class Login extends JFrame {
 		gender.setText("M/F/Other");
 		gender.setColumns(10);
 
-		dob = new JTextField();
-		dob.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
-		dob.setBounds(171, 333, 215, 35);
-		dob.setText("yyyy-mm-dd");
-		dob.setColumns(10);
-
 		passwd = new JPasswordField();
 		passwd.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		passwd.setBounds(662, 333, 215, 36);
-		passwd.setText("passwd");
 		panel_1.setLayout(null);
 		// panel_1.add(btnRegister);
 		panel_1.add(FirstName);
@@ -332,7 +316,6 @@ public class Login extends JFrame {
 		panel_1.add(Phone_no1);
 		panel_1.add(Gender);
 		panel_1.add(DOB);
-		panel_1.add(dob);
 		panel_1.add(fname);
 		panel_1.add(mname);
 		panel_1.add(lname);
@@ -397,7 +380,7 @@ public class Login extends JFrame {
 		});
 
 		btnRegister.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
-		btnRegister.setBounds(299, 435, 303, 50);
+		btnRegister.setBounds(574, 435, 303, 50);
 		panel_1.add(btnRegister);
 
 		JLabel phone_no2 = new JLabel("Phone_no2");
@@ -407,7 +390,6 @@ public class Login extends JFrame {
 		panel_1.add(phone_no2);
 
 		phone2 = new JTextField();
-		phone2.setText("0000000000");
 		phone2.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		phone2.setColumns(10);
 		phone2.setBounds(171, 283, 215, 35);
@@ -430,6 +412,13 @@ public class Login extends JFrame {
 		btnViewAreacode.setFont(new Font("Comic Sans MS", Font.BOLD, 16));
 		btnViewAreacode.setBounds(448, 201, 154, 30);
 		panel_1.add(btnViewAreacode);
+		
+		dob = new JTextField();
+		dob.setText("yyyy-mm-dd");
+		dob.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
+		dob.setColumns(10);
+		dob.setBounds(171, 337, 215, 35);
+		panel_1.add(dob);
 
 		JPanel panel_2 = new JPanel();
 		panel_2.setFont(new Font("Baskerville Old Face", Font.BOLD, 20));
@@ -451,13 +440,13 @@ public class Login extends JFrame {
 		userid = new JTextField();
 		userid.setFont(new Font("Comic Sans MS", Font.PLAIN, 25));
 		userid.setBounds(228, 117, 459, 85);
-		userid.setText("user id");
+		
 		userid.setColumns(10);
 
 		pwdPass = new JPasswordField();
 		pwdPass.setFont(new Font("Comic Sans MS", Font.PLAIN, 25));
 		pwdPass.setBounds(228, 278, 459, 85);
-		pwdPass.setText("pass");
+		
 		panel_2.setLayout(null);
 		panel_2.add(pwdPass);
 		panel_2.add(userid);
