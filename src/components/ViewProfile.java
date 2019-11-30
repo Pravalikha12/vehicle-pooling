@@ -187,7 +187,7 @@ public class ViewProfile extends JPanel {
 				public void actionPerformed(ActionEvent arg0) {
 					try {
 						 VehicleReg vr=new VehicleReg();
-						 vr.setVisible(true); 
+						 vr.setVisible(true);
 					}
 						
 					catch(Exception e) {
