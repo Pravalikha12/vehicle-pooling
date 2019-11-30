@@ -70,7 +70,7 @@ public class Layout extends JFrame {
 		contentPane.add(internalFrame);
 		internalFrame.setVisible(true);
 		internalFrame.setContentPane(viewProfile);
-
+		
 		JButton btnFeedback = new JButton("Feedback");
 		btnFeedback.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
 		btnFeedback.setBackground(Color.WHITE);

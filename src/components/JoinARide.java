@@ -4,17 +4,17 @@ import javax.swing.JPanel;
 import java.awt.Color;
 import javax.swing.JTextField;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.*;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 
 public class JoinARide extends JPanel {
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField txtViewAvailableRides;
-	private JTextField textField_6;
+	private JTextField JoinDest;
+	private JTextField JoinSource;
 
 	/**
 	 * Create the panel.
@@ -23,80 +23,18 @@ public class JoinARide extends JPanel {
 		setBackground(Color.RED);
 		setLayout(null);
 		
-		JPanel panel = new JPanel();
-		panel.setBounds(481, 5, 1, 1);
-		panel.setLayout(null);
-		panel.setForeground(Color.WHITE);
-		panel.setBackground(Color.BLACK);
-		add(panel);
-		
-		textField = new JTextField();
-		textField.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		textField.setColumns(10);
-		textField.setBounds(170, 16, 417, 73);
-		panel.add(textField);
-		
-		textField_1 = new JTextField();
-		textField_1.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		textField_1.setColumns(10);
-		textField_1.setBounds(170, 186, 417, 67);
-		panel.add(textField_1);
-		
-		JLabel label = new JLabel("Trip-id:");
-		label.setForeground(Color.WHITE);
-		label.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
-		label.setBounds(15, 37, 131, 28);
-		panel.add(label);
-		
-		JLabel label_1 = new JLabel("How did you feel about the ride?");
-		label_1.setForeground(Color.WHITE);
-		label_1.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
-		label_1.setBounds(15, 118, 308, 56);
-		panel.add(label_1);
-		
-		JLabel label_2 = new JLabel("Any Suggestions?");
-		label_2.setForeground(Color.WHITE);
-		label_2.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
-		label_2.setBounds(15, 204, 215, 28);
-		panel.add(label_2);
-		
-		JLabel label_3 = new JLabel("Any feedback?");
-		label_3.setForeground(Color.WHITE);
-		label_3.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
-		label_3.setBounds(15, 303, 215, 28);
-		panel.add(label_3);
-		
-		textField_2 = new JTextField();
-		textField_2.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		textField_2.setColumns(10);
-		textField_2.setBounds(170, 303, 417, 67);
-		panel.add(textField_2);
-		
-		JButton button = new JButton("Submit");
-		button.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		button.setBounds(295, 416, 142, 39);
-		panel.add(button);
-		
 		JPanel panel_1 = new JPanel();
 		panel_1.setLayout(null);
 		panel_1.setForeground(Color.WHITE);
 		panel_1.setBackground(Color.BLACK);
-		panel_1.setBounds(59, 16, 828, 525);
+		panel_1.setBounds(59, 16, 704, 525);
 		add(panel_1);
 		
-		textField_3 = new JTextField();
-		textField_3.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		textField_3.setColumns(10);
-		textField_3.setBounds(222, 75, 417, 81);
-		panel_1.add(textField_3);
-		
-		txtViewAvailableRides = new JTextField();
-		txtViewAvailableRides.setHorizontalAlignment(SwingConstants.CENTER);
-		txtViewAvailableRides.setText("View Available Rides");
-		txtViewAvailableRides.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
-		txtViewAvailableRides.setColumns(10);
-		txtViewAvailableRides.setBounds(222, 384, 417, 67);
-		panel_1.add(txtViewAvailableRides);
+		JoinDest = new JTextField();
+		JoinDest.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
+		JoinDest.setColumns(10);
+		JoinDest.setBounds(222, 75, 417, 81);
+		panel_1.add(JoinDest);
 		
 		JLabel lblTo = new JLabel("To");
 		lblTo.setForeground(Color.WHITE);
@@ -110,11 +48,36 @@ public class JoinARide extends JPanel {
 		lblFrom.setBounds(396, 188, 61, 28);
 		panel_1.add(lblFrom);
 		
-		textField_6 = new JTextField();
-		textField_6.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		textField_6.setColumns(10);
-		textField_6.setBounds(222, 242, 417, 81);
-		panel_1.add(textField_6);
+		JoinSource = new JTextField();
+		JoinSource.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
+		JoinSource.setColumns(10);
+		JoinSource.setBounds(222, 242, 417, 81);
+		panel_1.add(JoinSource);
+		
+		JButton btnViewAvailableRides = new JButton("View Available Rides");
+		btnViewAvailableRides.setBounds(222, 364, 417, 39);
+		panel_1.add(btnViewAvailableRides);
+		btnViewAvailableRides.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					Class.forName("com.mysql.jdbc.Driver");
+					Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vehiclepoolingdb", "root","");
+					Statement stmt = con.createStatement();
+					String sql = "Select Source,Destination,Avail_seats from trip where ";
+					ResultSet rs = stmt.executeQuery(sql);
+					if (rs.next())
+						JOptionPane.showMessageDialog(null, "Login successful!");
+					else
+						JOptionPane.showMessageDialog(null, "Incorrext Username or Password!");
+					
+					con.close();
+
+				} catch (Exception e) {
+					System.out.println(e);
+				}
+			}
+
+		});
 
 	}
 }

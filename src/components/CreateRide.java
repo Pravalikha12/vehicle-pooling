@@ -5,6 +5,8 @@ public class CreateRide {
 	private int trip_id;
 	private int status;
 	private int remaining_seats;
+	private String destination;
+	private String source;
 	private int user_id[];
 	
 	CreateRide(int t, int s, int r, int u){
@@ -14,8 +16,9 @@ public class CreateRide {
 		user_id = new int[u];
 	}
 	
-//	int generateTripId(){
-//		
-//		return ;
-//	}
+	int generateTripId(){
+		
+		return trip_id;
+	}
+	
 }
