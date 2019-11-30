@@ -11,6 +11,8 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 public class Feedback extends JPanel {
 	private JTextField txtxx;
@@ -86,11 +88,12 @@ public class Feedback extends JPanel {
 		btnSubmit.setBounds(443, 457, 142, 39);
 		panel_1.add(btnSubmit);
 		
-		JPanel rating = new JPanel();
-		
-		rating.setBounds(312, 135, 417, 73);
-		panel_1.add(rating);
-		rating.setLayout(null);
+		JComboBox comboBox = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"5 (Excellent)", "4 (Very Good)", "3 (Good)", "2 (Satisfactory)", "1  (Poor)"}));
+		comboBox.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
+		comboBox.setMaximumRowCount(5);
+		comboBox.setBounds(312, 137, 417, 73);
+		panel_1.add(comboBox);
 		
 		
         

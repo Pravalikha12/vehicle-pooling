@@ -36,7 +36,7 @@ import java.awt.Dimension;
 public class Login extends JFrame {
 
 	private JPanel contentPane;
-	public int counter = 100;
+	public int uid;
 	public static JPasswordField pwdPass;
 	public static JPasswordField passwd;
 	public static JTextField fname;
@@ -66,7 +66,7 @@ public class Login extends JFrame {
 		return 0;
 	}
 
-	AtomicInteger count = new AtomicInteger(201);
+	//AtomicInteger count = new AtomicInteger(201);
 
 	/**
 	 * Launch the application.
@@ -356,18 +356,20 @@ public class Login extends JFrame {
 		btnRegister.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					counter = count.incrementAndGet();
+					
+					uid=(int)(System.currentTimeMillis() & 0xfffffff);
+					//counter = count.incrementAndGet();
 					Class.forName("com.mysql.jdbc.Driver");
 					Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vehiclepoolingdb", "root",
 							"");
 					Statement stmt = con.createStatement();
 					String sql = "Insert into user (User_id,Fname,Mname,Lname,Gender,Email_id,U_passwd,Role,Bdate,Areacode)"
-							+ " values(" + counter + ",'" + fname.getText() + "','" + mname.getText() + "','"
+							+ " values(" + uid + ",'" + fname.getText() + "','" + mname.getText() + "','"
 							+ lname.getText() + "','" + gender.getText() + "','" + email.getText() + "','"
 							+ passwd.getText().toString() + "','" + role.getText() + "','" + dob.getText() + "',"
 							+ areacode.getText() + ")";
-					String sql1 = "Insert into user_contact(User_id,U_phone_no)" + "values(" + counter + ","
-							+ phone1.getText() + ")," + "(" + counter + "," + phone2.getText() + ")";
+					String sql1 = "Insert into user_contact(User_id,U_phone_no)" + "values(" + uid + ","
+							+ phone1.getText() + ")," + "(" + uid + "," + phone2.getText() + ")";
 					String sql2 = "Insert into user_address(Areacode,Pincode,Address,City,State)" + "values("
 							+ areacode.getText() + "," + pincode.getText() + ",'" + address.getText() + "','"
 							+ city.getText() + "','" + state.getText() + "')";
@@ -379,7 +381,7 @@ public class Login extends JFrame {
 					int rs3 = stmt.executeUpdate(sql1);
 
 					if (rs > 0 && rs2 > 0 && rs3 > 0 && rs4 > 0) {
-						JOptionPane.showMessageDialog(null, "Registration successful! Your user id is " + count);
+						JOptionPane.showMessageDialog(null, "Registration successful! Your user id is " + uid);
 
 					}
 
@@ -412,6 +414,19 @@ public class Login extends JFrame {
 		panel_1.add(phone2);
 
 		JButton btnViewAreacode = new JButton("View Areacode");
+		btnViewAreacode.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					 ViewAreacode codeList=new ViewAreacode();
+					 codeList.setVisible(true); 
+				}
+					
+				catch(Exception e) {
+					System.out.println(e);
+				}
+			}
+		});
+		
 		btnViewAreacode.setFont(new Font("Comic Sans MS", Font.BOLD, 16));
 		btnViewAreacode.setBounds(448, 201, 154, 30);
 		panel_1.add(btnViewAreacode);
