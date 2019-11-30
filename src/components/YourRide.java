@@ -19,13 +19,17 @@ public class YourRide extends JPanel {
 		
 //		MapBean mapBean = new MapBean();
 //		add(mapBean);
+		// setLayout(new BorderLayout(0, 0));
+		
+		//MapBean mapBean = new MapBean();
+		//add(mapBean);
 //		Properties shapeLayerProps = new Properties();
 //	      shapeLayerProps.put("prettyName", "Political Solid");
 //	      shapeLayerProps.put("lineColor", "000000");
 //	      shapeLayerProps.put("fillColor", "BDDE83");
 //	      shapeLayerProps.put("shapeFile", "resources/map/shape/dcwpo-browse.shp");
 //	      shapeLayerProps.put("spatialIndex", "resources/map/shape/dcwpo-browse.ssx");
-//	 
+	 
 //	      ShapeLayer shapeLayer = new ShapeLayer();
 //	      shapeLayer.setProperties(shapeLayerProps);
 //	 
