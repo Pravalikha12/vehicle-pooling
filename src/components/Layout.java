@@ -43,7 +43,7 @@ public class Layout extends JFrame {
 	 */
 	public Layout() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 860, 683);
+		setBounds(100, 100, 1035, 683);
 
 		contentPane = new JDesktopPane();
 		contentPane.setBackground(Color.RED);
@@ -64,9 +64,9 @@ public class Layout extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 
-		JInternalFrame internalFrame = new JInternalFrame("New JInternalFrame");
+		JInternalFrame internalFrame = new JInternalFrame("Vehicle Pooling for BMSCE");
 		internalFrame.setBackground(Color.YELLOW);
-		internalFrame.setBounds(327, 78, 1200, 901);
+		internalFrame.setBounds(327, 110, 910, 510);
 		contentPane.add(internalFrame);
 		internalFrame.setVisible(true);
 		internalFrame.setContentPane(viewProfile);

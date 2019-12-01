@@ -24,12 +24,12 @@ public class Dashboard extends JPanel {
 		JPanel panel = new JPanel();
 		panel.setForeground(Color.WHITE);
 		panel.setBackground(Color.BLACK);
-		panel.setBounds(63, 63, 816, 434);
+		panel.setBounds(0, 0, 910, 510);
 		add(panel);
 		
-		JLabel label = new JLabel("History");
-		label.setForeground(Color.WHITE);
-		label.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
+		JLabel History = new JLabel("History");
+		History.setForeground(Color.WHITE);
+		History.setFont(new Font("Comic Sans MS", Font.BOLD, 26));
 		
 		textField = new JTextField();
 		textField.setText("Trip1");
@@ -49,29 +49,31 @@ public class Dashboard extends JPanel {
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
-					.addGap(74)
-					.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING, false)
-						.addComponent(textField_2)
-						.addComponent(textField, GroupLayout.DEFAULT_SIZE, 666, Short.MAX_VALUE)
-						.addComponent(textField_1, Alignment.LEADING))
-					.addContainerGap(76, Short.MAX_VALUE))
-				.addGroup(Alignment.TRAILING, gl_panel.createSequentialGroup()
-					.addContainerGap(367, Short.MAX_VALUE)
-					.addComponent(label, GroupLayout.PREFERRED_SIZE, 131, GroupLayout.PREFERRED_SIZE)
-					.addGap(318))
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGap(116)
+							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+								.addComponent(textField_2, 640, 640, 640)
+								.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING, false)
+									.addComponent(textField_1, Alignment.LEADING)
+									.addComponent(textField, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 640, Short.MAX_VALUE))))
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGap(383)
+							.addComponent(History, GroupLayout.PREFERRED_SIZE, 131, GroupLayout.PREFERRED_SIZE)))
+					.addContainerGap(154, Short.MAX_VALUE))
 		);
 		gl_panel.setVerticalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(label, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
-					.addGap(13)
+					.addGap(40)
+					.addComponent(History, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
+					.addGap(27)
 					.addComponent(textField, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE)
-					.addGap(51)
+					.addGap(38)
 					.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, 73, GroupLayout.PREFERRED_SIZE)
-					.addGap(55)
+					.addGap(57)
 					.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE)
-					.addGap(58))
+					.addGap(107))
 		);
 		panel.setLayout(gl_panel);
 

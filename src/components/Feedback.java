@@ -15,15 +15,15 @@ import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 
 public class Feedback extends JPanel {
-	private JTextField txtxx;
-	private JTextField textField_3;
-	private JTextField textField_1;
+	private JTextField trip_id;
+	private JTextField suggestion;
+	private JTextField feedback;
 
 	/**
 	 * Create the panel.
 	 */
 	public Feedback() {
-		setBackground(Color.RED);
+		setBackground(new Color(255, 0, 0));
 		setLayout(null);
 		
 		JLabel label = new JLabel("");
@@ -34,66 +34,81 @@ public class Feedback extends JPanel {
 		panel_1.setLayout(null);
 		panel_1.setForeground(Color.WHITE);
 		panel_1.setBackground(Color.BLACK);
-		panel_1.setBounds(33, 16, 881, 513);
+		panel_1.setBounds(0, 0, 910, 510);
 		add(panel_1);
 		
-		txtxx = new JTextField();
-		txtxx.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		txtxx.setColumns(10);
-		txtxx.setBounds(312, 32, 417, 73);
-		panel_1.add(txtxx);
+		trip_id = new JTextField();
+		trip_id.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
+		trip_id.setColumns(10);
+		trip_id.setBounds(312, 37, 417, 60);
+		panel_1.add(trip_id);
 		
-		textField_3 = new JTextField();
-		textField_3.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		textField_3.setColumns(10);
-		textField_3.setBounds(312, 238, 417, 73);
-		panel_1.add(textField_3);
+		suggestion = new JTextField();
+		suggestion.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
+		suggestion.setColumns(10);
+		suggestion.setBounds(312, 227, 417, 73);
+		panel_1.add(suggestion);
 		
 		JLabel lblTripid = new JLabel("Trip-id");
 		lblTripid.setForeground(Color.WHITE);
 		lblTripid.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
-		lblTripid.setBounds(26, 37, 131, 28);
+		lblTripid.setBounds(64, 37, 131, 28);
 		panel_1.add(lblTripid);
 		
 		JLabel lblHowDidYou = new JLabel("Rate your ride experience");
 		lblHowDidYou.setForeground(Color.WHITE);
 		lblHowDidYou.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
-		lblHowDidYou.setBounds(26, 135, 248, 56);
+		lblHowDidYou.setBounds(64, 132, 248, 56);
 		panel_1.add(lblHowDidYou);
 		
 		JLabel lblAnySuggestions = new JLabel("Any Suggestions?");
 		lblAnySuggestions.setForeground(Color.WHITE);
 		lblAnySuggestions.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
-		lblAnySuggestions.setBounds(26, 251, 157, 28);
+		lblAnySuggestions.setBounds(64, 227, 157, 28);
 		panel_1.add(lblAnySuggestions);
 		
 		JLabel lblAnyFeedback = new JLabel("Any feedback?");
 		lblAnyFeedback.setForeground(Color.WHITE);
 		lblAnyFeedback.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
-		lblAnyFeedback.setBounds(26, 343, 215, 28);
+		lblAnyFeedback.setBounds(64, 322, 215, 28);
 		panel_1.add(lblAnyFeedback);
 		
-		textField_1 = new JTextField(); 
-		textField_1.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		textField_1.setColumns(10);
-		textField_1.setBounds(312, 341, 417, 73);
-		panel_1.add(textField_1);
+		feedback = new JTextField(); 
+		feedback.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
+		feedback.setColumns(10);
+		feedback.setBounds(312, 322, 417, 73);
+		panel_1.add(feedback);
 		
 		JButton btnSubmit = new JButton("Submit");
 		btnSubmit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
 			}
 		});
-		btnSubmit.setFont(new Font("Comic Sans MS", Font.BOLD, 14));
-		btnSubmit.setBounds(443, 457, 142, 39);
+		btnSubmit.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
+		btnSubmit.setBounds(312, 425, 160, 39);
 		panel_1.add(btnSubmit);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"5 (Excellent)", "4 (Very Good)", "3 (Good)", "2 (Satisfactory)", "1  (Poor)"}));
-		comboBox.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
-		comboBox.setMaximumRowCount(5);
-		comboBox.setBounds(312, 137, 417, 73);
-		panel_1.add(comboBox);
+		JComboBox rating = new JComboBox();
+		rating.setModel(new DefaultComboBoxModel(new String[] {"5 (Excellent)", "4 (Very Good)", "3 (Good)", "2 (Satisfactory)", "1 (Poor)"}));
+		rating.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
+		rating.setMaximumRowCount(5);
+		rating.setBounds(312, 132, 417, 60);
+		panel_1.add(rating);
+		
+		JButton btnClear = new JButton("Clear");
+		btnClear.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				trip_id.setText(null);
+				suggestion.setText(null);
+				feedback.setText(null);
+				
+			}
+		});
+		btnClear.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
+		btnClear.setBounds(569, 425, 160, 39);
+		panel_1.add(btnClear);
 		
 		
         

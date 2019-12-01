@@ -27,7 +27,7 @@ public class JoinARide extends JPanel {
 		panel_1.setLayout(null);
 		panel_1.setForeground(Color.WHITE);
 		panel_1.setBackground(Color.BLACK);
-		panel_1.setBounds(59, 16, 704, 525);
+		panel_1.setBounds(0, 0, 910, 510);
 		add(panel_1);
 		
 		JoinDest = new JTextField();
