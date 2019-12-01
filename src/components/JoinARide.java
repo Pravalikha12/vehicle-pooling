@@ -50,7 +50,7 @@ public class JoinARide extends JPanel {
 	private static JTable table;
 	private String[] columnNames = {"Trip_id","Trip_time","Trip_date", "Source", "Destination", "Available_seats"};
 	LocalDate today = LocalDate.now();
-	private JTextField requestTripId;
+	public static JTextField requestTripId;
 	/**
 	 * Create the panel.
 	 */
@@ -106,79 +106,35 @@ public class JoinARide extends JPanel {
 		JButton btnRequest = new JButton("Request");
 		btnRequest.setBounds(325, 426, 89, 23);
 		panel_1.add(btnRequest);
-		System.out.println("before button request");
-		btnRequest.addActionListener(new ActionListener() {
+		
+		JButton btnCheckStatus = new JButton("Check Status");
+		btnCheckStatus.setBounds(25, 364, 143, 39);
+		panel_1.add(btnCheckStatus);
+		
+		JButton btnCancelRide = new JButton("Cancel Ride");
+		btnCancelRide.setBounds(25, 218, 143, 39);
+		panel_1.add(btnCancelRide);
+		
+		
+		
+		btnCancelRide.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					System.out.println("after button request");
-
-					frame20 = new JFrame();
-					frame20.setVisible(true);
-					frame20.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			        frame20.setVisible(true);
-			        frame20.setSize(500, 300);
-			        final DefaultListModel listModel = new DefaultListModel();
-			        final JList panel7 = new JList(listModel);
-			        panel7.setBackground(new Color(128, 0, 40));
-			        panel7.setForeground(new Color(240, 240, 240));
-			        frame20.add(panel7);
-					System.out.println("before try");
-
-					try{
-						System.out.println("in try");
-
-						System.setProperty("java.net.preferIPv4Stack", "true");
-				        final JChannel channel = new JChannel("udp.xml");
-				        channel.connect("networkclipboard");
-				        channel.setReceiver(new ReceiverAdapter() {
-				            @Override
-				            public void viewAccepted(View newView) {
-				                frame20.setTitle("Network Clipboard - " + channel.getAddress());
-				            }
-
-				            @Override
-				            public void receive(Message msg) {
-				                listModel.addElement(msg.getObject());
-				            }
-				        });
-				        
-				        panel7.setTransferHandler(new TransferHandler() {
-				            @Override
-				            public boolean importData(JComponent comp, Transferable t) {
-				                DataFlavor[] transferDataFlavors = t.getTransferDataFlavors();
-				                for (DataFlavor flavor : transferDataFlavors) {
-				                    try {
-//				                        Object data = t.getTransferData(flavor);
-//				                        if (data instanceof Serializable) {
-//				                            Serializable serializable = (Serializable) data;
-				                            Message msg = new Message();
-				                            msg.setObject(requestTripId.getText().toString());
-				                            channel.send(msg);
-				                        //}
-				                    } catch (Exception e) {
-				                        e.printStackTrace();
-				                    }
-				                }
-				                return super.importData(comp, t);
-				            }
-
-				            @Override
-				            public boolean canImport(TransferSupport support) {
-				                return true;
-				            }
-
-				            @Override
-				            public boolean canImport(JComponent comp, DataFlavor[] transferFlavors) {
-				                return true;
-				            }
-
-				        });
-//				        channel.close();
-					} catch(Exception e){
-						System.out.println(e);
+					int capacity=0;
+					Class.forName("com.mysql.jdbc.Driver");
+					Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vehiclepoolingdb", "root","");
+					Statement stmt = con.createStatement();
+					String sqlForSeats = "Select * from rides_in where R_trip_id="+requestTripId.getText()+" and R_user_id="+Login.userid.getText();
+					ResultSet rsForSeats = stmt.executeQuery(sqlForSeats);
+					while(rsForSeats.next()){
+						capacity = rsForSeats.getInt("R_seats");
+						capacity++;
 					}
-
-
+					String sqlForCancel = "Update rides_in set Status = 3 where R_trip_id="+requestTripId.getText()+" and R_user_id="+Login.userid.getText();
+					int rsForCancel = stmt.executeUpdate(sqlForCancel);
+					if(rsForCancel>0){
+						JOptionPane.showMessageDialog(null, "Ride Cancelled.");
+					}
 				} catch (Exception e) {
 					System.out.println(e);
 				}
@@ -187,9 +143,60 @@ public class JoinARide extends JPanel {
 		});
 		
 		
+		btnRequest.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					int capacity=0;
+					Class.forName("com.mysql.jdbc.Driver");
+					Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vehiclepoolingdb", "root","");
+					Statement stmt = con.createStatement();
+					String sqlForSeats = "Select R_seats from rides_in where R_trip_id="+requestTripId.getText();
+					ResultSet rsForSeats = stmt.executeQuery(sqlForSeats);
+					while(rsForSeats.next()){
+						capacity = rsForSeats.getInt("R_seats");
+						System.out.println(capacity);
+					}
+					String sqlForRequest = "Insert into rides_in(R_user_id,R_trip_id,Status,R_seats) values("+Login.userid.getText()+","+requestTripId.getText()
+					+","+1+","+capacity+")";
+					int rsForRequest = stmt.executeUpdate(sqlForRequest);
+					if(rsForRequest>0){
+						JOptionPane.showMessageDialog(null, "Ride requested. Click the check status button to know if accepted.");
+					}
+				} catch (Exception e) {
+					System.out.println(e);
+				}
+
+			}
+		});
 		
 		
-		
+		btnCheckStatus.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					String status_name="";
+					Class.forName("com.mysql.jdbc.Driver");
+					Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vehiclepoolingdb", "root","");
+					Statement stmt = con.createStatement();
+					
+					String sqlForStatus = "Select Status from rides_in where R_trip_id="+requestTripId.getText()+" and R_user_id = "+Login.userid.getText();
+					ResultSet rsForStatus = stmt.executeQuery(sqlForStatus);
+					while(rsForStatus.next()){
+						int status = rsForStatus.getInt("Status");
+						if(status==2){
+							JOptionPane.showMessageDialog(null, "Ride Accepted with Trip Id "+requestTripId.getText());
+						} 
+						else if(status==1){
+							JOptionPane.showMessageDialog(null, "Ride is not accepted yet. Please wait or reject this ride and select another one");
+						}
+						else if(status==3){
+							JOptionPane.showMessageDialog(null, "Your ride has been rejected. Please find another ride.");
+
+						}
+					}
+				} catch(Exception e){
+					System.out.println(e);
+				}
+			}});
 		btnViewAvailableRides.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -203,8 +210,7 @@ public class JoinARide extends JPanel {
 
 		});
 
-	}
-	
+}
 	
 	public void showTableData(){
 		frame = new JFrame("All Available Rides");
@@ -262,7 +268,7 @@ public class JoinARide extends JPanel {
 				LocalDateTime date1 = LocalDateTime.parse(trip_time, formatter2);
 				LocalDateTime date2 = LocalDateTime.parse(curr_time, formatter2);
 				
-				if(date1.isAfter(date2))
+				if(date1.isAfter(date2)&&avail_seats>0)
 					model.addRow(new Object[]{trip_id,t_time,t_date,source,destination,avail_seats});
 				i++; 
 			}

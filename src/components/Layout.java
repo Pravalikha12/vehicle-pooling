@@ -78,7 +78,7 @@ public class Layout extends JFrame {
 		
 
 		JInternalFrame internalFrame = new JInternalFrame("New JInternalFrame");
-		internalFrame.setBackground(Color.YELLOW);
+		internalFrame.setBackground(Color.LIGHT_GRAY);
 		internalFrame.setBounds(327, 110, 990, 570);		
 		internalFrame.setResizable(false);
 		internalFrame.setVisible(true);

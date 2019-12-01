@@ -324,6 +324,8 @@ public class Login extends JFrame {
 		panel_1.add(areacode);
 		panel_1.add(role);
 		panel_1.add(passwd);
+//		panel_1.add(pincode);
+		pincode.setText("560002");
 
 		JButton btnRegister = new JButton("Sign Up");
 		btnRegister.addActionListener(new ActionListener() {

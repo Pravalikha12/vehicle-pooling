@@ -34,7 +34,7 @@ public class ViewAreacode extends JFrame {
 	 * Create the frame.
 	 */
 	public ViewAreacode() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1316, 791);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.RED);
