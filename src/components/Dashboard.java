@@ -7,7 +7,6 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
-import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class Dashboard extends JPanel {
 	private JTextField textField;

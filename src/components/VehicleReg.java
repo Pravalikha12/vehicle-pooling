@@ -16,8 +16,6 @@ import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
-import java.util.concurrent.atomic.AtomicInteger;
-
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
@@ -40,6 +38,7 @@ public class VehicleReg extends JFrame {
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
+			@Override
 			public void run() {
 				try {
 					VehicleReg frame = new VehicleReg();
@@ -55,7 +54,7 @@ public class VehicleReg extends JFrame {
 	 * Create the frame.
 	 */
 	public VehicleReg() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 979, 666);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -135,6 +134,7 @@ public class VehicleReg extends JFrame {
 		
 		JButton btnRegister = new JButton("Register");
 		btnRegister.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				try {
 					vid = (int)(System.currentTimeMillis() & 0xfffffff);

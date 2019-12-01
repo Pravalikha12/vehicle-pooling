@@ -1,9 +1,5 @@
 package components;
 
-//import com.bbn.openmap.*;
-import java.awt.BorderLayout;
-import java.util.Properties;
-
 import javax.swing.JPanel;
 //import com.bbn.openmap.MapBean;
 //import com.bbn.openmap.layer.shape.ShapeLayer;

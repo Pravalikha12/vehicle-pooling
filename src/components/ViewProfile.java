@@ -8,12 +8,8 @@ import java.sql.DriverManager;
 import java.sql.Statement;
 
 import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JOptionPane;
-import javax.swing.border.BevelBorder;
 import javax.swing.JTextField;
 import javax.swing.JTextArea;
-import javax.swing.ListSelectionModel;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -184,6 +180,7 @@ public class ViewProfile extends JPanel {
 			
 			JButton btnAddVehicle = new JButton("Add Vehicle");
 			btnAddVehicle.addActionListener(new ActionListener() {
+				@Override
 				public void actionPerformed(ActionEvent arg0) {
 					try {
 						 VehicleReg vr=new VehicleReg();

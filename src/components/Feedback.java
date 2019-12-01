@@ -2,11 +2,8 @@ package components;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
-import java.awt.SystemColor;
-import javax.swing.border.LineBorder;
 import java.awt.Color;
 import java.awt.Font;
-import javax.swing.SwingConstants;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
@@ -81,6 +78,7 @@ public class Feedback extends JPanel {
 		
 		JButton btnSubmit = new JButton("Submit");
 		btnSubmit.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
@@ -88,8 +86,8 @@ public class Feedback extends JPanel {
 		btnSubmit.setBounds(443, 457, 142, 39);
 		panel_1.add(btnSubmit);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"5 (Excellent)", "4 (Very Good)", "3 (Good)", "2 (Satisfactory)", "1  (Poor)"}));
+		JComboBox<String> comboBox = new JComboBox<String>();
+		comboBox.setModel(new DefaultComboBoxModel<String>(new String[] {"5 (Excellent)", "4 (Very Good)", "3 (Good)", "2 (Satisfactory)", "1  (Poor)"}));
 		comboBox.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
 		comboBox.setMaximumRowCount(5);
 		comboBox.setBounds(312, 137, 417, 73);

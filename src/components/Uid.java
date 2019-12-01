@@ -1,7 +1,5 @@
 package components;
 
-import java.util.UUID;
-
 public class Uid {
 
 	public static void main(String[] args) {

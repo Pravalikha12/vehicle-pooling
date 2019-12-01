@@ -9,25 +9,37 @@ import java.util.Calendar;
 import javax.swing.JPanel;
 import java.awt.Color;
 import javax.swing.border.EmptyBorder;
+
+import org.jgroups.JChannel;
+import org.jgroups.Message;
+import org.jgroups.ReceiverAdapter;
+import org.jgroups.View;
+
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.JSpinner.DateEditor;
+import javax.swing.TransferHandler.TransferSupport;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import java.io.Serializable;
 import java.awt.Font;
+import java.awt.datatransfer.DataFlavor;
+import java.awt.datatransfer.Transferable;
+
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JComponent;
+import javax.swing.JFrame;
 import javax.swing.JTextField;
 import javax.swing.SpinnerDateModel;
-import javax.swing.SpinnerModel;
-import javax.swing.Timer;
+import javax.swing.TransferHandler;
 
 import com.toedter.calendar.JDateChooser;
-import com.toedter.components.JLocaleChooser;
 
+@SuppressWarnings("serial")
 public class OfferARide extends JPanel {
 	private JTextField offerDest;
 	private JTextField offerSource;
@@ -35,10 +47,13 @@ public class OfferARide extends JPanel {
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
+	public JFrame frame2;
 	private String date;
+	public int tid;
 	private JDateChooser dateChooser;
 	private JSpinner spinner;
 	private JComponent editor;
+	public static int offerRideToAnotherUser = 0;
 
 	/**
 	 * Create the panel.
@@ -52,13 +67,13 @@ public class OfferARide extends JPanel {
 		panel.setLayout(null);
 		panel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		panel.setBackground(Color.RED);
-		panel.setBounds(-30, 0, 856, 511);
+		panel.setBounds(0, 0, 1023, 611);
 		add(panel);
 		JPanel panel_3 = new JPanel();
 		panel_3.setLayout(null);
 		panel_3.setForeground(Color.WHITE);
 		panel_3.setBackground(Color.BLACK);
-		panel_3.setBounds(63, 36, 783, 464);
+		panel_3.setBounds(21, 36, 957, 538);
 		panel.add(panel_3);
 		
 		offerDest = new JTextField();
@@ -105,11 +120,27 @@ public class OfferARide extends JPanel {
 		btnOffer.setBounds(365, 226, 115, 29);
 		panel_3.add(btnOffer);
 		DateFormat fmt = new SimpleDateFormat("yyyy/MM/dd");
+//		
+		
+        JButton btnReadRequests = new JButton("Read Requests");
+		btnReadRequests.setBounds(365, 60, 115, 45);
+		panel_3.add(btnReadRequests);
+        System.out.println("IN offer A RIDE");
+        btnReadRequests.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+		try{
+					} catch(Exception e){
+			System.out.println(e);
+		}
+	}});
+
 
 		btnOffer.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					int trip = 12;
+					
+					tid=(int)(System.currentTimeMillis() & 0xfffffff);
 					int capacity = 0;
 					int temp = 0;
 					date = fmt.format(dateChooser.getDate());
@@ -129,11 +160,11 @@ public class OfferARide extends JPanel {
 						capacity = rsForSeats.getInt("Capacity");
 					}
 					capacity -= 1;
-					String sql = "Insert into trip(Trip_id,T_date,T_time,Source,Destination,Avail_seats)" + "values(" + (trip++) 
+					String sql = "Insert into trip(Trip_id,T_date,T_time,Source,Destination,Avail_seats)" + "values(" + (tid) 
 							+ ",'"+date+"','"+time+"','"+ offerSource.getText() +"','"+ offerDest.getText()+"',"+ capacity+ ")" ;
 					int rs = stmt.executeUpdate(sql);
 					if (rs>0)
-						JOptionPane.showMessageDialog(null, "Ride offered!");
+						JOptionPane.showMessageDialog(null, "Ride offered! Your trip id is "+tid);
 					else
 						JOptionPane.showMessageDialog(null, "Failed to offer a ride");
 					con.close();
@@ -190,6 +221,7 @@ public class OfferARide extends JPanel {
 		
 		JButton btnAccept = new JButton("Accept");
 		btnAccept.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
@@ -200,6 +232,7 @@ public class OfferARide extends JPanel {
 		JButton btnReject = new JButton("Reject");
 		btnReject.setFont(new Font("Comic Sans MS", Font.BOLD, 14));
 		btnReject.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
@@ -220,18 +253,20 @@ public class OfferARide extends JPanel {
 
 		spinner= new JSpinner();
 		spinner.setModel(model);
-		 editor = new JSpinner.DateEditor(spinner,"HH:mm");
-		 spinner.setEditor(editor);
-		 spinner.setBounds(66,199,188,45);
-		 panel_3.add(spinner);
+		editor = new JSpinner.DateEditor(spinner,"HH:mm");
+		spinner.setEditor(editor);
+		spinner.setBounds(66,199,188,45);
+		panel_3.add(spinner);
 		 
-		 
-
 		JLabel lblDate = new JLabel("Date");
 		lblDate.setForeground(Color.WHITE);
 		lblDate.setFont(new Font("Comic Sans MS", Font.BOLD, 12));
 		lblDate.setBounds(15, 159, 48, 20);
 		panel_3.add(lblDate);
+		
+		
+		
+		
 
 	}
 }

@@ -3,20 +3,13 @@ package components;
 import java.sql.*;
 import java.time.LocalDate;
 import java.time.Period;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.awt.BorderLayout;
-import java.awt.Component;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
 import javax.swing.JTabbedPane;
-import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -28,11 +21,7 @@ import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 import javax.swing.JTextPane;
 import javax.swing.ImageIcon;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import java.awt.Rectangle;
-import java.awt.Dimension;
-import com.toedter.calendar.JCalendar;
 
 public class Login extends JFrame {
 
@@ -74,6 +63,7 @@ public class Login extends JFrame {
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
+			@Override
 			public void run() {
 				try {
 					Login frame = new Login();
@@ -102,7 +92,7 @@ public class Login extends JFrame {
 		panel.setBackground(Color.RED);
 		panel.setBounds(0, 0, 2000, 952);
 
-		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		JTabbedPane tabbedPane = new JTabbedPane(SwingConstants.TOP);
 		tabbedPane.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		tabbedPane.setBounds(340, 90, 920, 540);
 
@@ -337,6 +327,7 @@ public class Login extends JFrame {
 
 		JButton btnRegister = new JButton("Sign Up");
 		btnRegister.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				try {
 					
@@ -397,6 +388,7 @@ public class Login extends JFrame {
 
 		JButton btnViewAreacode = new JButton("View Areacode");
 		btnViewAreacode.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				try {
 					 ViewAreacode codeList=new ViewAreacode();
@@ -458,6 +450,7 @@ public class Login extends JFrame {
 		btnLogin.setBounds(303, 407, 300, 50);
 		panel_2.add(btnLogin);
 		btnLogin.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				try {
 					Class.forName("com.mysql.jdbc.Driver");

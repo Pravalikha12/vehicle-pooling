@@ -1,23 +1,30 @@
 package components;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseMotionListener;
 
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import javax.swing.JInternalFrame;
 import java.awt.Color;
+import java.awt.Component;
+
 import javax.swing.JLabel;
 import java.awt.SystemColor;
 import javax.swing.border.LineBorder;
+import javax.swing.plaf.basic.BasicInternalFrameUI;
+
 import java.awt.Font;
 import javax.swing.SwingConstants;
 
+@SuppressWarnings("serial")
 public class Layout extends JFrame {
 
 	private JDesktopPane contentPane;
@@ -27,6 +34,7 @@ public class Layout extends JFrame {
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
+			@Override
 			public void run() {
 				try {
 					Layout frame = new Layout();
@@ -48,6 +56,7 @@ public class Layout extends JFrame {
 		contentPane = new JDesktopPane();
 		contentPane.setBackground(Color.RED);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
@@ -58,18 +67,40 @@ public class Layout extends JFrame {
 		ViewProfile viewProfile = new ViewProfile();
 		Feedback feedback = new Feedback();
 
+		
+		
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.RED);
 		panel.setBounds(0, 78, 336, 900);
 		contentPane.add(panel);
 		panel.setLayout(null);
+		
+		
 
 		JInternalFrame internalFrame = new JInternalFrame("New JInternalFrame");
 		internalFrame.setBackground(Color.YELLOW);
-		internalFrame.setBounds(327, 78, 1200, 901);
-		contentPane.add(internalFrame);
+		internalFrame.setBounds(327, 110, 990, 570);		
+		internalFrame.setResizable(false);
 		internalFrame.setVisible(true);
-		internalFrame.setContentPane(viewProfile);
+		contentPane.add(internalFrame);
+		JScrollPane JViewProfile = new JScrollPane(viewProfile,
+		         ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,
+		         ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		internalFrame.setContentPane(JViewProfile);
+		
+		
+//		JInternalFrame[] frames = contentPane.desktop.getAllFrames();
+//		JInternalFrame f = frames[0];
+		BasicInternalFrameUI ui = (BasicInternalFrameUI)internalFrame.getUI();
+
+		Component north = ui.getNorthPane();
+		MouseMotionListener[] actions =
+		north.getListeners(MouseMotionListener.class);
+
+		for (int i = 0; i < actions.length; i++)
+		north.removeMouseMotionListener( actions[i] );
+		
+		
 		
 		JButton btnFeedback = new JButton("Feedback");
 		btnFeedback.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
@@ -78,6 +109,7 @@ public class Layout extends JFrame {
 		btnFeedback.setBounds(51, 438, 226, 45);
 		panel.add(btnFeedback);
 		btnFeedback.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				try {
 					internalFrame.setContentPane(feedback);
@@ -94,6 +126,7 @@ public class Layout extends JFrame {
 		btnOfferARide.setBounds(51, 365, 226, 45);
 		panel.add(btnOfferARide);
 		btnOfferARide.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				try {
 					internalFrame.setContentPane(offerARide);
@@ -110,9 +143,13 @@ public class Layout extends JFrame {
 		btnJoinARide.setBounds(51, 292, 226, 45);
 		panel.add(btnJoinARide);
 		btnJoinARide.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				try {
-					internalFrame.setContentPane(joinARide);
+					JScrollPane JJoinARide = new JScrollPane(joinARide,
+					         ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,
+					         ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+					internalFrame.setContentPane(JJoinARide);
 				} catch (Exception e) {
 
 				}
@@ -126,6 +163,7 @@ public class Layout extends JFrame {
 		btnViewProfile.setBounds(51, 219, 226, 45);
 		panel.add(btnViewProfile);
 		btnViewProfile.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				try {
 					internalFrame.setContentPane(viewProfile);
@@ -142,6 +180,7 @@ public class Layout extends JFrame {
 		btnDashboard.setBounds(51, 146, 226, 45);
 		panel.add(btnDashboard);
 		btnDashboard.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				try {
 					internalFrame.setContentPane(dashboard);
@@ -174,6 +213,7 @@ public class Layout extends JFrame {
 		label_1.setBounds(0, 540, 336, 30);
 		panel.add(label_1);
 		btnYourRide.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				try {
 					internalFrame.setContentPane(yourRide);
