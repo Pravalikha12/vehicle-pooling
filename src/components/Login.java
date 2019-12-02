@@ -153,6 +153,46 @@ public class Login extends JFrame {
 		panel_5.add(lblLogo);
 		panel.add(tabbedPane);
 
+		JPanel panel_2 = new JPanel();
+		panel_2.setFont(new Font("Baskerville Old Face", Font.BOLD, 20));
+		panel_2.setBackground(Color.BLACK);
+		tabbedPane.addTab("Sign In", null, panel_2, null);
+
+		JLabel lblUserId = new JLabel("User id");
+		lblUserId.setFont(new Font("Comic Sans MS", Font.BOLD, 25));
+		lblUserId.setForeground(Color.WHITE);
+		lblUserId.setBackground(Color.BLACK);
+		lblUserId.setBounds(406, 71, 137, 30);
+
+		JLabel lblPassword = new JLabel("Password");
+		lblPassword.setFont(new Font("Comic Sans MS", Font.BOLD, 25));
+		lblPassword.setBackground(Color.BLACK);
+		lblPassword.setOpaque(true);
+		lblPassword.setForeground(Color.WHITE);
+		lblPassword.setBounds(406, 236, 137, 26);
+		userid = new JTextField();
+		userid.setFont(new Font("Comic Sans MS", Font.PLAIN, 25));
+		userid.setBounds(228, 117, 459, 85);
+		
+		userid.setColumns(10);
+
+		pwdPass = new JPasswordField();
+		pwdPass.setFont(new Font("Comic Sans MS", Font.PLAIN, 25));
+		pwdPass.setBounds(228, 278, 459, 85);
+		
+		panel_2.setLayout(null);
+		panel_2.add(pwdPass);
+		panel_2.add(userid);
+		panel_2.add(lblUserId);
+		panel_2.add(lblPassword);
+
+		JButton btnLogin = new JButton("LOGIN");
+		btnLogin.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
+		btnLogin.setBounds(303, 407, 300, 50);
+		panel_2.add(btnLogin);
+		
+				
+		
 		JPanel panel_1 = new JPanel();
 		panel_1.setFont(new Font("Comic Sans MS", Font.PLAIN, 26));
 		panel_1.setBounds(new Rectangle(10, 500, 700, 901));
@@ -501,6 +541,11 @@ public class Login extends JFrame {
 					if (rs > 0 && rs2 > 0 && rs3 > 0 && rs4 > 0 && flag == true) {
 						JOptionPane.showMessageDialog(null, "Registration successful! Your user id is " + uid);
 
+					if(areacode.getText().isEmpty()) {
+						errorcode.setText("Areacode cannot be empty");
+					}
+					if(address.getText().isEmpty() || city.getText().isEmpty() || state.getText().isEmpty()) {
+						erroraddress.setText("Please enter address  Eg. Jayanagar B'lore K'taka");
 					}
 
 					else
@@ -741,7 +786,13 @@ public class Login extends JFrame {
 		btnLogin.setBounds(303, 407, 300, 50);
 		panel_2.add(btnLogin);
 		btnLogin.addActionListener(new ActionListener() {
-			@Override
+			// @Override
+			});
+			rdbtnOther.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
+			rdbtnOther.setBounds(721, 359, 93, 29);
+			panel_1.add(rdbtnOther);
+			
+			btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
 					Class.forName("com.mysql.jdbc.Driver");
