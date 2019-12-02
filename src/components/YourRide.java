@@ -26,6 +26,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+import javax.swing.border.LineBorder;
 //import com.bbn.openmap.MapBean;
 //import com.bbn.openmap.layer.shape.ShapeLayer;
 
@@ -44,46 +45,52 @@ public class YourRide extends JPanel {
 	 */
 	public YourRide() {
 		setForeground(Color.WHITE);
-		setBackground(Color.BLACK);
+		setBackground(new Color(30, 144, 255));
 		setLayout(null);
 		
 		JButton btnCheckStatus = new JButton("Check Status");
-		btnCheckStatus.setBounds(299, 143, 155, 33);
+		btnCheckStatus.setBorder(new LineBorder(new Color(0, 0, 128), 4));
+		btnCheckStatus.setForeground(new Color(0, 0, 128));
+		btnCheckStatus.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
+		btnCheckStatus.setBounds(405, 179, 194, 55);
 		add(btnCheckStatus);
-		btnCheckStatus.setBackground(Color.YELLOW);
+		btnCheckStatus.setBackground(Color.WHITE);
 		
 		JLabel lblTripId = new JLabel("Trip Id");
-		lblTripId.setBounds(425, 87, 58, 30);
+		lblTripId.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
+		lblTripId.setBounds(551, 105, 89, 30);
 		add(lblTripId);
-		lblTripId.setForeground(Color.WHITE);
+		lblTripId.setForeground(new Color(0, 0, 128));
 		lblTripId.setBackground(Color.YELLOW);
 		
 		JLabel lblTripStatus = new JLabel("Trip Status");
-		lblTripStatus.setBounds(51, 91, 58, 22);
+		lblTripStatus.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
+		lblTripStatus.setBounds(48, 105, 114, 22);
 		add(lblTripStatus);
-		lblTripStatus.setForeground(Color.WHITE);
-		lblTripStatus.setBackground(new Color(255, 255, 0));
+		lblTripStatus.setForeground(new Color(0, 0, 128));
+		lblTripStatus.setBackground(new Color(30, 144, 255));
 		
 		trip_id = new JTextField();
-		trip_id.setBounds(557, 80, 143, 33);
+		trip_id.setBounds(661, 88, 234, 60);
 		add(trip_id);
-		trip_id.setForeground(Color.WHITE);
-		trip_id.setBackground(Color.YELLOW);
+		trip_id.setForeground(Color.BLACK);
+		trip_id.setBackground(Color.WHITE);
 		trip_id.setColumns(10);
 		
 		trip_status = new JTextField();
-		trip_status.setBounds(180, 84, 143, 33);
+		trip_status.setBounds(185, 88, 234, 60);
 		add(trip_status);
-		trip_status.setForeground(Color.WHITE);
-		trip_status.setBackground(Color.YELLOW);
+		trip_status.setForeground(Color.BLACK);
+		trip_status.setBackground(Color.WHITE);
 		trip_status.setColumns(10);
 		
 		txtYourOngoingRide = new JTextField();
+		txtYourOngoingRide.setForeground(Color.WHITE);
 		txtYourOngoingRide.setBounds(0, 0, 971, 42);
 		add(txtYourOngoingRide);
 		txtYourOngoingRide.setEditable(false);
-		txtYourOngoingRide.setBackground(Color.YELLOW);
-		txtYourOngoingRide.setFont(new Font("MS Gothic", Font.BOLD | Font.ITALIC, 20));
+		txtYourOngoingRide.setBackground(new Color(0, 0, 128));
+		txtYourOngoingRide.setFont(new Font("Comic Sans MS", Font.BOLD | Font.ITALIC, 20));
 		txtYourOngoingRide.setHorizontalAlignment(SwingConstants.CENTER);
 		txtYourOngoingRide.setText("Your Ongoing Ride");
 		txtYourOngoingRide.setColumns(10);

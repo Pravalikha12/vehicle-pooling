@@ -72,7 +72,7 @@ public class OfferARide extends JPanel {
 	 */
 	public OfferARide() {
 		setForeground(Color.WHITE);
-		setBackground(Color.BLACK);
+		setBackground(new Color(30, 144, 255));
 
 		date = "";
 		DateFormat fmt = new SimpleDateFormat("yyyy/MM/dd");
@@ -84,40 +84,43 @@ public class OfferARide extends JPanel {
 		offerDest = new JTextField();
 		offerDest.setBounds(194, 84, 251, 45);
 		add(offerDest);
-		offerDest.setBackground(Color.YELLOW);
+		offerDest.setBackground(Color.WHITE);
 		offerDest.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		offerDest.setColumns(10);
 
 		offerSource = new JTextField();
 		offerSource.setBounds(194, 158, 251, 45);
 		add(offerSource);
-		offerSource.setBackground(Color.YELLOW);
+		offerSource.setBackground(Color.WHITE);
 		offerSource.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		offerSource.setColumns(10);
 
 		JButton btnOffer = new JButton("Offer");
-		btnOffer.setBounds(43, 370, 358, 40);
+		btnOffer.setBorder(new LineBorder(new Color(0, 0, 128), 4));
+		btnOffer.setForeground(new Color(0, 0, 128));
+		btnOffer.setBounds(43, 370, 402, 52);
 		add(btnOffer);
-		btnOffer.setBackground(Color.YELLOW);
+		btnOffer.setBackground(Color.WHITE);
 		btnOffer.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
 		//
 
 		JButton btnViewRequests = new JButton("View Requests");
-		btnViewRequests.setBorder(new LineBorder(Color.GREEN, 3));
+		btnViewRequests.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
+		btnViewRequests.setBorder(new LineBorder(new Color(0, 0, 128), 4));
 		btnViewRequests.setBounds(529, 214, 353, 45);
 		add(btnViewRequests);
-		btnViewRequests.setBackground(Color.YELLOW);
-		btnViewRequests.setForeground(Color.BLACK);
+		btnViewRequests.setBackground(Color.WHITE);
+		btnViewRequests.setForeground(new Color(0, 0, 128));
 
 		dateChooser = new JDateChooser();
 		dateChooser.setBounds(194, 223, 251, 45);
 		add(dateChooser);
-		dateChooser.setBackground(Color.YELLOW);
+		dateChooser.setBackground(Color.WHITE);
 
 		spinner = new JSpinner();
 		spinner.setBounds(194, 297, 251, 45);
 		add(spinner);
-		spinner.setBackground(Color.YELLOW);
+		spinner.setBackground(Color.WHITE);
 		spinner.setModel(model);
 		editor = new JSpinner.DateEditor(spinner, "HH:mm");
 		spinner.setEditor(editor);
@@ -125,37 +128,50 @@ public class OfferARide extends JPanel {
 		status_user_id = new JTextField();
 		status_user_id.setBounds(731, 158, 151, 41);
 		add(status_user_id);
-		status_user_id.setBackground(Color.YELLOW);
+		status_user_id.setBackground(Color.WHITE);
 		status_user_id.setColumns(10);
 
 		JButton btnAcceptRequest = new JButton("Accept Request");
-		btnAcceptRequest.setBounds(724, 281, 158, 45);
+		btnAcceptRequest.setBorder(new LineBorder(new Color(0, 0, 128), 4));
+		btnAcceptRequest.setForeground(new Color(0, 0, 128));
+		btnAcceptRequest.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
+		btnAcceptRequest.setBounds(724, 281, 171, 45);
 		add(btnAcceptRequest);
-		btnAcceptRequest.setBackground(Color.YELLOW);
+		btnAcceptRequest.setBackground(Color.WHITE);
 
 		JButton btnRejectRequest = new JButton("Reject Request");
-		btnRejectRequest.setBounds(529, 281, 151, 45);
+		btnRejectRequest.setBorder(new LineBorder(new Color(0, 0, 128), 4));
+		btnRejectRequest.setForeground(new Color(0, 0, 128));
+		btnRejectRequest.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
+		btnRejectRequest.setBounds(529, 281, 180, 45);
 		add(btnRejectRequest);
-		btnRejectRequest.setBackground(Color.YELLOW);
+		btnRejectRequest.setBackground(Color.WHITE);
 
 		JButton btnBeginTheRide = new JButton("Begin The Ride");
-		btnBeginTheRide.setBounds(528, 351, 151, 43);
+		btnBeginTheRide.setBorder(new LineBorder(new Color(0, 0, 128), 4));
+		btnBeginTheRide.setForeground(new Color(0, 0, 128));
+		btnBeginTheRide.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
+		btnBeginTheRide.setBounds(528, 351, 181, 43);
 		add(btnBeginTheRide);
-		btnBeginTheRide.setBackground(Color.YELLOW);
+		btnBeginTheRide.setBackground(Color.WHITE);
 
 		JButton btnEndTheRide = new JButton("End The Ride");
-		btnEndTheRide.setBounds(724, 352, 158, 40);
+		btnEndTheRide.setBorder(new LineBorder(new Color(0, 0, 128), 4));
+		btnEndTheRide.setForeground(new Color(0, 0, 128));
+		btnEndTheRide.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
+		btnEndTheRide.setBounds(724, 352, 171, 40);
 		add(btnEndTheRide);
-		btnEndTheRide.setBackground(Color.YELLOW);
+		btnEndTheRide.setBackground(Color.WHITE);
 
 		status_trip_id = new JTextField();
 		status_trip_id.setBounds(731, 84, 151, 40);
 		add(status_trip_id);
-		status_trip_id.setBackground(Color.YELLOW);
+		status_trip_id.setBackground(Color.WHITE);
 		status_trip_id.setColumns(10);
 
 		txtTo = new JTextField();
-		txtTo.setFont(new Font("Comic Sans MS", Font.BOLD, 16));
+		txtTo.setForeground(new Color(0, 0, 128));
+		txtTo.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
 		txtTo.setHorizontalAlignment(SwingConstants.CENTER);
 		txtTo.setEditable(false);
 		txtTo.setText("To");
@@ -164,45 +180,50 @@ public class OfferARide extends JPanel {
 		txtTo.setColumns(10);
 
 		txtFrom = new JTextField();
+		txtFrom.setForeground(new Color(0, 0, 128));
 		txtFrom.setText("From");
 		txtFrom.setHorizontalAlignment(SwingConstants.CENTER);
-		txtFrom.setFont(new Font("Comic Sans MS", Font.BOLD, 16));
+		txtFrom.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
 		txtFrom.setEditable(false);
 		txtFrom.setColumns(10);
 		txtFrom.setBounds(48, 172, 86, 40);
 		add(txtFrom);
 
 		txtDate = new JTextField();
+		txtDate.setForeground(new Color(0, 0, 128));
 		txtDate.setText("Date");
 		txtDate.setHorizontalAlignment(SwingConstants.CENTER);
-		txtDate.setFont(new Font("Comic Sans MS", Font.BOLD, 16));
+		txtDate.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
 		txtDate.setEditable(false);
 		txtDate.setColumns(10);
 		txtDate.setBounds(48, 239, 86, 40);
 		add(txtDate);
 
 		txtTime = new JTextField();
+		txtTime.setForeground(new Color(0, 0, 128));
 		txtTime.setText("Time");
 		txtTime.setHorizontalAlignment(SwingConstants.CENTER);
-		txtTime.setFont(new Font("Comic Sans MS", Font.BOLD, 16));
+		txtTime.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
 		txtTime.setEditable(false);
 		txtTime.setColumns(10);
 		txtTime.setBounds(48, 309, 86, 40);
 		add(txtTime);
 
 		txtTripId = new JTextField();
+		txtTripId.setForeground(new Color(0, 0, 128));
 		txtTripId.setText("Trip Id");
 		txtTripId.setHorizontalAlignment(SwingConstants.CENTER);
-		txtTripId.setFont(new Font("Comic Sans MS", Font.BOLD, 16));
+		txtTripId.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
 		txtTripId.setEditable(false);
 		txtTripId.setColumns(10);
 		txtTripId.setBounds(529, 86, 131, 40);
 		add(txtTripId);
 
 		txtUserId = new JTextField();
+		txtUserId.setForeground(new Color(0, 0, 128));
 		txtUserId.setText("User Id");
 		txtUserId.setHorizontalAlignment(SwingConstants.CENTER);
-		txtUserId.setFont(new Font("Comic Sans MS", Font.BOLD, 16));
+		txtUserId.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
 		txtUserId.setEditable(false);
 		txtUserId.setColumns(10);
 		txtUserId.setBounds(529, 160, 131, 40);

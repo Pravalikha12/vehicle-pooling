@@ -36,16 +36,17 @@ public class Feedback extends JPanel {
 
 		trip_id = new JTextField();
 		trip_id.setSelectionColor(Color.WHITE);
-		trip_id.setForeground(Color.WHITE);
+		trip_id.setForeground(Color.BLACK);
 		trip_id.setToolTipText("");
-		trip_id.setBackground(new Color(0, 0, 128));
+		trip_id.setBackground(Color.WHITE);
 		trip_id.setBounds(478, 39, 417, 60);
 		add(trip_id);
 		trip_id.setFont(new Font("Comic Sans MS", Font.PLAIN, 20));
 		trip_id.setColumns(10);
 
 		suggestion = new JTextField();
-		suggestion.setBackground(new Color(0, 0, 128));
+		suggestion.setForeground(Color.BLACK);
+		suggestion.setBackground(Color.WHITE);
 		suggestion.setBounds(478, 349, 417, 73);
 		add(suggestion);
 		suggestion.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
@@ -54,36 +55,37 @@ public class Feedback extends JPanel {
 		JLabel lblTripid = new JLabel("Trip-id");
 		lblTripid.setBounds(180, 53, 131, 28);
 		add(lblTripid);
-		lblTripid.setForeground(Color.WHITE);
+		lblTripid.setForeground(new Color(0, 0, 128));
 		lblTripid.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
 
 		JLabel lblHowDidYou = new JLabel("Rate your ride experience");
 		lblHowDidYou.setBounds(180, 122, 272, 56);
 		add(lblHowDidYou);
-		lblHowDidYou.setForeground(Color.WHITE);
+		lblHowDidYou.setForeground(new Color(0, 0, 128));
 		lblHowDidYou.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
 
 		JLabel lblAnySuggestions = new JLabel("Any Suggestions?");
 		lblAnySuggestions.setBounds(180, 370, 251, 28);
 		add(lblAnySuggestions);
-		lblAnySuggestions.setForeground(Color.WHITE);
+		lblAnySuggestions.setForeground(new Color(0, 0, 128));
 		lblAnySuggestions.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
 
 		JLabel lblAnyFeedback = new JLabel("Review");
 		lblAnyFeedback.setBounds(184, 235, 215, 28);
 		add(lblAnyFeedback);
-		lblAnyFeedback.setForeground(Color.WHITE);
+		lblAnyFeedback.setForeground(new Color(0, 0, 128));
 		lblAnyFeedback.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
 
 		review = new JTextField();
-		review.setBackground(new Color(0, 0, 128));
+		review.setForeground(Color.BLACK);
+		review.setBackground(Color.WHITE);
 		review.setBounds(478, 236, 417, 73);
 		add(review);
 		review.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		review.setColumns(10);
 
 		JButton btnSubmit = new JButton("Submit");
-		btnSubmit.setBorder(new LineBorder(new Color(0, 0, 128), 5));
+		btnSubmit.setBorder(new LineBorder(new Color(0, 0, 128), 4));
 		btnSubmit.setForeground(new Color(0, 0, 128));
 		btnSubmit.setBounds(386, 455, 160, 39);
 		add(btnSubmit);
@@ -122,8 +124,8 @@ public class Feedback extends JPanel {
 		btnSubmit.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
 
 		rating = new JComboBox();
-		rating.setForeground(Color.WHITE);
-		rating.setBackground(new Color(0, 0, 128));
+		rating.setForeground(Color.BLACK);
+		rating.setBackground(Color.WHITE);
 		rating.setBounds(478, 138, 417, 60);
 		rating.addItem(5);
 		rating.addItem(4);
@@ -138,7 +140,7 @@ public class Feedback extends JPanel {
 		rating.setMaximumRowCount(5);
 
 		JButton btnClear = new JButton("Clear");
-		btnClear.setBorder(new LineBorder(new Color(0, 0, 128), 5));
+		btnClear.setBorder(new LineBorder(new Color(0, 0, 128), 4));
 		btnClear.setForeground(new Color(0, 0, 128));
 		btnClear.setBounds(599, 455, 160, 39);
 		add(btnClear);

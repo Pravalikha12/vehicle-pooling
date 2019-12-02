@@ -51,10 +51,10 @@ public class Layout extends JFrame {
 	 */
 	public Layout() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1035, 683);
+		setBounds(100, 100, 1000, 600);
 
 		contentPane = new JDesktopPane();
-		contentPane.setBackground(Color.RED);
+		contentPane.setBackground(new Color(30, 144, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
@@ -65,10 +65,12 @@ public class Layout extends JFrame {
 		JoinARide joinARide = new JoinARide();
 		OfferARide offerARide = new OfferARide();
 		ViewProfile viewProfile = new ViewProfile();
+		viewProfile.setForeground(Color.WHITE);
+		viewProfile.setBackground(new Color(30, 144, 255));
 		Feedback feedback = new Feedback();
 
 		JPanel panel = new JPanel();
-		panel.setBackground(Color.RED);
+		panel.setBackground(new Color(0, 0, 139));
 		System.out.println("before internal frame");
 //		panel.setBounds(10, 78, 336, 900);
 
@@ -77,9 +79,10 @@ contentPane.add(panel);
 		panel.setLayout(null);
 
 		JInternalFrame internalFrame = new JInternalFrame("Vehicle Pooling for BMSCE");
-		internalFrame.setBackground(Color.YELLOW);
+		internalFrame.setForeground(new Color(0, 0, 128));
+		internalFrame.setBackground(new Color(30, 144, 255));
 //		internalFrame.setBounds(327, 110, 910, 510);
-		internalFrame.setBounds(327, 110, 990, 570);
+		internalFrame.setBounds(324, 78, 990, 580);
 		
 		internalFrame.setVisible(true);
 		internalFrame.setResizable(false);
@@ -102,9 +105,10 @@ contentPane.add(panel);
 			north.removeMouseMotionListener(actions[i]);
 
 		JButton btnFeedback = new JButton("Feedback");
+		btnFeedback.setBorder(new LineBorder(new Color(30, 144, 255), 5));
 		btnFeedback.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
 		btnFeedback.setBackground(Color.WHITE);
-		btnFeedback.setForeground(SystemColor.infoText);
+		btnFeedback.setForeground(new Color(0, 0, 139));
 		btnFeedback.setBounds(51, 438, 226, 45);
 		panel.add(btnFeedback);
 		btnFeedback.addActionListener(new ActionListener() {
@@ -119,7 +123,8 @@ contentPane.add(panel);
 		});
 
 		JButton btnOfferARide = new JButton("Offer A Ride");
-		btnOfferARide.setForeground(Color.BLACK);
+		btnOfferARide.setBorder(new LineBorder(new Color(30, 144, 255), 5));
+		btnOfferARide.setForeground(new Color(0, 0, 139));
 		btnOfferARide.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
 		btnOfferARide.setBackground(Color.WHITE);
 		btnOfferARide.setBounds(51, 365, 226, 45);
@@ -136,7 +141,8 @@ contentPane.add(panel);
 		});
 
 		JButton btnJoinARide = new JButton("Join A Ride");
-		btnJoinARide.setForeground(Color.BLACK);
+		btnJoinARide.setBorder(new LineBorder(new Color(30, 144, 255), 5));
+		btnJoinARide.setForeground(new Color(0, 0, 139));
 		btnJoinARide.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
 		btnJoinARide.setBackground(Color.WHITE);
 		btnJoinARide.setBounds(51, 292, 226, 45);
@@ -156,7 +162,8 @@ contentPane.add(panel);
 		});
 
 		JButton btnViewProfile = new JButton("View Profile");
-		btnViewProfile.setForeground(Color.BLACK);
+		btnViewProfile.setBorder(new LineBorder(new Color(30, 144, 255), 5));
+		btnViewProfile.setForeground(new Color(0, 0, 139));
 		btnViewProfile.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
 		btnViewProfile.setBackground(Color.WHITE);
 		btnViewProfile.setBounds(51, 219, 226, 45);
@@ -173,7 +180,8 @@ contentPane.add(panel);
 		});
 
 		JButton btnDashboard = new JButton("Dashboard");
-		btnDashboard.setForeground(Color.BLACK);
+		btnDashboard.setBorder(new LineBorder(new Color(30, 144, 255), 5));
+		btnDashboard.setForeground(new Color(0, 0, 139));
 		btnDashboard.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
 		btnDashboard.setBackground(Color.WHITE);
 		btnDashboard.setBounds(51, 146, 226, 45);
@@ -190,7 +198,8 @@ contentPane.add(panel);
 		});
 
 		JButton btnYourRide = new JButton("Your Ride");
-		btnYourRide.setForeground(Color.BLACK);
+		btnYourRide.setBorder(new LineBorder(new Color(30, 144, 255), 5));
+		btnYourRide.setForeground(new Color(0, 0, 139));
 		btnYourRide.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
 		btnYourRide.setBackground(Color.WHITE);
 		btnYourRide.setBounds(51, 73, 226, 45);
@@ -206,7 +215,7 @@ contentPane.add(panel);
 		JLabel label_1 = new JLabel("All Rights Reserved 2019 \u00A9 ");
 		label_1.setHorizontalTextPosition(SwingConstants.CENTER);
 		label_1.setHorizontalAlignment(SwingConstants.CENTER);
-		label_1.setForeground(Color.BLACK);
+		label_1.setForeground(Color.WHITE);
 		label_1.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		label_1.setBackground(Color.BLACK);
 		label_1.setBounds(0, 540, 336, 30);
@@ -224,9 +233,9 @@ contentPane.add(panel);
 
 		JPanel panel_1 = new JPanel();
 		panel_1.setLayout(null);
-		panel_1.setForeground(Color.RED);
-		panel_1.setBackground(Color.BLACK);
-		panel_1.setBounds(0, 0, 2000, 78);
+		panel_1.setForeground(new Color(30, 144, 255));
+		panel_1.setBackground(new Color(30, 144, 255));
+		panel_1.setBounds(0, 0, 1368, 78);
 		contentPane.add(panel_1);
 
 		JLabel label = new JLabel("Namma Ride");
@@ -235,9 +244,9 @@ contentPane.add(panel);
 		label.setIconTextGap(8);
 		label.setHorizontalTextPosition(SwingConstants.LEFT);
 		label.setHorizontalAlignment(SwingConstants.LEFT);
-		label.setForeground(Color.RED);
+		label.setForeground(new Color(0, 0, 128));
 		label.setFont(new Font("Monotype Corsiva", Font.BOLD | Font.ITALIC, 60));
-		label.setBorder(new LineBorder(new Color(0, 0, 0), 4));
+		label.setBorder(new LineBorder(new Color(30, 144, 255), 0));
 		label.setBackground(SystemColor.menu);
 		label.setBounds(0, 0, 424, 78);
 		panel_1.add(label);

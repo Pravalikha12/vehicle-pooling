@@ -80,7 +80,7 @@ public class Admin extends JFrame {
 		
 		JButton btnNewButton = new JButton("View Users");
 		btnNewButton.setForeground(new Color(0, 0, 128));
-		btnNewButton.setBorder(new LineBorder(new Color(0, 0, 128), 5));
+		btnNewButton.setBorder(new LineBorder(new Color(0, 0, 128), 4));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 					showUserData();
@@ -93,7 +93,7 @@ public class Admin extends JFrame {
 		
 		JButton btnViewRides = new JButton("View Rides");
 		btnViewRides.setForeground(new Color(0, 0, 128));
-		btnViewRides.setBorder(new LineBorder(new Color(0, 0, 128), 5));
+		btnViewRides.setBorder(new LineBorder(new Color(0, 0, 128), 4));
 		btnViewRides.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				showRidesData();
@@ -105,7 +105,7 @@ public class Admin extends JFrame {
 		
 		JButton btnDeleteUsers = new JButton("Delete Users");
 		btnDeleteUsers.setForeground(new Color(0, 0, 128));
-		btnDeleteUsers.setBorder(new LineBorder(new Color(0, 0, 128), 5));
+		btnDeleteUsers.setBorder(new LineBorder(new Color(0, 0, 128), 4));
 		btnDeleteUsers.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
@@ -115,7 +115,7 @@ public class Admin extends JFrame {
 		panel.add(btnDeleteUsers);
 		
 		JButton btnViewFeedback = new JButton("View Feedbacks");
-		btnViewFeedback.setBorder(new LineBorder(new Color(0, 0, 128), 5));
+		btnViewFeedback.setBorder(new LineBorder(new Color(0, 0, 128), 4));
 		btnViewFeedback.setForeground(new Color(0, 0, 128));
 		btnViewFeedback.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {

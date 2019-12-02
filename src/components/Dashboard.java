@@ -24,6 +24,8 @@ import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
 
 public class Dashboard extends JPanel {
 	private JButton btnPastRides;
@@ -36,20 +38,24 @@ public class Dashboard extends JPanel {
 	 */
 	public Dashboard() {
 		setForeground(Color.WHITE);
-		setBackground(Color.BLACK);
+		setBackground(new Color(30, 144, 255));
 		setLayout(null);
 		
 				btnPastRides = new JButton("View Your Past Rides");
-				btnPastRides.setBounds(351, 72, 322, 39);
+				btnPastRides.setBorder(new LineBorder(new Color(0, 0, 128), 4));
+				btnPastRides.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
+				btnPastRides.setForeground(new Color(0, 0, 128));
+				btnPastRides.setBounds(331, 72, 357, 57);
 				add(btnPastRides);
-				btnPastRides.setBackground(Color.YELLOW);
+				btnPastRides.setBackground(Color.WHITE);
 				
 				txtHistory = new JTextField();
+				txtHistory.setForeground(Color.WHITE);
 				txtHistory.setBounds(0, 0, 993, 39);
 				add(txtHistory);
 				txtHistory.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
 				txtHistory.setHorizontalAlignment(SwingConstants.CENTER);
-				txtHistory.setBackground(Color.YELLOW);
+				txtHistory.setBackground(new Color(0, 0, 128));
 				txtHistory.setText("History");
 				txtHistory.setColumns(10);
 

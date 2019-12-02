@@ -23,6 +23,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import javax.swing.JRadioButton;
+import javax.swing.border.LineBorder;
 
 public class VehicleReg extends JFrame {
 
@@ -75,13 +76,13 @@ public class VehicleReg extends JFrame {
 		setContentPane(contentPane);
 
 		JPanel panel = new JPanel();
-		panel.setBackground(Color.BLACK);
+		panel.setBackground(new Color(30, 144, 255));
 		contentPane.add(panel, BorderLayout.CENTER);
 		panel.setLayout(null);
 
 		JLabel label = new JLabel("Vehicle No");
 		label.setBackground(new Color(240, 240, 240));
-		label.setForeground(Color.WHITE);
+		label.setForeground(new Color(0, 0, 128));
 		label.setFont(new Font("Comic Sans MS", Font.BOLD, 24));
 		label.setBounds(138, 128, 130, 40);
 		panel.add(label);
@@ -103,7 +104,7 @@ public class VehicleReg extends JFrame {
 		panel.add(vnumber);
 
 		JLabel label_1 = new JLabel("Model");
-		label_1.setForeground(Color.WHITE);
+		label_1.setForeground(new Color(0, 0, 128));
 		label_1.setFont(new Font("Comic Sans MS", Font.BOLD, 24));
 		label_1.setBounds(138, 258, 130, 40);
 		panel.add(label_1);
@@ -114,7 +115,7 @@ public class VehicleReg extends JFrame {
 		panel.add(vmodel);
 
 		JLabel label_2 = new JLabel("Capacity");
-		label_2.setForeground(Color.WHITE);
+		label_2.setForeground(new Color(0, 0, 128));
 		label_2.setFont(new Font("Comic Sans MS", Font.BOLD, 24));
 		label_2.setBounds(138, 388, 130, 40);
 		panel.add(label_2);
@@ -134,7 +135,7 @@ public class VehicleReg extends JFrame {
 		panel.add(vcapacity);
 
 		JLabel label_3 = new JLabel("License No");
-		label_3.setForeground(Color.WHITE);
+		label_3.setForeground(new Color(0, 0, 128));
 		label_3.setFont(new Font("Comic Sans MS", Font.BOLD, 24));
 		label_3.setBounds(684, 128, 130, 40);
 		panel.add(label_3);
@@ -155,7 +156,7 @@ public class VehicleReg extends JFrame {
 		panel.add(licenseno);
 
 		JLabel label_4 = new JLabel("Color");
-		label_4.setForeground(Color.WHITE);
+		label_4.setForeground(new Color(0, 0, 128));
 		label_4.setFont(new Font("Comic Sans MS", Font.BOLD, 24));
 		label_4.setBounds(684, 258, 130, 40);
 		panel.add(label_4);
@@ -166,12 +167,14 @@ public class VehicleReg extends JFrame {
 		panel.add(vcolor);
 
 		JLabel label_5 = new JLabel("Type");
-		label_5.setForeground(Color.WHITE);
+		label_5.setForeground(new Color(0, 0, 128));
 		label_5.setFont(new Font("Comic Sans MS", Font.BOLD, 24));
 		label_5.setBounds(684, 388, 130, 40);
 		panel.add(label_5);
 
 		JButton btnRegister = new JButton("Register");
+		btnRegister.setBorder(new LineBorder(new Color(0, 0, 128), 4));
+		btnRegister.setForeground(new Color(0, 0, 128));
 		btnRegister.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -245,24 +248,29 @@ public class VehicleReg extends JFrame {
 		panel.add(btnRegister);
 
 		errorvno = new JLabel("");
+		errorvno.setForeground(new Color(220, 20, 60));
 		errorvno.setBackground(Color.WHITE);
 		errorvno.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		errorvno.setBounds(138, 186, 410, 48);
 		panel.add(errorvno);
 
 		errorlicense = new JLabel("");
+		errorlicense.setForeground(new Color(220, 20, 60));
 		errorlicense.setBackground(Color.WHITE);
 		errorlicense.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		errorlicense.setBounds(684, 186, 448, 48);
 		panel.add(errorlicense);
 
 		errorcapacity = new JLabel("");
+		errorcapacity.setForeground(new Color(220, 20, 60));
 		errorcapacity.setBackground(Color.WHITE);
 		errorcapacity.setFont(new Font("Times New Roman", Font.PLAIN, 20));
 		errorcapacity.setBounds(138, 452, 410, 48);
 		panel.add(errorcapacity);
 
 		btnClear = new JButton("Clear");
+		btnClear.setBorder(new LineBorder(new Color(0, 0, 128), 4));
+		btnClear.setForeground(new Color(0, 0, 128));
 		btnClear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
@@ -279,6 +287,7 @@ public class VehicleReg extends JFrame {
 		panel.add(btnClear);
 
 		rdbtn2 = new JRadioButton("2 Wheeler");
+		rdbtn2.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		rdbtn2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
@@ -292,6 +301,7 @@ public class VehicleReg extends JFrame {
 		panel.add(rdbtn2);
 
 		rdbtn4 = new JRadioButton("4 Wheeler");
+		rdbtn4.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		rdbtn4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 

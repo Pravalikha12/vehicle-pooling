@@ -135,7 +135,7 @@ public class Login extends JFrame {
 
 		JPanel panel = new JPanel();
 		panel.setFont(new Font("Monotype Corsiva", Font.ITALIC, 11));
-		panel.setBackground(Color.RED);
+		panel.setBackground(new Color(0, 0, 128));
 		panel.setBounds(0, 0, 2000, 952);
 
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
@@ -144,14 +144,15 @@ public class Login extends JFrame {
 
 		JPanel panel_5 = new JPanel();
 		panel_5.setBounds(new Rectangle(0, 78, 558, 900));
-		panel_5.setBackground(Color.BLACK);
+		panel_5.setBackground(new Color(30, 144, 255));
 		panel_5.setBounds(10, 90, 312, 540);
 		panel.setLayout(null);
 		panel.add(panel_5);
 		panel_5.setLayout(null);
 
 		JTextPane txtpnThisAVehicle = new JTextPane();
-		txtpnThisAVehicle.setBackground(Color.RED);
+		txtpnThisAVehicle.setForeground(Color.WHITE);
+		txtpnThisAVehicle.setBackground(new Color(0, 0, 139));
 		txtpnThisAVehicle.setFont(new Font("Comic Sans MS", Font.ITALIC, 18));
 		txtpnThisAVehicle.setText(
 				"ABOUT US\r\nThis a vehicle pooling service\r\nprovided by Namma Ride\r\nFamous in the BMSCE campus\r\nused by every faculty\r\nloved by all students\r\nRegister now for this amazing service");
@@ -164,51 +165,13 @@ public class Login extends JFrame {
 		lblLogo.setBounds(58, 299, 202, 202);
 		panel_5.add(lblLogo);
 		panel.add(tabbedPane);
-
-		JPanel panel_2 = new JPanel();
-		panel_2.setFont(new Font("Baskerville Old Face", Font.BOLD, 20));
-		panel_2.setBackground(Color.BLACK);
-		tabbedPane.addTab("Sign In", null, panel_2, null);
-
-		JLabel lblUserId = new JLabel("User id");
-		lblUserId.setFont(new Font("Comic Sans MS", Font.BOLD, 25));
-		lblUserId.setForeground(Color.WHITE);
-		lblUserId.setBackground(Color.BLACK);
-		lblUserId.setBounds(406, 71, 137, 30);
-
-		JLabel lblPassword = new JLabel("Password");
-		lblPassword.setFont(new Font("Comic Sans MS", Font.BOLD, 25));
-		lblPassword.setBackground(Color.BLACK);
-		lblPassword.setOpaque(true);
-		lblPassword.setForeground(Color.WHITE);
-		lblPassword.setBounds(406, 236, 137, 26);
-		userid = new JTextField();
-		userid.setFont(new Font("Comic Sans MS", Font.PLAIN, 25));
-		userid.setBounds(228, 117, 459, 85);
-		
-		userid.setColumns(10);
-
-		pwdPass = new JPasswordField();
-		pwdPass.setFont(new Font("Comic Sans MS", Font.PLAIN, 25));
-		pwdPass.setBounds(228, 278, 459, 85);
-		
-		panel_2.setLayout(null);
-		panel_2.add(pwdPass);
-		panel_2.add(userid);
-		panel_2.add(lblUserId);
-		panel_2.add(lblPassword);
-
-		JButton btnLogin = new JButton("LOGIN");
-		btnLogin.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
-		btnLogin.setBounds(303, 407, 300, 50);
-		panel_2.add(btnLogin);
 		
 				
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setFont(new Font("Comic Sans MS", Font.PLAIN, 26));
 		panel_1.setBounds(new Rectangle(10, 500, 700, 901));
-		panel_1.setBackground(Color.BLACK);
+		panel_1.setBackground(new Color(30, 144, 255));
 		panel_1.setForeground(Color.WHITE);
 		tabbedPane.addTab("Sign Up", null, panel_1, null);
 		
@@ -302,67 +265,67 @@ public class Login extends JFrame {
 		
 		JLabel FirstName = new JLabel("First Name");
 		FirstName.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
-		FirstName.setForeground(Color.WHITE);
+		FirstName.setForeground(new Color(0, 0, 139));
 		FirstName.setBounds(15, 25, 154, 35);
 		
 		JLabel MiddleName = new JLabel("Middle Name");
 		MiddleName.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
-		MiddleName.setForeground(Color.WHITE);
+		MiddleName.setForeground(new Color(0, 0, 139));
 		MiddleName.setBounds(15, 75, 154, 35);
 		
 		JLabel LastName = new JLabel("Last Name");
 		LastName.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
-		LastName.setForeground(Color.WHITE);
+		LastName.setForeground(new Color(0, 0, 139));
 		LastName.setBounds(15, 125, 154, 35);
 		
 		JLabel Email = new JLabel("Email");
 		Email.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
-		Email.setForeground(Color.WHITE);
+		Email.setForeground(new Color(0, 0, 139));
 		Email.setBounds(15, 190, 154, 35);
 		
 		JLabel Phone_no1 = new JLabel("Phone No 1");
 		Phone_no1.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
-		Phone_no1.setForeground(Color.WHITE);
+		Phone_no1.setForeground(new Color(0, 0, 139));
 		Phone_no1.setBounds(15, 270, 154, 35);
 		
 		JLabel Address = new JLabel("Address");
 		Address.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
-		Address.setForeground(Color.WHITE);
+		Address.setForeground(new Color(0, 0, 139));
 		Address.setBounds(448, 25, 154, 35);
 		
 		JLabel City = new JLabel("City");
 		City.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
-		City.setForeground(Color.WHITE);
+		City.setForeground(new Color(0, 0, 139));
 		City.setBounds(448, 70, 154, 35);
 		
 		JLabel State = new JLabel("State");
 		State.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
-		State.setForeground(Color.WHITE);
+		State.setForeground(new Color(0, 0, 139));
 		State.setBounds(448, 114, 154, 35);
 		
 		JLabel AreaCode = new JLabel("AreaCode");
 		AreaCode.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
-		AreaCode.setForeground(Color.WHITE);
+		AreaCode.setForeground(new Color(0, 0, 139));
 		AreaCode.setBounds(448, 167, 93, 35);
 		
 		JLabel Role = new JLabel("Role");
 		Role.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
-		Role.setForeground(Color.WHITE);
+		Role.setForeground(new Color(0, 0, 139));
 		Role.setBounds(448, 265, 154, 35);
 		
 		JLabel Gender = new JLabel("Gender");
 		Gender.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
-		Gender.setForeground(Color.WHITE);
+		Gender.setForeground(new Color(0, 0, 139));
 		Gender.setBounds(448, 320, 154, 31);
 		
 		JLabel DOB = new JLabel("DOB");
 		DOB.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
-		DOB.setForeground(Color.WHITE);
+		DOB.setForeground(new Color(0, 0, 139));
 		DOB.setBounds(15, 400, 154, 31);
 		
 		JLabel Password = new JLabel("Password");
 		Password.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
-		Password.setForeground(Color.WHITE);
+		Password.setForeground(new Color(0, 0, 139));
 		Password.setBounds(448, 400, 154, 31);
 		
 		passwd = new JPasswordField();
@@ -403,6 +366,8 @@ public class Login extends JFrame {
 		panel_1.add(passwd);
 		
 		JButton btnSignUp = new JButton("Sign Up");
+		btnSignUp.setForeground(new Color(0, 0, 128));
+		btnSignUp.setBorder(new LineBorder(new Color(0, 0, 128), 3));
 		btnSignUp.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
@@ -599,7 +564,7 @@ public class Login extends JFrame {
 			panel_1.add(btnSignUp);
 			
 			JLabel phone_no2 = new JLabel("Phone No 2");
-			phone_no2.setForeground(Color.WHITE);
+			phone_no2.setForeground(new Color(0, 0, 139));
 			phone_no2.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
 			phone_no2.setBounds(15, 320, 154, 31);
 			panel_1.add(phone_no2);
@@ -611,6 +576,8 @@ public class Login extends JFrame {
 			panel_1.add(phone2);
 			
 			JButton btnViewAreacode = new JButton("View Areacode");
+			btnViewAreacode.setBorder(new LineBorder(new Color(0, 0, 128), 3));
+			btnViewAreacode.setForeground(new Color(0, 0, 128));
 			btnViewAreacode.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
@@ -647,6 +614,8 @@ public class Login extends JFrame {
 			panel_1.add(dob);
 			
 			JButton btnClear = new JButton("Reset");
+			btnClear.setForeground(new Color(0, 0, 128));
+			btnClear.setBorder(new LineBorder(new Color(0, 0, 128), 3));
 			btnClear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 																																																																		
@@ -668,30 +637,37 @@ public class Login extends JFrame {
 			panel_1.add(btnClear);
 			
 			errordob = new JLabel("");
+			errordob.setForeground(new Color(220, 20, 60));
 			errordob.setBounds(15, 445, 371, 20);
 			panel_1.add(errordob);
 			
 			errorphone = new JLabel("");
+			errorphone.setForeground(new Color(220, 20, 60));
 			errorphone.setBounds(15, 367, 371, 20);
 			panel_1.add(errorphone);
 			
 			erroremail = new JLabel("");
+			erroremail.setForeground(new Color(220, 20, 60));
 			erroremail.setBounds(15, 234, 371, 20);
 			panel_1.add(erroremail);
 			
 			errorname = new JLabel("");
+			errorname.setForeground(new Color(220, 20, 60));
 			errorname.setBounds(15, 167, 371, 20);
 			panel_1.add(errorname);
 			
 			errorpasswd = new JLabel("");
+			errorpasswd.setForeground(new Color(220, 20, 60));
 			errorpasswd.setBounds(550, 445, 300, 20);
 			panel_1.add(errorpasswd);
 			
 			errorcode = new JLabel("");
+			errorcode.setForeground(new Color(220, 20, 60));
 			errorcode.setBounds(505, 234, 371, 20);
 			panel_1.add(errorcode);
 			
 			erroraddress = new JLabel("");
+			erroraddress.setForeground(new Color(220, 20, 60));
 			erroraddress.setBounds(505, 160, 371, 20);
 			panel_1.add(erroraddress);
 			
@@ -762,6 +738,47 @@ public class Login extends JFrame {
 			rdbtnOther.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 			rdbtnOther.setBounds(721, 359, 93, 29);
 			panel_1.add(rdbtnOther);
+
+		JPanel panel_2 = new JPanel();
+		panel_2.setForeground(new Color(0, 0, 128));
+		panel_2.setFont(new Font("Baskerville Old Face", Font.BOLD, 20));
+		panel_2.setBackground(new Color(30, 144, 255));
+		tabbedPane.addTab("Sign In", null, panel_2, null);
+
+		JLabel lblUserId = new JLabel("User id");
+		lblUserId.setFont(new Font("Comic Sans MS", Font.BOLD, 25));
+		lblUserId.setForeground(new Color(0, 0, 128));
+		lblUserId.setBackground(new Color(30, 144, 255));
+		lblUserId.setBounds(406, 71, 137, 30);
+
+		JLabel lblPassword = new JLabel("Password");
+		lblPassword.setFont(new Font("Comic Sans MS", Font.BOLD, 25));
+		lblPassword.setBackground(new Color(30, 144, 255));
+		lblPassword.setOpaque(true);
+		lblPassword.setForeground(new Color(0, 0, 128));
+		lblPassword.setBounds(406, 236, 137, 26);
+		userid = new JTextField();
+		userid.setFont(new Font("Comic Sans MS", Font.PLAIN, 25));
+		userid.setBounds(228, 117, 459, 85);
+		
+		userid.setColumns(10);
+
+		pwdPass = new JPasswordField();
+		pwdPass.setFont(new Font("Comic Sans MS", Font.PLAIN, 25));
+		pwdPass.setBounds(228, 278, 459, 85);
+		
+		panel_2.setLayout(null);
+		panel_2.add(pwdPass);
+		panel_2.add(userid);
+		panel_2.add(lblUserId);
+		panel_2.add(lblPassword);
+
+		JButton btnLogin = new JButton("LOGIN");
+		btnLogin.setBorder(new LineBorder(new Color(0, 0, 128), 3));
+		btnLogin.setForeground(new Color(0, 0, 139));
+		btnLogin.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
+		btnLogin.setBounds(303, 407, 300, 50);
+		panel_2.add(btnLogin);
 			
 			btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -793,10 +810,11 @@ public class Login extends JFrame {
 		contentPane.add(panel);
 
 		JPanel panel_3 = new JPanel();
+		panel_3.setBorder(null);
 		panel_3.setFont(new Font("Tahoma", Font.PLAIN, 50));
 		panel_3.setBounds(new Rectangle(0, 13, 424, 63));
-		panel_3.setBackground(Color.BLACK);
-		panel_3.setForeground(Color.RED);
+		panel_3.setBackground(new Color(30, 144, 255));
+		panel_3.setForeground(new Color(30, 144, 255));
 		panel_3.setBounds(0, 0, 2000, 77);
 		panel.add(panel_3);
 		panel_3.setLayout(null);
@@ -804,13 +822,13 @@ public class Login extends JFrame {
 		JLabel lblNammaRide = new JLabel("Namma Ride");
 		lblNammaRide.setVerticalTextPosition(SwingConstants.TOP);
 		lblNammaRide.setVerticalAlignment(SwingConstants.TOP);
-		lblNammaRide.setBorder(new LineBorder(new Color(0, 0, 0), 4));
+		lblNammaRide.setBorder(new LineBorder(new Color(30, 144, 255), 0));
 		lblNammaRide.setIconTextGap(8);
 		lblNammaRide.setHorizontalTextPosition(SwingConstants.LEFT);
 		lblNammaRide.setHorizontalAlignment(SwingConstants.LEFT);
 		lblNammaRide.setFont(new Font("Monotype Corsiva", Font.BOLD | Font.ITALIC, 60));
 		lblNammaRide.setBackground(new Color(240, 240, 240));
-		lblNammaRide.setForeground(Color.RED);
+		lblNammaRide.setForeground(new Color(0, 0, 128));
 		lblNammaRide.setBounds(0, 0, 424, 77);
 		panel_3.add(lblNammaRide);
 	}

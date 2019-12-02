@@ -36,6 +36,7 @@ import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.SwingConstants;
+import javax.swing.border.LineBorder;
 
 @SuppressWarnings("serial")
 public class JoinARide extends JPanel {
@@ -52,67 +53,79 @@ public class JoinARide extends JPanel {
 	 */
 	public JoinARide() {
 		setForeground(Color.WHITE);
-		setBackground(Color.BLACK);
+		setBackground(new Color(30, 144, 255));
 		setLayout(null);
 		
 		JoinDest = new JTextField();
 		JoinDest.setBounds(124, 80, 291, 39);
 		add(JoinDest);
-		JoinDest.setBackground(Color.YELLOW);
+		JoinDest.setBackground(Color.WHITE);
 		JoinDest.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		JoinDest.setColumns(10);
 		
 		JLabel lblTo = new JLabel("To");
 		lblTo.setBounds(25, 84, 39, 28);
 		add(lblTo);
-		lblTo.setForeground(Color.WHITE);
-		lblTo.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
+		lblTo.setForeground(new Color(0, 0, 128));
+		lblTo.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
 		
 		JLabel lblFrom = new JLabel("From");
 		lblFrom.setBounds(25, 161, 61, 28);
 		add(lblFrom);
-		lblFrom.setForeground(Color.WHITE);
-		lblFrom.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
+		lblFrom.setForeground(new Color(0, 0, 128));
+		lblFrom.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
 		
 		JoinSource = new JTextField();
 		JoinSource.setBounds(124, 157, 291, 39);
 		add(JoinSource);
-		JoinSource.setBackground(Color.YELLOW);
+		JoinSource.setBackground(Color.WHITE);
 		JoinSource.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		JoinSource.setColumns(10);
 		
 		JButton btnViewAvailableRides = new JButton("View Available Rides");
+		btnViewAvailableRides.setBorder(new LineBorder(new Color(0, 0, 128), 4));
+		btnViewAvailableRides.setForeground(new Color(0, 0, 128));
+		btnViewAvailableRides.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
 		btnViewAvailableRides.setBounds(36, 234, 417, 39);
 		add(btnViewAvailableRides);
-		btnViewAvailableRides.setBackground(Color.YELLOW);
+		btnViewAvailableRides.setBackground(Color.WHITE);
 		
 		JLabel lblEnterTheTrip = new JLabel("Enter the trip Id ");
-		lblEnterTheTrip.setBounds(499, 79, 155, 39);
+		lblEnterTheTrip.setBounds(461, 79, 193, 39);
 		add(lblEnterTheTrip);
-		lblEnterTheTrip.setFont(new Font("Comic Sans MS", Font.BOLD, 16));
+		lblEnterTheTrip.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
 		lblEnterTheTrip.setHorizontalAlignment(SwingConstants.CENTER);
-		lblEnterTheTrip.setForeground(Color.WHITE);
+		lblEnterTheTrip.setForeground(new Color(0, 0, 128));
 		
 		requestTripId = new JTextField();
-		requestTripId.setBounds(705, 79, 143, 44);
+		requestTripId.setBounds(705, 79, 190, 44);
 		add(requestTripId);
-		requestTripId.setBackground(Color.YELLOW);
+		requestTripId.setBackground(Color.WHITE);
 		requestTripId.setColumns(10);
 		
 		JButton btnRequest = new JButton("Request");
+		btnRequest.setBorder(new LineBorder(new Color(0, 0, 128), 4));
+		btnRequest.setForeground(new Color(0, 0, 128));
+		btnRequest.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
 		btnRequest.setBounds(510, 156, 143, 44);
 		add(btnRequest);
-		btnRequest.setBackground(Color.YELLOW);
+		btnRequest.setBackground(Color.WHITE);
 		
 		JButton btnCheckStatus = new JButton("Check Status");
-		btnCheckStatus.setBounds(602, 234, 143, 39);
+		btnCheckStatus.setBorder(new LineBorder(new Color(0, 0, 128), 4));
+		btnCheckStatus.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
+		btnCheckStatus.setForeground(new Color(0, 0, 128));
+		btnCheckStatus.setBounds(602, 234, 164, 39);
 		add(btnCheckStatus);
-		btnCheckStatus.setBackground(Color.YELLOW);
+		btnCheckStatus.setBackground(Color.WHITE);
 		
 		JButton btnCancelRide = new JButton("Cancel Ride");
+		btnCancelRide.setBorder(new LineBorder(new Color(0, 0, 128), 4));
+		btnCancelRide.setForeground(new Color(0, 0, 128));
+		btnCancelRide.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
 		btnCancelRide.setBounds(699, 157, 149, 43);
 		add(btnCancelRide);
-		btnCancelRide.setBackground(Color.YELLOW);
+		btnCancelRide.setBackground(Color.WHITE);
 		
 		
 		
