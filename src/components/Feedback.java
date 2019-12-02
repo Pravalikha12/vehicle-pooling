@@ -2,112 +2,156 @@ package components;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JTextField;
+
+import javafx.scene.control.ComboBox;
+
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.border.LineBorder;
 
 public class Feedback extends JPanel {
 	private JTextField trip_id;
 	private JTextField suggestion;
-	private JTextField feedback;
+	private JTextField review;
+	private JComboBox rating;
 
 	/**
 	 * Create the panel.
 	 */
+	@SuppressWarnings("unchecked")
 	public Feedback() {
-		setBackground(new Color(255, 0, 0));
+		setBackground(new Color(30, 144, 255));
 		setLayout(null);
 
-		JLabel label = new JLabel("");
-		label.setBounds(-11, 16, 860, -4);
-		add(label);
-
-		JPanel panel_1 = new JPanel();
-		panel_1.setLayout(null);
-		panel_1.setForeground(Color.WHITE);
-		panel_1.setBackground(Color.BLACK);
-		panel_1.setBounds(0, 0, 910, 510);
-		add(panel_1);
-
 		trip_id = new JTextField();
-		trip_id.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
+		trip_id.setSelectionColor(Color.WHITE);
+		trip_id.setForeground(Color.WHITE);
+		trip_id.setToolTipText("");
+		trip_id.setBackground(new Color(0, 0, 128));
+		trip_id.setBounds(478, 39, 417, 60);
+		add(trip_id);
+		trip_id.setFont(new Font("Comic Sans MS", Font.PLAIN, 20));
 		trip_id.setColumns(10);
-		trip_id.setBounds(312, 37, 417, 60);
-		panel_1.add(trip_id);
 
 		suggestion = new JTextField();
+		suggestion.setBackground(new Color(0, 0, 128));
+		suggestion.setBounds(478, 349, 417, 73);
+		add(suggestion);
 		suggestion.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		suggestion.setColumns(10);
-		suggestion.setBounds(312, 227, 417, 73);
-		panel_1.add(suggestion);
 
 		JLabel lblTripid = new JLabel("Trip-id");
+		lblTripid.setBounds(180, 53, 131, 28);
+		add(lblTripid);
 		lblTripid.setForeground(Color.WHITE);
-		lblTripid.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
-		lblTripid.setBounds(64, 37, 131, 28);
-		panel_1.add(lblTripid);
+		lblTripid.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
 
 		JLabel lblHowDidYou = new JLabel("Rate your ride experience");
+		lblHowDidYou.setBounds(180, 122, 272, 56);
+		add(lblHowDidYou);
 		lblHowDidYou.setForeground(Color.WHITE);
-		lblHowDidYou.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
-		lblHowDidYou.setBounds(64, 132, 248, 56);
-		panel_1.add(lblHowDidYou);
+		lblHowDidYou.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
 
 		JLabel lblAnySuggestions = new JLabel("Any Suggestions?");
+		lblAnySuggestions.setBounds(180, 370, 251, 28);
+		add(lblAnySuggestions);
 		lblAnySuggestions.setForeground(Color.WHITE);
-		lblAnySuggestions.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
-		lblAnySuggestions.setBounds(64, 227, 157, 28);
-		panel_1.add(lblAnySuggestions);
+		lblAnySuggestions.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
 
-		JLabel lblAnyFeedback = new JLabel("Any feedback?");
+		JLabel lblAnyFeedback = new JLabel("Review");
+		lblAnyFeedback.setBounds(184, 235, 215, 28);
+		add(lblAnyFeedback);
 		lblAnyFeedback.setForeground(Color.WHITE);
-		lblAnyFeedback.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
-		lblAnyFeedback.setBounds(64, 322, 215, 28);
-		panel_1.add(lblAnyFeedback);
+		lblAnyFeedback.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
 
-		feedback = new JTextField();
-		feedback.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-		feedback.setColumns(10);
-		feedback.setBounds(312, 322, 417, 73);
-		panel_1.add(feedback);
+		review = new JTextField();
+		review.setBackground(new Color(0, 0, 128));
+		review.setBounds(478, 236, 417, 73);
+		add(review);
+		review.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
+		review.setColumns(10);
 
 		JButton btnSubmit = new JButton("Submit");
+		btnSubmit.setBorder(new LineBorder(new Color(0, 0, 128), 5));
+		btnSubmit.setForeground(new Color(0, 0, 128));
+		btnSubmit.setBounds(386, 455, 160, 39);
+		add(btnSubmit);
 		btnSubmit.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				
+				try {
+					
+					int rate=(int)rating.getSelectedItem();
+					
+					Class.forName("com.mysql.jdbc.Driver");
+					Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vehiclepoolingdb", "root","");
+					Statement stmt = con.createStatement();
+					String sql = "Insert into feedback (F_user_id,F_trip_id,F_admin_id,Rating,Review,Suggestion)"
+							+ " values(" + Login.userid.getText() + "," + trip_id.getText() + "," + 101+ ","
+							+ rate+ ",'" + review.getText() + "','" + suggestion.getText() + ")";
+					
+					int rs = stmt.executeUpdate(sql);
 
+					if (rs >0) {
+						JOptionPane.showMessageDialog(null, "Feedback submitted. Thank you for your response!");
+					}
+
+					else
+						JOptionPane.showMessageDialog(null, "Feedback is not submitted. Please try again!");
+					con.close();
+
+				} catch (Exception e) {
+					System.out.println(e);
+				}
+				
 			}
+						
 		});
 		btnSubmit.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
-		btnSubmit.setBounds(312, 425, 160, 39);
-		panel_1.add(btnSubmit);
 
-		JComboBox rating = new JComboBox();
-		rating.setModel(new DefaultComboBoxModel(
-				new String[] { "5 (Excellent)", "4 (Very Good)", "3 (Good)", "2 (Satisfactory)", "1 (Poor)" }));
+		rating = new JComboBox();
+		rating.setForeground(Color.WHITE);
+		rating.setBackground(new Color(0, 0, 128));
+		rating.setBounds(478, 138, 417, 60);
+		rating.addItem(5);
+		rating.addItem(4);
+		rating.addItem(3);
+		rating.addItem(2);
+		rating.addItem(1);
+		rating.setSelectedItem(5);
+		add(rating);
+		//rating.setModel(new DefaultComboBoxModel(
+		//		new String[] { "5 (Excellent)", "4 (Very Good)", "3 (Good)", "2 (Satisfactory)", "1 (Poor)" }));
 		rating.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
 		rating.setMaximumRowCount(5);
-		rating.setBounds(312, 132, 417, 60);
-		panel_1.add(rating);
 
 		JButton btnClear = new JButton("Clear");
+		btnClear.setBorder(new LineBorder(new Color(0, 0, 128), 5));
+		btnClear.setForeground(new Color(0, 0, 128));
+		btnClear.setBounds(599, 455, 160, 39);
+		add(btnClear);
 		btnClear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
 				trip_id.setText(null);
 				suggestion.setText(null);
-				feedback.setText(null);
+				review.setText(null);
 
 			}
 		});
 		btnClear.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
-		btnClear.setBounds(569, 425, 160, 39);
-		panel_1.add(btnClear);
 
 	}
 }

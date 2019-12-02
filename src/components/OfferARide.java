@@ -43,6 +43,7 @@ import javax.swing.TransferHandler;
 
 import com.toedter.calendar.JDateChooser;
 import javax.swing.SwingConstants;
+import javax.swing.border.LineBorder;
 
 @SuppressWarnings("serial")
 public class OfferARide extends JPanel {
@@ -57,8 +58,8 @@ public class OfferARide extends JPanel {
 	private JDateChooser dateChooser;
 	private JSpinner spinner;
 	private JComponent editor;
+	public static JTextField status_user_id;
 	public static JTextField status_trip_id;
-	private JTextField status_user_id;
 	private JTextField txtTo;
 	private JTextField txtFrom;
 	private JTextField txtDate;
@@ -78,281 +79,282 @@ public class OfferARide extends JPanel {
 
 		SpinnerDateModel model = new SpinnerDateModel();
 		model.setCalendarField(Calendar.MINUTE);
-				setLayout(null);
-		
-				offerDest = new JTextField();
-				offerDest.setBounds(194, 84, 251, 45);
-				add(offerDest);
-				offerDest.setBackground(Color.YELLOW);
-				offerDest.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-				offerDest.setColumns(10);
-								
-										offerSource = new JTextField();
-										offerSource.setBounds(194, 158, 251, 45);
-										add(offerSource);
-										offerSource.setBackground(Color.YELLOW);
-										offerSource.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
-										offerSource.setColumns(10);
-										
-												JButton btnOffer = new JButton("Offer");
-												btnOffer.setBounds(43, 370, 358, 40);
-												add(btnOffer);
-												btnOffer.setBackground(Color.YELLOW);
-												btnOffer.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
-												//
+		setLayout(null);
 
-												JButton btnViewRequests = new JButton("View Requests");
-												btnViewRequests.setBounds(529, 214, 353, 45);
-												add(btnViewRequests);
-												btnViewRequests.setBackground(Color.YELLOW);
-												btnViewRequests.setForeground(Color.BLACK);
-												
-														dateChooser = new JDateChooser();
-														dateChooser.setBounds(194, 223, 251, 45);
-														add(dateChooser);
-														dateChooser.setBackground(Color.YELLOW);
-														
-																spinner = new JSpinner();
-																spinner.setBounds(194, 297, 251, 45);
-																add(spinner);
-																spinner.setBackground(Color.YELLOW);
-																spinner.setModel(model);
-																editor = new JSpinner.DateEditor(spinner, "HH:mm");
-																spinner.setEditor(editor);
-																		
-																				status_trip_id = new JTextField();
-																				status_trip_id.setBounds(731, 158, 151, 41);
-																				add(status_trip_id);
-																				status_trip_id.setBackground(Color.YELLOW);
-																				status_trip_id.setColumns(10);
-																						
-																								JButton btnAcceptRequest = new JButton("Accept Request");
-																								btnAcceptRequest.setBounds(724, 281, 158, 45);
-																								add(btnAcceptRequest);
-																								btnAcceptRequest.setBackground(Color.YELLOW);
-																								
-																										JButton btnRejectRequest = new JButton("Reject Request");
-																										btnRejectRequest.setBounds(529, 281, 151, 45);
-																										add(btnRejectRequest);
-																										btnRejectRequest.setBackground(Color.YELLOW);
-																										
-																												JButton btnBeginTheRide = new JButton("Begin The Ride");
-																												btnBeginTheRide.setBounds(528, 351, 151, 43);
-																												add(btnBeginTheRide);
-																												btnBeginTheRide.setBackground(Color.YELLOW);
-																												
-																														JButton btnEndTheRide = new JButton("End The Ride");
-																														btnEndTheRide.setBounds(724, 352, 158, 40);
-																														add(btnEndTheRide);
-																														btnEndTheRide.setBackground(Color.YELLOW);
-																														
-																																status_user_id = new JTextField();
-																																status_user_id.setBounds(731, 84, 151, 40);
-																																add(status_user_id);
-																																status_user_id.setBackground(Color.YELLOW);
-																																status_user_id.setColumns(10);
-																																		
-																																		txtTo = new JTextField();
-																																		txtTo.setFont(new Font("Comic Sans MS", Font.BOLD, 16));
-																																		txtTo.setHorizontalAlignment(SwingConstants.CENTER);
-																																		txtTo.setEditable(false);
-																																		txtTo.setText("To");
-																																		txtTo.setBounds(48, 89, 86, 40);
-																																		add(txtTo);
-																																		txtTo.setColumns(10);
-																																		
-																																		txtFrom = new JTextField();
-																																		txtFrom.setText("From");
-																																		txtFrom.setHorizontalAlignment(SwingConstants.CENTER);
-																																		txtFrom.setFont(new Font("Comic Sans MS", Font.BOLD, 16));
-																																		txtFrom.setEditable(false);
-																																		txtFrom.setColumns(10);
-																																		txtFrom.setBounds(48, 172, 86, 40);
-																																		add(txtFrom);
-																																		
-																																		txtDate = new JTextField();
-																																		txtDate.setText("Date");
-																																		txtDate.setHorizontalAlignment(SwingConstants.CENTER);
-																																		txtDate.setFont(new Font("Comic Sans MS", Font.BOLD, 16));
-																																		txtDate.setEditable(false);
-																																		txtDate.setColumns(10);
-																																		txtDate.setBounds(48, 239, 86, 40);
-																																		add(txtDate);
-																																		
-																																		txtTime = new JTextField();
-																																		txtTime.setText("Time");
-																																		txtTime.setHorizontalAlignment(SwingConstants.CENTER);
-																																		txtTime.setFont(new Font("Comic Sans MS", Font.BOLD, 16));
-																																		txtTime.setEditable(false);
-																																		txtTime.setColumns(10);
-																																		txtTime.setBounds(48, 309, 86, 40);
-																																		add(txtTime);
-																																		
-																																		txtTripId = new JTextField();
-																																		txtTripId.setText("Trip Id");
-																																		txtTripId.setHorizontalAlignment(SwingConstants.CENTER);
-																																		txtTripId.setFont(new Font("Comic Sans MS", Font.BOLD, 16));
-																																		txtTripId.setEditable(false);
-																																		txtTripId.setColumns(10);
-																																		txtTripId.setBounds(529, 86, 131, 40);
-																																		add(txtTripId);
-																																		
-																																		txtUserId = new JTextField();
-																																		txtUserId.setText("User Id");
-																																		txtUserId.setHorizontalAlignment(SwingConstants.CENTER);
-																																		txtUserId.setFont(new Font("Comic Sans MS", Font.BOLD, 16));
-																																		txtUserId.setEditable(false);
-																																		txtUserId.setColumns(10);
-																																		txtUserId.setBounds(529, 160, 131, 40);
-																																		add(txtUserId);
-																														
-																																btnEndTheRide.addActionListener(new ActionListener() {
-																																	public void actionPerformed(ActionEvent arg0) {
-																																		try {
-																																			Class.forName("com.mysql.jdbc.Driver");
-																																			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vehiclepoolingdb", "root",
-																																					"");
-																																			Statement stmt = con.createStatement();
-																																			String sqlForStatus = "Update rides_in set Status=5 where R_trip_id=" + status_trip_id.getText();
-																																			int rsForStatus = stmt.executeUpdate(sqlForStatus);
-																																			if (rsForStatus > 0) {
-																																				JOptionPane.showMessageDialog(null,
-																																						"Ride with trip_id=" + status_trip_id.getText() + " has ended.");
-																																			}
-																																		} catch (Exception e) {
-																																			System.out.println(e);
-																																		}
-																																	}
-																																});
-																												btnBeginTheRide.addActionListener(new ActionListener() {
-																													public void actionPerformed(ActionEvent arg0) {
-																														try {
-																															Class.forName("com.mysql.jdbc.Driver");
-																															Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vehiclepoolingdb", "root",
-																																	"");
-																															Statement stmt = con.createStatement();
-																															String sqlForStatus = "Update rides_in set Status=4 where R_trip_id=" + status_trip_id.getText();
-																															int rsForStatus = stmt.executeUpdate(sqlForStatus);
-																															if (rsForStatus > 0) {
-																																JOptionPane.showMessageDialog(null, "Ride is ongoing with trip_id=" + status_trip_id.getText());
-																															}
-																														} catch (Exception e) {
-																															System.out.println(e);
-																														}
-																													}
-																												});
-																										
-																												btnRejectRequest.addActionListener(new ActionListener() {
-																													public void actionPerformed(ActionEvent arg0) {
-																														try {
-																															String status_name = "";
-																															Class.forName("com.mysql.jdbc.Driver");
-																															Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vehiclepoolingdb", "root",
-																																	"");
-																															Statement stmt = con.createStatement();
-																															String sqlForName = "Select Fname,Lname,Mname from user where User_id = "
-																																	+ status_user_id.getText();
-																															ResultSet rsForName = stmt.executeQuery(sqlForName);
-																															while (rsForName.next()) {
-																																status_name = rsForName.getString("Fname") + " " + rsForName.getString("Mname") + " "
-																																		+ rsForName.getString("Lname");
-																															}
-																															String sqlForReject = "Update rides_in set Status=3 where R_trip_id=" + status_trip_id.getText()
-																																	+ " and R_user_id=" + status_user_id.getText();
-																															int rsForReject = stmt.executeUpdate(sqlForReject);
-																															if (rsForReject > 0) {
-																																JOptionPane.showMessageDialog(null, "Ride Rejected for user " + status_name);
-																															}
-																														} catch (Exception e) {
-																															System.out.println(e);
-																														}
-																													}
-																												});
-																								btnAcceptRequest.addActionListener(new ActionListener() {
-																									public void actionPerformed(ActionEvent arg0) {
-																										try {
-																											String status_name = "";
-																											Class.forName("com.mysql.jdbc.Driver");
-																											Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vehiclepoolingdb", "root",
-																													"");
-																											Statement stmt = con.createStatement();
-																											String sqlForName = "Select Fname,Lname,Mname from user where User_id = "
-																													+ status_user_id.getText();
-																											ResultSet rsForName = stmt.executeQuery(sqlForName);
-																											while (rsForName.next()) {
-																												status_name = rsForName.getString("Fname") + " " + rsForName.getString("Mname") + " "
-																														+ rsForName.getString("Lname");
-																											}
-																											String sqlForAccept = "Update rides_in set Status=2 where R_trip_id=" + status_trip_id.getText()
-																													+ " and R_user_id=" + status_user_id.getText();
-																											int rsForAccept = stmt.executeUpdate(sqlForAccept);
-																											if (rsForAccept > 0) {
-																												JOptionPane.showMessageDialog(null, "Ride Accepted for user " + status_name);
-																											}
-																										} catch (Exception e) {
-																											System.out.println(e);
-																										}
-																									}
-																								});
-												btnViewRequests.addActionListener(new ActionListener() {
-													public void actionPerformed(ActionEvent arg0) {
-														try {
-															showTableData();
-														} catch (Exception e) {
-															System.out.println(e);
-														}
-													}
-												});
-												
-														btnOffer.addActionListener(new ActionListener() {
-															@Override
-															public void actionPerformed(ActionEvent arg0) {
-																try {
-																	tid = (int) (System.currentTimeMillis() & 0xfffffff);
-												
-																	int capacity = 0;
-																	int temp = 0;
-																	date = fmt.format(dateChooser.getDate());
-																	String time = ((DateEditor) editor).getFormat().format(spinner.getValue()).toString();
-																	Class.forName("com.mysql.jdbc.Driver");
-																	Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vehiclepoolingdb", "root",
-																			"");
-																	Statement stmt = con.createStatement();
-																	String sqlForVid = "Select Vehicle_id from vehicle_lic where V_user_id = '" + Login.userid.getText()
-																			+ "'";
-																	ResultSet rsForVid = stmt.executeQuery(sqlForVid);
-																	while (rsForVid.next()) {
-																		temp = rsForVid.getInt("Vehicle_id");
-																	}
-												
-																	String sqlForSeats = "Select Capacity from vehicle_desc where Vehicle_id = '" + temp + "'";
-																	ResultSet rsForSeats = stmt.executeQuery(sqlForSeats);
-																	while (rsForSeats.next()) {
-																		capacity = rsForSeats.getInt("Capacity");
-																	}
-																	capacity -= 1;
-																	String sql = "Insert into trip(Trip_id,T_date,T_time,Source,Destination,Avail_seats)" + "values("
-																			+ (tid) + ",'" + date + "','" + time + "','" + offerSource.getText() + "','"
-																			+ offerDest.getText() + "'," + capacity + ")";
-																	int rs = stmt.executeUpdate(sql);
-																	if (rs > 0)
-																		JOptionPane.showMessageDialog(null, "Ride offered! Your trip id is " + tid);
-																	else
-																		JOptionPane.showMessageDialog(null, "Failed to offer a ride");
-												
-																	String sqlForRidesIn = "Insert into rides_in(R_user_id,R_trip_id,Status,R_seats) values("
-																			+ Login.userid.getText() + "," + tid + "," + 0 + "," + (capacity) + ")";
-																	int rsForRidesIn = stmt.executeUpdate(sqlForRidesIn);
-																	if (rsForRidesIn > 0) {
-																		System.out.println("Done");
-																	}
-																	con.close();
-												
-																} catch (Exception e) {
-																	System.out.println(e);
-																}
-															}
-														});
+		offerDest = new JTextField();
+		offerDest.setBounds(194, 84, 251, 45);
+		add(offerDest);
+		offerDest.setBackground(Color.YELLOW);
+		offerDest.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
+		offerDest.setColumns(10);
+
+		offerSource = new JTextField();
+		offerSource.setBounds(194, 158, 251, 45);
+		add(offerSource);
+		offerSource.setBackground(Color.YELLOW);
+		offerSource.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
+		offerSource.setColumns(10);
+
+		JButton btnOffer = new JButton("Offer");
+		btnOffer.setBounds(43, 370, 358, 40);
+		add(btnOffer);
+		btnOffer.setBackground(Color.YELLOW);
+		btnOffer.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
+		//
+
+		JButton btnViewRequests = new JButton("View Requests");
+		btnViewRequests.setBorder(new LineBorder(Color.GREEN, 3));
+		btnViewRequests.setBounds(529, 214, 353, 45);
+		add(btnViewRequests);
+		btnViewRequests.setBackground(Color.YELLOW);
+		btnViewRequests.setForeground(Color.BLACK);
+
+		dateChooser = new JDateChooser();
+		dateChooser.setBounds(194, 223, 251, 45);
+		add(dateChooser);
+		dateChooser.setBackground(Color.YELLOW);
+
+		spinner = new JSpinner();
+		spinner.setBounds(194, 297, 251, 45);
+		add(spinner);
+		spinner.setBackground(Color.YELLOW);
+		spinner.setModel(model);
+		editor = new JSpinner.DateEditor(spinner, "HH:mm");
+		spinner.setEditor(editor);
+
+		status_user_id = new JTextField();
+		status_user_id.setBounds(731, 158, 151, 41);
+		add(status_user_id);
+		status_user_id.setBackground(Color.YELLOW);
+		status_user_id.setColumns(10);
+
+		JButton btnAcceptRequest = new JButton("Accept Request");
+		btnAcceptRequest.setBounds(724, 281, 158, 45);
+		add(btnAcceptRequest);
+		btnAcceptRequest.setBackground(Color.YELLOW);
+
+		JButton btnRejectRequest = new JButton("Reject Request");
+		btnRejectRequest.setBounds(529, 281, 151, 45);
+		add(btnRejectRequest);
+		btnRejectRequest.setBackground(Color.YELLOW);
+
+		JButton btnBeginTheRide = new JButton("Begin The Ride");
+		btnBeginTheRide.setBounds(528, 351, 151, 43);
+		add(btnBeginTheRide);
+		btnBeginTheRide.setBackground(Color.YELLOW);
+
+		JButton btnEndTheRide = new JButton("End The Ride");
+		btnEndTheRide.setBounds(724, 352, 158, 40);
+		add(btnEndTheRide);
+		btnEndTheRide.setBackground(Color.YELLOW);
+
+		status_trip_id = new JTextField();
+		status_trip_id.setBounds(731, 84, 151, 40);
+		add(status_trip_id);
+		status_trip_id.setBackground(Color.YELLOW);
+		status_trip_id.setColumns(10);
+
+		txtTo = new JTextField();
+		txtTo.setFont(new Font("Comic Sans MS", Font.BOLD, 16));
+		txtTo.setHorizontalAlignment(SwingConstants.CENTER);
+		txtTo.setEditable(false);
+		txtTo.setText("To");
+		txtTo.setBounds(48, 89, 86, 40);
+		add(txtTo);
+		txtTo.setColumns(10);
+
+		txtFrom = new JTextField();
+		txtFrom.setText("From");
+		txtFrom.setHorizontalAlignment(SwingConstants.CENTER);
+		txtFrom.setFont(new Font("Comic Sans MS", Font.BOLD, 16));
+		txtFrom.setEditable(false);
+		txtFrom.setColumns(10);
+		txtFrom.setBounds(48, 172, 86, 40);
+		add(txtFrom);
+
+		txtDate = new JTextField();
+		txtDate.setText("Date");
+		txtDate.setHorizontalAlignment(SwingConstants.CENTER);
+		txtDate.setFont(new Font("Comic Sans MS", Font.BOLD, 16));
+		txtDate.setEditable(false);
+		txtDate.setColumns(10);
+		txtDate.setBounds(48, 239, 86, 40);
+		add(txtDate);
+
+		txtTime = new JTextField();
+		txtTime.setText("Time");
+		txtTime.setHorizontalAlignment(SwingConstants.CENTER);
+		txtTime.setFont(new Font("Comic Sans MS", Font.BOLD, 16));
+		txtTime.setEditable(false);
+		txtTime.setColumns(10);
+		txtTime.setBounds(48, 309, 86, 40);
+		add(txtTime);
+
+		txtTripId = new JTextField();
+		txtTripId.setText("Trip Id");
+		txtTripId.setHorizontalAlignment(SwingConstants.CENTER);
+		txtTripId.setFont(new Font("Comic Sans MS", Font.BOLD, 16));
+		txtTripId.setEditable(false);
+		txtTripId.setColumns(10);
+		txtTripId.setBounds(529, 86, 131, 40);
+		add(txtTripId);
+
+		txtUserId = new JTextField();
+		txtUserId.setText("User Id");
+		txtUserId.setHorizontalAlignment(SwingConstants.CENTER);
+		txtUserId.setFont(new Font("Comic Sans MS", Font.BOLD, 16));
+		txtUserId.setEditable(false);
+		txtUserId.setColumns(10);
+		txtUserId.setBounds(529, 160, 131, 40);
+		add(txtUserId);
+
+		btnEndTheRide.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					Class.forName("com.mysql.jdbc.Driver");
+					Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vehiclepoolingdb", "root",
+							"");
+					Statement stmt = con.createStatement();
+					String sqlForStatus = "Update rides_in set Status=5 where R_trip_id=" + status_user_id.getText();
+					int rsForStatus = stmt.executeUpdate(sqlForStatus);
+					if (rsForStatus > 0) {
+						JOptionPane.showMessageDialog(null,
+								"Ride with trip_id=" + status_user_id.getText() + " has ended.");
+					}
+				} catch (Exception e) {
+					System.out.println(e);
+				}
+			}
+		});
+		btnBeginTheRide.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					Class.forName("com.mysql.jdbc.Driver");
+					Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vehiclepoolingdb", "root",
+							"");
+					Statement stmt = con.createStatement();
+					String sqlForStatus = "Update rides_in set Status=4 where R_trip_id=" + status_user_id.getText();
+					int rsForStatus = stmt.executeUpdate(sqlForStatus);
+					if (rsForStatus > 0) {
+						JOptionPane.showMessageDialog(null, "Ride is ongoing with trip_id=" + status_user_id.getText());
+					}
+				} catch (Exception e) {
+					System.out.println(e);
+				}
+			}
+		});
+
+		btnRejectRequest.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					String status_name = "";
+					Class.forName("com.mysql.jdbc.Driver");
+					Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vehiclepoolingdb", "root",
+							"");
+					Statement stmt = con.createStatement();
+					String sqlForName = "Select Fname,Lname,Mname from user where User_id = "
+							+ status_trip_id.getText();
+					ResultSet rsForName = stmt.executeQuery(sqlForName);
+					while (rsForName.next()) {
+						status_name = rsForName.getString("Fname") + " " + rsForName.getString("Mname") + " "
+								+ rsForName.getString("Lname");
+					}
+					String sqlForReject = "Update rides_in set Status=3 where R_trip_id=" + status_user_id.getText()
+							+ " and R_user_id=" + status_trip_id.getText();
+					int rsForReject = stmt.executeUpdate(sqlForReject);
+					if (rsForReject > 0) {
+						JOptionPane.showMessageDialog(null, "Ride Rejected for user " + status_name);
+					}
+				} catch (Exception e) {
+					System.out.println(e);
+				}
+			}
+		});
+		btnAcceptRequest.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					String status_name = "";
+					Class.forName("com.mysql.jdbc.Driver");
+					Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vehiclepoolingdb", "root",
+							"");
+					Statement stmt = con.createStatement();
+					String sqlForName = "Select Fname,Lname,Mname from user where User_id = "
+							+ status_trip_id.getText();
+					ResultSet rsForName = stmt.executeQuery(sqlForName);
+					while (rsForName.next()) {
+						status_name = rsForName.getString("Fname") + " " + rsForName.getString("Mname") + " "
+								+ rsForName.getString("Lname");
+					}
+					String sqlForAccept = "Update rides_in set Status=2 where R_trip_id=" + status_user_id.getText()
+							+ " and R_user_id=" + status_trip_id.getText();
+					int rsForAccept = stmt.executeUpdate(sqlForAccept);
+					if (rsForAccept > 0) {
+						JOptionPane.showMessageDialog(null, "Ride Accepted for user " + status_name);
+					}
+				} catch (Exception e) {
+					System.out.println(e);
+				}
+			}
+		});
+		btnViewRequests.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					showTableData();
+				} catch (Exception e) {
+					System.out.println(e);
+				}
+			}
+		});
+
+		btnOffer.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					tid = (int) (System.currentTimeMillis() & 0xfffffff);
+
+					int capacity = 0;
+					int temp = 0;
+					date = fmt.format(dateChooser.getDate());
+					String time = ((DateEditor) editor).getFormat().format(spinner.getValue()).toString();
+					Class.forName("com.mysql.jdbc.Driver");
+					Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vehiclepoolingdb", "root",
+							"");
+					Statement stmt = con.createStatement();
+					String sqlForVid = "Select Vehicle_id from vehicle_lic where V_user_id = '" + Login.userid.getText()
+							+ "'";
+					ResultSet rsForVid = stmt.executeQuery(sqlForVid);
+					while (rsForVid.next()) {
+						temp = rsForVid.getInt("Vehicle_id");
+					}
+
+					String sqlForSeats = "Select Capacity from vehicle_desc where Vehicle_id = '" + temp + "'";
+					ResultSet rsForSeats = stmt.executeQuery(sqlForSeats);
+					while (rsForSeats.next()) {
+						capacity = rsForSeats.getInt("Capacity");
+					}
+					capacity -= 1;
+					String sql = "Insert into trip(Trip_id,T_date,T_time,Source,Destination,Avail_seats)" + "values("
+							+ (tid) + ",'" + date + "','" + time + "','" + offerSource.getText() + "','"
+							+ offerDest.getText() + "'," + capacity + ")";
+					int rs = stmt.executeUpdate(sql);
+					if (rs > 0)
+						JOptionPane.showMessageDialog(null, "Ride offered! Your trip id is " + tid);
+					else
+						JOptionPane.showMessageDialog(null, "Failed to offer a ride");
+
+					String sqlForRidesIn = "Insert into rides_in(R_user_id,R_trip_id,Status,R_seats) values("
+							+ Login.userid.getText() + "," + tid + "," + 0 + "," + (capacity) + ")";
+					int rsForRidesIn = stmt.executeUpdate(sqlForRidesIn);
+					if (rsForRidesIn > 0) {
+						System.out.println("Done");
+					}
+					con.close();
+
+				} catch (Exception e) {
+					System.out.println(e);
+				}
+			}
+		});
 
 	}
 
@@ -391,7 +393,7 @@ public class OfferARide extends JPanel {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vehiclepoolingdb", "root", "");
 			String sql = "select * from rides_in where R_user_id<>" + Login.userid.getText();
-			String sql1 = "select * from trip where Trip_id = " + status_trip_id.getText();
+			String sql1 = "select * from trip where Trip_id = " + status_user_id.getText();
 			PreparedStatement ps = con.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 			PreparedStatement ps1 = con.prepareStatement(sql1);
@@ -408,7 +410,7 @@ public class OfferARide extends JPanel {
 				statusTripId = rs.getInt("R_trip_id");
 				statusStatus = rs.getInt("Status");
 				statusRSeats = rs.getInt("R_seats");
-				if (statusTripId == Integer.parseInt(status_trip_id.getText()) && statusStatus == 1)
+				if (statusTripId == Integer.parseInt(status_user_id.getText()) && statusStatus == 1)
 					model.addRow(new Object[] { statusUserId, statusTripId, "Requested", statusRSeats });
 				i++;
 			}
