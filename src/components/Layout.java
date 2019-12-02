@@ -27,7 +27,7 @@ import javax.swing.SwingConstants;
 @SuppressWarnings("serial")
 public class Layout extends JFrame {
 
-	private JDesktopPane contentPane;
+	private JScrollPane contentPane;
 
 	/**
 	 * Launch the application.
@@ -53,9 +53,11 @@ public class Layout extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1035, 683);
 
-		contentPane = new JDesktopPane();
+		contentPane = new JScrollPane();
 		contentPane.setBackground(Color.RED);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		contentPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -70,15 +72,13 @@ public class Layout extends JFrame {
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.RED);
 		System.out.println("before internal frame");
-//		panel.setBounds(10, 78, 336, 900);
 
 		panel.setBounds(0, 78, 336, 900);
-contentPane.add(panel);
+		contentPane.add(panel);
 		panel.setLayout(null);
 
 		JInternalFrame internalFrame = new JInternalFrame("Vehicle Pooling for BMSCE");
 		internalFrame.setBackground(Color.YELLOW);
-//		internalFrame.setBounds(327, 110, 910, 510);
 		internalFrame.setBounds(327, 110, 990, 570);
 		
 		internalFrame.setVisible(true);

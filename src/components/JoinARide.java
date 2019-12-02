@@ -52,6 +52,7 @@ public class JoinARide extends JPanel {
 	private String[] columnNames = {"Trip_id","Trip_time","Trip_date", "Source", "Destination", "Available_seats"};
 	LocalDate today = LocalDate.now();
 	public static JTextField requestTripId;
+	private JTextField searchUserId;
 	/**
 	 * Create the panel.
 	 */
@@ -118,6 +119,32 @@ public class JoinARide extends JPanel {
 		btnCancelRide.setBounds(699, 157, 149, 43);
 		add(btnCancelRide);
 		btnCancelRide.setBackground(Color.YELLOW);
+		
+		searchUserId = new JTextField();
+		searchUserId.setColumns(10);
+		searchUserId.setBounds(51, 364, 151, 40);
+		add(searchUserId);
+		
+		JButton btnViewUserProfile = new JButton("View User Profile");
+		btnViewUserProfile.setBounds(283, 364, 170, 40);
+		add(btnViewUserProfile);
+		
+		btnViewUserProfile.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					showTableUsers();
+				} catch(Exception e){
+					
+				}
+			}});
+		
+		JLabel label = new JLabel("To view other users profile of the \r\nrequested users enter their profile");
+		label.setHorizontalAlignment(SwingConstants.CENTER);
+		label.setForeground(Color.WHITE);
+		label.setFont(new Font("Comic Sans MS", Font.BOLD | Font.ITALIC, 16));
+		label.setBackground(Color.WHITE);
+		label.setBounds(51, 298, 402, 55);
+		add(label);
 		
 		
 		
@@ -295,5 +322,59 @@ public class JoinARide extends JPanel {
 		frame.getContentPane().add(scroll);
 		frame.setVisible(true);
 		frame.setSize(800,400);
+	}
+	
+	
+	public void showTableUsers() {
+		String columnNames[] = { "User Id", "Fname", "Mname","Lname", "Gender","Role" };
+		frame = new JFrame("User ");
+		frame.getContentPane().setLayout(new BorderLayout());
+		DefaultTableModel model = new DefaultTableModel();
+		model.setColumnIdentifiers(columnNames);
+		table = new JTable();
+		table.setModel(model);
+		table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+		table.setFillsViewportHeight(true);
+		JScrollPane scroll = new JScrollPane(table);
+		scroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+		int userid = 0;
+		String fname = "";
+		String lname = "";
+		String gender = "";
+		String role = "";
+		String mname = "";
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vehiclepoolingdb", "root", "");
+			String sql = "select * from user where User_id =" + searchUserId.getText();
+			PreparedStatement ps = con.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			int i = 0;
+			while (rs.next()) {
+				userid = rs.getInt("User_id");
+				fname = rs.getString("Fname");
+				lname = rs.getString("Lname");
+				gender = rs.getString("Gender");
+				mname = rs.getString("Mname");
+				role =  rs.getString("Role");
+				model.addRow(new Object[] { userid, fname, mname, lname, gender, role });
+				i++;
+			}
+			if (i < 1) {
+				JOptionPane.showMessageDialog(null, "No Registered Users Found", "Error", JOptionPane.ERROR_MESSAGE);
+			}
+			if (i == 1) {
+				System.out.println(i + " Record Found");
+			} else {
+				System.out.println(i + " Records Found");
+			}
+
+		} catch (Exception ex) {
+			JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+		}
+		frame.getContentPane().add(scroll);
+		frame.setVisible(true);
+		frame.setSize(800, 400);
 	}
 }

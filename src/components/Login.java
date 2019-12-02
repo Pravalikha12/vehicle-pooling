@@ -148,7 +148,7 @@ public class Login extends JFrame {
 		panel_5.add(txtpnThisAVehicle);
 
 		JLabel lblLogo = new JLabel("");
-		lblLogo.setIcon(new ImageIcon("C:\\Users\\Prateeka\\Desktop\\JavaDBMS\\bms.png"));
+		lblLogo.setIcon(new ImageIcon("C:\\Users\\Pranathi\\Desktop\\vehicle-pooling\\image\\bms.png"));
 		lblLogo.setBounds(58, 299, 200, 202);
 		panel_5.add(lblLogo);
 		panel.add(tabbedPane);
