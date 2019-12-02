@@ -40,6 +40,7 @@ import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
+import javax.swing.SwingConstants;
 
 @SuppressWarnings("serial")
 public class JoinARide extends JPanel {
@@ -55,65 +56,68 @@ public class JoinARide extends JPanel {
 	 * Create the panel.
 	 */
 	public JoinARide() {
-		setBackground(Color.RED);
+		setForeground(Color.WHITE);
+		setBackground(Color.BLACK);
 		setLayout(null);
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.setLayout(null);
-		panel_1.setForeground(Color.WHITE);
-		panel_1.setBackground(Color.BLACK);
-		panel_1.setBounds(0, 0, 910, 510);
-		add(panel_1);
-		
 		JoinDest = new JTextField();
+		JoinDest.setBounds(124, 80, 291, 39);
+		add(JoinDest);
+		JoinDest.setBackground(Color.YELLOW);
 		JoinDest.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		JoinDest.setColumns(10);
-		JoinDest.setBounds(222, 75, 417, 81);
-		panel_1.add(JoinDest);
 		
 		JLabel lblTo = new JLabel("To");
+		lblTo.setBounds(25, 84, 39, 28);
+		add(lblTo);
 		lblTo.setForeground(Color.WHITE);
 		lblTo.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
-		lblTo.setBounds(396, 31, 39, 28);
-		panel_1.add(lblTo);
 		
 		JLabel lblFrom = new JLabel("From");
+		lblFrom.setBounds(25, 161, 61, 28);
+		add(lblFrom);
 		lblFrom.setForeground(Color.WHITE);
 		lblFrom.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
-		lblFrom.setBounds(396, 188, 61, 28);
-		panel_1.add(lblFrom);
 		
 		JoinSource = new JTextField();
+		JoinSource.setBounds(124, 157, 291, 39);
+		add(JoinSource);
+		JoinSource.setBackground(Color.YELLOW);
 		JoinSource.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
 		JoinSource.setColumns(10);
-		JoinSource.setBounds(222, 242, 417, 81);
-		panel_1.add(JoinSource);
 		
 		JButton btnViewAvailableRides = new JButton("View Available Rides");
-		btnViewAvailableRides.setBounds(222, 364, 417, 39);
-		panel_1.add(btnViewAvailableRides);
+		btnViewAvailableRides.setBounds(36, 234, 417, 39);
+		add(btnViewAvailableRides);
+		btnViewAvailableRides.setBackground(Color.YELLOW);
 		
 		JLabel lblEnterTheTrip = new JLabel("Enter the trip Id ");
+		lblEnterTheTrip.setBounds(499, 79, 155, 39);
+		add(lblEnterTheTrip);
+		lblEnterTheTrip.setFont(new Font("Comic Sans MS", Font.BOLD, 16));
+		lblEnterTheTrip.setHorizontalAlignment(SwingConstants.CENTER);
 		lblEnterTheTrip.setForeground(Color.WHITE);
-		lblEnterTheTrip.setBounds(79, 430, 110, 14);
-		panel_1.add(lblEnterTheTrip);
 		
 		requestTripId = new JTextField();
-		requestTripId.setBounds(201, 427, 86, 20);
-		panel_1.add(requestTripId);
+		requestTripId.setBounds(705, 79, 143, 44);
+		add(requestTripId);
+		requestTripId.setBackground(Color.YELLOW);
 		requestTripId.setColumns(10);
 		
 		JButton btnRequest = new JButton("Request");
-		btnRequest.setBounds(325, 426, 89, 23);
-		panel_1.add(btnRequest);
+		btnRequest.setBounds(510, 156, 143, 44);
+		add(btnRequest);
+		btnRequest.setBackground(Color.YELLOW);
 		
 		JButton btnCheckStatus = new JButton("Check Status");
-		btnCheckStatus.setBounds(25, 364, 143, 39);
-		panel_1.add(btnCheckStatus);
+		btnCheckStatus.setBounds(602, 234, 143, 39);
+		add(btnCheckStatus);
+		btnCheckStatus.setBackground(Color.YELLOW);
 		
 		JButton btnCancelRide = new JButton("Cancel Ride");
-		btnCancelRide.setBounds(25, 218, 143, 39);
-		panel_1.add(btnCancelRide);
+		btnCancelRide.setBounds(699, 157, 149, 43);
+		add(btnCancelRide);
+		btnCancelRide.setBackground(Color.YELLOW);
 		
 		
 		
@@ -134,33 +138,6 @@ public class JoinARide extends JPanel {
 					int rsForCancel = stmt.executeUpdate(sqlForCancel);
 					if(rsForCancel>0){
 						JOptionPane.showMessageDialog(null, "Ride Cancelled.");
-					}
-				} catch (Exception e) {
-					System.out.println(e);
-				}
-
-			}
-		});
-		
-		
-		btnRequest.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				try {
-					int capacity=0;
-					Class.forName("com.mysql.jdbc.Driver");
-					Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vehiclepoolingdb", "root","");
-					Statement stmt = con.createStatement();
-					String sqlForSeats = "Select R_seats from rides_in where R_trip_id="+requestTripId.getText();
-					ResultSet rsForSeats = stmt.executeQuery(sqlForSeats);
-					while(rsForSeats.next()){
-						capacity = rsForSeats.getInt("R_seats");
-						System.out.println(capacity);
-					}
-					String sqlForRequest = "Insert into rides_in(R_user_id,R_trip_id,Status,R_seats) values("+Login.userid.getText()+","+requestTripId.getText()
-					+","+1+","+capacity+")";
-					int rsForRequest = stmt.executeUpdate(sqlForRequest);
-					if(rsForRequest>0){
-						JOptionPane.showMessageDialog(null, "Ride requested. Click the check status button to know if accepted.");
 					}
 				} catch (Exception e) {
 					System.out.println(e);
@@ -197,6 +174,33 @@ public class JoinARide extends JPanel {
 					System.out.println(e);
 				}
 			}});
+		
+		
+		btnRequest.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					int capacity=0;
+					Class.forName("com.mysql.jdbc.Driver");
+					Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vehiclepoolingdb", "root","");
+					Statement stmt = con.createStatement();
+					String sqlForSeats = "Select R_seats from rides_in where R_trip_id="+requestTripId.getText();
+					ResultSet rsForSeats = stmt.executeQuery(sqlForSeats);
+					while(rsForSeats.next()){
+						capacity = rsForSeats.getInt("R_seats");
+						System.out.println(capacity);
+					}
+					String sqlForRequest = "Insert into rides_in(R_user_id,R_trip_id,Status,R_seats) values("+Login.userid.getText()+","+requestTripId.getText()
+					+","+1+","+capacity+")";
+					int rsForRequest = stmt.executeUpdate(sqlForRequest);
+					if(rsForRequest>0){
+						JOptionPane.showMessageDialog(null, "Ride requested. Click the check status button to know if accepted.");
+					}
+				} catch (Exception e) {
+					System.out.println(e);
+				}
+
+			}
+		});
 		btnViewAvailableRides.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {

@@ -37,19 +37,56 @@ public class YourRide extends JPanel {
 
 	
 	String tripId="";
+	private JTextField txtYourOngoingRide;
 
 	/**
 	 * Create the panel.
 	 */
 	public YourRide() {
+		setForeground(Color.WHITE);
+		setBackground(Color.BLACK);
 		setLayout(null);
 		
-		JPanel panel = new JPanel();
-		panel.setBounds(10, 11, 741, 397);
-		add(panel);
-		panel.setLayout(null);
-		
 		JButton btnCheckStatus = new JButton("Check Status");
+		btnCheckStatus.setBounds(299, 143, 155, 33);
+		add(btnCheckStatus);
+		btnCheckStatus.setBackground(Color.YELLOW);
+		
+		JLabel lblTripId = new JLabel("Trip Id");
+		lblTripId.setBounds(425, 87, 58, 30);
+		add(lblTripId);
+		lblTripId.setForeground(Color.WHITE);
+		lblTripId.setBackground(Color.YELLOW);
+		
+		JLabel lblTripStatus = new JLabel("Trip Status");
+		lblTripStatus.setBounds(51, 91, 58, 22);
+		add(lblTripStatus);
+		lblTripStatus.setForeground(Color.WHITE);
+		lblTripStatus.setBackground(new Color(255, 255, 0));
+		
+		trip_id = new JTextField();
+		trip_id.setBounds(557, 80, 143, 33);
+		add(trip_id);
+		trip_id.setForeground(Color.WHITE);
+		trip_id.setBackground(Color.YELLOW);
+		trip_id.setColumns(10);
+		
+		trip_status = new JTextField();
+		trip_status.setBounds(180, 84, 143, 33);
+		add(trip_status);
+		trip_status.setForeground(Color.WHITE);
+		trip_status.setBackground(Color.YELLOW);
+		trip_status.setColumns(10);
+		
+		txtYourOngoingRide = new JTextField();
+		txtYourOngoingRide.setBounds(0, 0, 971, 42);
+		add(txtYourOngoingRide);
+		txtYourOngoingRide.setEditable(false);
+		txtYourOngoingRide.setBackground(Color.YELLOW);
+		txtYourOngoingRide.setFont(new Font("MS Gothic", Font.BOLD | Font.ITALIC, 20));
+		txtYourOngoingRide.setHorizontalAlignment(SwingConstants.CENTER);
+		txtYourOngoingRide.setText("Your Ongoing Ride");
+		txtYourOngoingRide.setColumns(10);
 		btnCheckStatus.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try{
@@ -79,34 +116,6 @@ public class YourRide extends JPanel {
 				}
 			}
 		});
-		btnCheckStatus.setBounds(559, 84, 155, 33);
-		panel.add(btnCheckStatus);
-		
-		JLabel lblTripId = new JLabel("Trip Id");
-		lblTripId.setBounds(41, 87, 58, 30);
-		panel.add(lblTripId);
-		
-		trip_id = new JTextField();
-		trip_id.setBounds(138, 84, 143, 33);
-		panel.add(trip_id);
-		trip_id.setColumns(10);
-		
-		JLabel lblTripStatus = new JLabel("Trip Status");
-		lblTripStatus.setBounds(291, 89, 58, 22);
-		panel.add(lblTripStatus);
-		
-		trip_status = new JTextField();
-		trip_status.setColumns(10);
-		trip_status.setBounds(388, 84, 143, 33);
-		panel.add(trip_status);
-		
-		JLabel lblYourOngoingRide = new JLabel("Your Ongoing  Ride");
-		lblYourOngoingRide.setForeground(Color.BLACK);
-		lblYourOngoingRide.setFont(new Font("Baskerville Old Face", Font.BOLD | Font.ITALIC, 18));
-		lblYourOngoingRide.setBackground(Color.WHITE);
-		lblYourOngoingRide.setHorizontalAlignment(SwingConstants.CENTER);
-		lblYourOngoingRide.setBounds(138, 24, 233, 33);
-		panel.add(lblYourOngoingRide);
 		
 		
 		

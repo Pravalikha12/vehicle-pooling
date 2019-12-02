@@ -23,33 +23,35 @@ import java.sql.Statement;
 import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.JButton;
+import javax.swing.SwingConstants;
 
 public class Dashboard extends JPanel {
 	private JButton btnPastRides;
 	// private ResultSet rs1;
 	private JTable table;
+	private JTextField txtHistory;
 
 	/**
 	 * Create the panel.
 	 */
 	public Dashboard() {
-		setBackground(Color.RED);
+		setForeground(Color.WHITE);
+		setBackground(Color.BLACK);
 		setLayout(null);
-
-		JPanel panel = new JPanel();
-		panel.setForeground(Color.WHITE);
-		panel.setBackground(Color.BLACK);
-		panel.setBounds(0, 0, 910, 510);
-		add(panel);
-
-		JLabel History = new JLabel("History");
-		History.setForeground(Color.WHITE);
-		History.setFont(new Font("Comic Sans MS", Font.BOLD, 26));
-
-		btnPastRides = new JButton("View Your Past Rides");
-		btnPastRides.setBounds(148, 50, 400, 43);
-		panel.add(btnPastRides);
-		panel.add(History);
+		
+				btnPastRides = new JButton("View Your Past Rides");
+				btnPastRides.setBounds(351, 72, 322, 39);
+				add(btnPastRides);
+				btnPastRides.setBackground(Color.YELLOW);
+				
+				txtHistory = new JTextField();
+				txtHistory.setBounds(0, 0, 993, 39);
+				add(txtHistory);
+				txtHistory.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
+				txtHistory.setHorizontalAlignment(SwingConstants.CENTER);
+				txtHistory.setBackground(Color.YELLOW);
+				txtHistory.setText("History");
+				txtHistory.setColumns(10);
 
 		btnPastRides.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
