@@ -3,13 +3,20 @@ package components;
 import java.sql.*;
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
 import javax.swing.JTabbedPane;
+import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -21,6 +28,8 @@ import javax.swing.SwingConstants;
 import javax.swing.border.LineBorder;
 import javax.swing.JTextPane;
 import javax.swing.ImageIcon;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 import java.awt.Rectangle;
 import java.awt.Dimension;
 import com.toedter.calendar.JCalendar;
@@ -97,7 +106,6 @@ public class Login extends JFrame {
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
-			@Override
 			public void run() {
 				try {
 					Login frame = new Login();
@@ -126,7 +134,7 @@ public class Login extends JFrame {
 		panel.setBackground(Color.RED);
 		panel.setBounds(0, 0, 2000, 952);
 
-		JTabbedPane tabbedPane = new JTabbedPane(SwingConstants.TOP);
+		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		tabbedPane.setBounds(340, 90, 920, 540);
 
@@ -152,6 +160,44 @@ public class Login extends JFrame {
 		lblLogo.setBounds(58, 299, 200, 202);
 		panel_5.add(lblLogo);
 		panel.add(tabbedPane);
+
+		JPanel panel_2 = new JPanel();
+		panel_2.setFont(new Font("Baskerville Old Face", Font.BOLD, 20));
+		panel_2.setBackground(Color.BLACK);
+		tabbedPane.addTab("Sign In", null, panel_2, null);
+
+		JLabel lblUserId = new JLabel("User id");
+		lblUserId.setFont(new Font("Comic Sans MS", Font.BOLD, 25));
+		lblUserId.setForeground(Color.WHITE);
+		lblUserId.setBackground(Color.BLACK);
+		lblUserId.setBounds(406, 71, 137, 30);
+
+		JLabel lblPassword = new JLabel("Password");
+		lblPassword.setFont(new Font("Comic Sans MS", Font.BOLD, 25));
+		lblPassword.setBackground(Color.BLACK);
+		lblPassword.setOpaque(true);
+		lblPassword.setForeground(Color.WHITE);
+		lblPassword.setBounds(406, 236, 137, 26);
+		userid = new JTextField();
+		userid.setFont(new Font("Comic Sans MS", Font.PLAIN, 25));
+		userid.setBounds(228, 117, 459, 85);
+
+		userid.setColumns(10);
+
+		pwdPass = new JPasswordField();
+		pwdPass.setFont(new Font("Comic Sans MS", Font.PLAIN, 25));
+		pwdPass.setBounds(228, 278, 459, 85);
+
+		panel_2.setLayout(null);
+		panel_2.add(pwdPass);
+		panel_2.add(userid);
+		panel_2.add(lblUserId);
+		panel_2.add(lblPassword);
+
+		JButton btnLogin = new JButton("LOGIN");
+		btnLogin.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
+		btnLogin.setBounds(303, 407, 300, 50);
+		panel_2.add(btnLogin);
 
 		JPanel panel_1 = new JPanel();
 		panel_1.setFont(new Font("Comic Sans MS", Font.PLAIN, 26));
@@ -525,6 +571,9 @@ public class Login extends JFrame {
 				if (dob.getText().isEmpty()) {
 					errordob.setText("Please enter date of birth  Eg. 1989-02-13");
 				}
+				if (areacode.getText().isEmpty()) {
+					errorcode.setText("Areacode cannot be empty");
+				}
 				if (address.getText().isEmpty() || city.getText().isEmpty() || state.getText().isEmpty()) {
 					erroraddress.setText("Please enter address  Eg. Jayanagar B'lore K'taka");
 				}
@@ -703,45 +752,7 @@ public class Login extends JFrame {
 		rdbtnOther.setBounds(721, 359, 93, 29);
 		panel_1.add(rdbtnOther);
 
-		JPanel panel_2 = new JPanel();
-		panel_2.setFont(new Font("Baskerville Old Face", Font.BOLD, 20));
-		panel_2.setBackground(Color.BLACK);
-		tabbedPane.addTab("Sign In", null, panel_2, null);
-
-		JLabel lblUserId = new JLabel("User id");
-		lblUserId.setFont(new Font("Comic Sans MS", Font.BOLD, 25));
-		lblUserId.setForeground(Color.WHITE);
-		lblUserId.setBackground(Color.BLACK);
-		lblUserId.setBounds(406, 71, 137, 30);
-
-		JLabel lblPassword = new JLabel("Password");
-		lblPassword.setFont(new Font("Comic Sans MS", Font.BOLD, 25));
-		lblPassword.setBackground(Color.BLACK);
-		lblPassword.setOpaque(true);
-		lblPassword.setForeground(Color.WHITE);
-		lblPassword.setBounds(406, 236, 137, 26);
-		userid = new JTextField();
-		userid.setFont(new Font("Comic Sans MS", Font.PLAIN, 25));
-		userid.setBounds(228, 117, 459, 85);
-
-		userid.setColumns(10);
-
-		pwdPass = new JPasswordField();
-		pwdPass.setFont(new Font("Comic Sans MS", Font.PLAIN, 25));
-		pwdPass.setBounds(228, 278, 459, 85);
-
-		panel_2.setLayout(null);
-		panel_2.add(pwdPass);
-		panel_2.add(userid);
-		panel_2.add(lblUserId);
-		panel_2.add(lblPassword);
-
-		JButton btnLogin = new JButton("LOGIN");
-		btnLogin.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
-		btnLogin.setBounds(303, 407, 300, 50);
-		panel_2.add(btnLogin);
 		btnLogin.addActionListener(new ActionListener() {
-			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				try {
 					Class.forName("com.mysql.jdbc.Driver");

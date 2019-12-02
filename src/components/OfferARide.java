@@ -17,11 +17,6 @@ import java.awt.Color;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
-import org.jgroups.JChannel;
-import org.jgroups.Message;
-import org.jgroups.ReceiverAdapter;
-import org.jgroups.View;
-
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
@@ -64,8 +59,8 @@ public class OfferARide extends JPanel {
 	private JDateChooser dateChooser;
 	private JSpinner spinner;
 	private JComponent editor;
+	public static JTextField status_user_id;
 	public static JTextField status_trip_id;
-	private JTextField status_user_id;
 	private JTextField txtTo;
 	private JTextField txtFrom;
 	private JTextField txtDate;
@@ -78,11 +73,10 @@ public class OfferARide extends JPanel {
 	 * Create the panel.
 	 */
 	public OfferARide() {
-		
+
 		setForeground(Color.WHITE);
 		setBackground(Color.BLACK);
-		
-		
+
 		date = "";
 		DateFormat fmt = new SimpleDateFormat("yyyy/MM/dd");
 
@@ -230,14 +224,13 @@ public class OfferARide extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
 					showTableUsers();
-				} catch(Exception e){
-					
+				} catch (Exception e) {
+
 				}
-			}});
-		
-		
-		JLabel lblToViewOther = new JLabel(
-				"Enter User Id to view their profile");
+			}
+		});
+
+		JLabel lblToViewOther = new JLabel("Enter User Id to view their profile");
 		lblToViewOther.setFont(new Font("Comic Sans MS", Font.BOLD | Font.ITALIC, 16));
 		lblToViewOther.setHorizontalAlignment(SwingConstants.CENTER);
 		lblToViewOther.setBackground(Color.WHITE);
@@ -385,7 +378,7 @@ public class OfferARide extends JPanel {
 					if (rsForRidesIn > 0) {
 						System.out.println("Done");
 					}
-//					con.close();
+					// con.close();
 
 				} catch (Exception e) {
 					System.out.println(e);
@@ -432,7 +425,7 @@ public class OfferARide extends JPanel {
 			System.out.println("error here");
 			String sql1 = "select * from trip where Trip_id = " + status_trip_id.getText();
 			System.out.println("Or here");
-			PreparedStatement ps = con.prepareStatement(sql);			
+			PreparedStatement ps = con.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 			System.out.println("or here");
 			PreparedStatement ps1 = con.prepareStatement(sql1);
@@ -451,7 +444,7 @@ public class OfferARide extends JPanel {
 				statusTripId = rs.getInt("R_trip_id");
 				statusStatus = rs.getInt("Status");
 				statusRSeats = rs.getInt("R_seats");
-				if (statusTripId == Integer.parseInt(status_trip_id.getText()) && statusStatus == 1)
+				if (statusTripId == Integer.parseInt(status_user_id.getText()) && statusStatus == 1)
 					model.addRow(new Object[] { statusUserId, statusTripId, "Requested", statusRSeats });
 				i++;
 			}
@@ -471,12 +464,9 @@ public class OfferARide extends JPanel {
 		frame.setVisible(true);
 		frame.setSize(800, 400);
 	}
-	
-	
-	
-	
+
 	public void showTableUsers() {
-		String columnNames[] = { "User Id", "Fname", "Mname","Lname", "Gender","Role" };
+		String columnNames[] = { "User Id", "Fname", "Mname", "Lname", "Gender", "Role" };
 		frame9 = new JFrame("User");
 		frame9.getContentPane().setLayout(new BorderLayout());
 		DefaultTableModel model = new DefaultTableModel();
@@ -507,7 +497,7 @@ public class OfferARide extends JPanel {
 				lname = rs.getString("Lname");
 				gender = rs.getString("Gender");
 				mname = rs.getString("Mname");
-				role =  rs.getString("Role");
+				role = rs.getString("Role");
 				model.addRow(new Object[] { userid, fname, mname, lname, gender, role });
 				i++;
 			}
@@ -526,5 +516,5 @@ public class OfferARide extends JPanel {
 		frame9.getContentPane().add(scroll);
 		frame9.setVisible(true);
 		frame9.setSize(800, 400);
-	}
+			}
 }

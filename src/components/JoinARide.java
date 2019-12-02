@@ -15,11 +15,6 @@ import javax.swing.TransferHandler.TransferSupport;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 
-import org.jgroups.*;
-import org.jgroups.JChannel;
-import org.jgroups.Message;
-import org.jgroups.ReceiverAdapter;
-import org.jgroups.View;
 
 import java.awt.Font;
 import java.awt.datatransfer.DataFlavor;
@@ -273,7 +268,7 @@ public class JoinARide extends JPanel {
 		{ 
 			Class.forName("com.mysql.jdbc.Driver"); 
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vehiclepoolingdb", "root","");
-			String sql = "select * from `trip` where Source = '"+se+"' and Destination = '"+dest+"'";
+			String sql = "select * from trip where Source = '"+se+"' and Destination = '"+dest+"'";
 			PreparedStatement ps = con.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 			int i =0;
