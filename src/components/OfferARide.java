@@ -17,11 +17,6 @@ import java.awt.Color;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
-import org.jgroups.JChannel;
-import org.jgroups.Message;
-import org.jgroups.ReceiverAdapter;
-import org.jgroups.View;
-
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;

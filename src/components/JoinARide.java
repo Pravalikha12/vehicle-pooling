@@ -15,11 +15,6 @@ import javax.swing.TransferHandler.TransferSupport;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 
-import org.jgroups.*;
-import org.jgroups.JChannel;
-import org.jgroups.Message;
-import org.jgroups.ReceiverAdapter;
-import org.jgroups.View;
 
 import java.awt.Font;
 import java.awt.datatransfer.DataFlavor;
