@@ -52,6 +52,7 @@ public class OfferARide extends JPanel {
 	private JTextField txtCar;
 	public JFrame frame2;
 	private JFrame frame;
+	private JFrame frame9;
 	private String date;
 	private JTable table;
 	public int tid;
@@ -66,11 +67,13 @@ public class OfferARide extends JPanel {
 	private JTextField txtTime;
 	private JTextField txtTripId;
 	private JTextField txtUserId;
+	private JTextField searchUserId;
 
 	/**
 	 * Create the panel.
 	 */
 	public OfferARide() {
+
 		setForeground(Color.WHITE);
 		setBackground(new Color(30, 144, 255));
 
@@ -229,6 +232,33 @@ public class OfferARide extends JPanel {
 		txtUserId.setBounds(529, 160, 131, 40);
 		add(txtUserId);
 
+		searchUserId = new JTextField();
+		searchUserId.setBounds(529, 444, 151, 40);
+		add(searchUserId);
+		searchUserId.setColumns(10);
+
+		JButton btnViewUserProfile = new JButton("View User Profile");
+		btnViewUserProfile.setBounds(712, 444, 170, 40);
+		add(btnViewUserProfile);
+
+		btnViewUserProfile.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					showTableUsers();
+				} catch (Exception e) {
+
+				}
+			}
+		});
+
+		JLabel lblToViewOther = new JLabel("Enter User Id to view their profile");
+		lblToViewOther.setFont(new Font("Comic Sans MS", Font.BOLD | Font.ITALIC, 16));
+		lblToViewOther.setHorizontalAlignment(SwingConstants.CENTER);
+		lblToViewOther.setBackground(Color.WHITE);
+		lblToViewOther.setForeground(Color.WHITE);
+		lblToViewOther.setBounds(43, 434, 402, 55);
+		add(lblToViewOther);
+
 		btnEndTheRide.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
@@ -236,11 +266,11 @@ public class OfferARide extends JPanel {
 					Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vehiclepoolingdb", "root",
 							"");
 					Statement stmt = con.createStatement();
-					String sqlForStatus = "Update rides_in set Status=5 where R_trip_id=" + status_user_id.getText();
+					String sqlForStatus = "Update rides_in set Status=5 where R_trip_id=" + status_trip_id.getText();
 					int rsForStatus = stmt.executeUpdate(sqlForStatus);
 					if (rsForStatus > 0) {
 						JOptionPane.showMessageDialog(null,
-								"Ride with trip_id=" + status_user_id.getText() + " has ended.");
+								"Ride with trip_id=" + status_trip_id.getText() + " has ended.");
 					}
 				} catch (Exception e) {
 					System.out.println(e);
@@ -254,10 +284,10 @@ public class OfferARide extends JPanel {
 					Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vehiclepoolingdb", "root",
 							"");
 					Statement stmt = con.createStatement();
-					String sqlForStatus = "Update rides_in set Status=4 where R_trip_id=" + status_user_id.getText();
+					String sqlForStatus = "Update rides_in set Status=4 where R_trip_id=" + status_trip_id.getText();
 					int rsForStatus = stmt.executeUpdate(sqlForStatus);
 					if (rsForStatus > 0) {
-						JOptionPane.showMessageDialog(null, "Ride is ongoing with trip_id=" + status_user_id.getText());
+						JOptionPane.showMessageDialog(null, "Ride is ongoing with trip_id=" + status_trip_id.getText());
 					}
 				} catch (Exception e) {
 					System.out.println(e);
@@ -274,14 +304,14 @@ public class OfferARide extends JPanel {
 							"");
 					Statement stmt = con.createStatement();
 					String sqlForName = "Select Fname,Lname,Mname from user where User_id = "
-							+ status_trip_id.getText();
+							+ status_user_id.getText();
 					ResultSet rsForName = stmt.executeQuery(sqlForName);
 					while (rsForName.next()) {
 						status_name = rsForName.getString("Fname") + " " + rsForName.getString("Mname") + " "
 								+ rsForName.getString("Lname");
 					}
-					String sqlForReject = "Update rides_in set Status=3 where R_trip_id=" + status_user_id.getText()
-							+ " and R_user_id=" + status_trip_id.getText();
+					String sqlForReject = "Update rides_in set Status=3 where R_trip_id=" + status_trip_id.getText()
+							+ " and R_user_id=" + status_user_id.getText();
 					int rsForReject = stmt.executeUpdate(sqlForReject);
 					if (rsForReject > 0) {
 						JOptionPane.showMessageDialog(null, "Ride Rejected for user " + status_name);
@@ -300,14 +330,14 @@ public class OfferARide extends JPanel {
 							"");
 					Statement stmt = con.createStatement();
 					String sqlForName = "Select Fname,Lname,Mname from user where User_id = "
-							+ status_trip_id.getText();
+							+ status_user_id.getText();
 					ResultSet rsForName = stmt.executeQuery(sqlForName);
 					while (rsForName.next()) {
 						status_name = rsForName.getString("Fname") + " " + rsForName.getString("Mname") + " "
 								+ rsForName.getString("Lname");
 					}
-					String sqlForAccept = "Update rides_in set Status=2 where R_trip_id=" + status_user_id.getText()
-							+ " and R_user_id=" + status_trip_id.getText();
+					String sqlForAccept = "Update rides_in set Status=2 where R_trip_id=" + status_trip_id.getText()
+							+ " and R_user_id=" + status_user_id.getText();
 					int rsForAccept = stmt.executeUpdate(sqlForAccept);
 					if (rsForAccept > 0) {
 						JOptionPane.showMessageDialog(null, "Ride Accepted for user " + status_name);
@@ -369,14 +399,13 @@ public class OfferARide extends JPanel {
 					if (rsForRidesIn > 0) {
 						System.out.println("Done");
 					}
-					con.close();
+					// con.close();
 
 				} catch (Exception e) {
 					System.out.println(e);
 				}
 			}
 		});
-
 	}
 
 	public void showTableData() {
@@ -414,11 +443,16 @@ public class OfferARide extends JPanel {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vehiclepoolingdb", "root", "");
 			String sql = "select * from rides_in where R_user_id<>" + Login.userid.getText();
-			String sql1 = "select * from trip where Trip_id = " + status_user_id.getText();
+			System.out.println("error here");
+			String sql1 = "select * from trip where Trip_id = " + status_trip_id.getText();
+			System.out.println("Or here");
 			PreparedStatement ps = con.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
+			System.out.println("or here");
 			PreparedStatement ps1 = con.prepareStatement(sql1);
 			ResultSet rs1 = ps1.executeQuery();
+			System.out.println("or here");
+
 			int i = 0;
 			while (rs1.next()) {
 				String t_time = rs1.getString("T_time");
@@ -450,5 +484,58 @@ public class OfferARide extends JPanel {
 		frame.getContentPane().add(scroll);
 		frame.setVisible(true);
 		frame.setSize(800, 400);
+	}
+
+	public void showTableUsers() {
+		String columnNames[] = { "User Id", "Fname", "Mname", "Lname", "Gender", "Role" };
+		frame9 = new JFrame("User");
+		frame9.getContentPane().setLayout(new BorderLayout());
+		DefaultTableModel model = new DefaultTableModel();
+		model.setColumnIdentifiers(columnNames);
+		table = new JTable();
+		table.setModel(model);
+		table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+		table.setFillsViewportHeight(true);
+		JScrollPane scroll = new JScrollPane(table);
+		scroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+		int userid = 0;
+		String fname = "";
+		String lname = "";
+		String gender = "";
+		String role = "";
+		String mname = "";
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vehiclepoolingdb", "root", "");
+			String sql = "select * from user where User_id =" + searchUserId.getText();
+			PreparedStatement ps = con.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			int i = 0;
+			while (rs.next()) {
+				userid = rs.getInt("User_id");
+				fname = rs.getString("Fname");
+				lname = rs.getString("Lname");
+				gender = rs.getString("Gender");
+				mname = rs.getString("Mname");
+				role = rs.getString("Role");
+				model.addRow(new Object[] { userid, fname, mname, lname, gender, role });
+				i++;
+			}
+			if (i < 1) {
+				JOptionPane.showMessageDialog(null, "No Registered Users Found", "Error", JOptionPane.ERROR_MESSAGE);
+			}
+			if (i == 1) {
+				System.out.println(i + " Record Found");
+			} else {
+				System.out.println(i + " Records Found");
+			}
+
+		} catch (Exception ex) {
+			JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+		}
+		frame9.getContentPane().add(scroll);
+		frame9.setVisible(true);
+		frame9.setSize(800, 400);
 	}
 }

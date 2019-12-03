@@ -72,21 +72,20 @@ public class Layout extends JFrame {
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(0, 0, 139));
 		System.out.println("before internal frame");
-//		panel.setBounds(10, 78, 336, 900);
 
 		panel.setBounds(0, 78, 336, 900);
-contentPane.add(panel);
+		contentPane.add(panel);
 		panel.setLayout(null);
 
 		JInternalFrame internalFrame = new JInternalFrame("Vehicle Pooling for BMSCE");
 		internalFrame.setForeground(new Color(0, 0, 128));
 		internalFrame.setBackground(new Color(30, 144, 255));
-//		internalFrame.setBounds(327, 110, 910, 510);
+		// internalFrame.setBounds(327, 110, 910, 510);
 		internalFrame.setBounds(324, 78, 990, 580);
-		
+
 		internalFrame.setVisible(true);
 		internalFrame.setResizable(false);
-		
+
 		contentPane.add(internalFrame);
 		System.out.println("after internal frame");
 

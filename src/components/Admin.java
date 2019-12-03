@@ -43,6 +43,7 @@ public class Admin extends JFrame {
 	private JFrame frame1;
 	private JFrame frame2;
 	private JFrame frame3;
+	private JTextField feedback_user_id;
 	/**
 	 * Launch the application.
 	 */
@@ -108,10 +109,24 @@ public class Admin extends JFrame {
 		btnDeleteUsers.setBorder(new LineBorder(new Color(0, 0, 128), 4));
 		btnDeleteUsers.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				try {
+					Class.forName("com.mysql.jdbc.Driver");
+					Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vehiclepoolingdb", "root",
+							"");
+					Statement stmt = con.createStatement();
+					String sql = "Delete from user where User_id=" + feedback_user_id.getText();
+					int rs = stmt.executeUpdate(sql);
+					if (rs > 0) {
+						JOptionPane.showMessageDialog(null,"User with id "+feedback_user_id.getText()+" has been removed from the records");
+					}
+					con.close();
+				} catch (Exception e) {
+					System.out.println(e);
+				}
 			}
 		});
 		btnDeleteUsers.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
-		btnDeleteUsers.setBounds(987, 342, 250, 50);
+		btnDeleteUsers.setBounds(987, 458, 250, 50);
 		panel.add(btnDeleteUsers);
 		
 		JButton btnViewFeedback = new JButton("View Feedbacks");
@@ -142,6 +157,16 @@ public class Admin extends JFrame {
 		txtWelcomeToNamma.setBounds(493, 42, 428, 50);
 		panel.add(txtWelcomeToNamma);
 		txtWelcomeToNamma.setColumns(10);
+		
+		feedback_user_id = new JTextField();
+		feedback_user_id.setBounds(805, 477, 116, 20);
+		panel.add(feedback_user_id);
+		feedback_user_id.setColumns(10);
+		
+		JLabel lblEnterTheUser = new JLabel("Enter the User Id");
+		lblEnterTheUser.setBackground(Color.BLUE);
+		lblEnterTheUser.setBounds(645, 474, 116, 20);
+		panel.add(lblEnterTheUser);
 	}
 	public void showUserData() {
 		String columnNames[] = { "User Id", "Name", "Gender","Email Id","Role" };

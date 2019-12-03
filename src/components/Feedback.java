@@ -102,7 +102,7 @@ public class Feedback extends JPanel {
 					Statement stmt = con.createStatement();
 					String sql = "Insert into feedback (F_user_id,F_trip_id,F_admin_id,Rating,Review,Suggestion)"
 							+ " values(" + Login.userid.getText() + "," + trip_id.getText() + "," + 101+ ","
-							+ rate+ ",'" + review.getText() + "','" + suggestion.getText() + ")";
+							+ rate+ ",'" + review.getText() + "','" + suggestion.getText() + "')";
 					
 					int rs = stmt.executeUpdate(sql);
 
