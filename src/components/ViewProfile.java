@@ -24,8 +24,6 @@ public class ViewProfile extends JPanel {
 
 	private JTextField user_name;
 	private JTextField user_email;
-	// private JTextField user_phoneno1;
-	// private JTextField user_phoneno2;
 	private JTextField user_phoneno;
 	private JTextField user_gender;
 	private JTextField user_dob;
@@ -34,12 +32,10 @@ public class ViewProfile extends JPanel {
 	private JTextField user_age;
 	private JTextField user_role;
 
-	// private long numbers[] = new long[2];
 	public ViewProfile() {
 		setForeground(Color.RED);
 		setBackground(Color.BLACK);
 		setLayout(null);
-		//String views[] = { "1", "2", "3", "4" };
 		JLabel lblName = new JLabel("Name");
 		lblName.setFont(new Font("Comic Sans MS", Font.PLAIN, 20));
 		lblName.setBackground(Color.WHITE);
@@ -131,114 +127,159 @@ public class ViewProfile extends JPanel {
 		lblUserId.setForeground(Color.WHITE);
 		lblUserId.setBounds(460, 37, 100, 20);
 		add(lblUserId);
+		
+		
+		user_name.setEditable(false);
+		user_email.setEditable(false);
+		user_phoneno.setEditable(false);
+		user_gender.setEditable(false);
+		// user_phoneno.setEditable(false);
+		user_dob.setEditable(false);
+		user_id.setEditable(false);
+		
+		JLabel lblRating = new JLabel("Rating");
+		lblRating.setFont(new Font("Comic Sans MS", Font.PLAIN, 20));
+		lblRating.setForeground(Color.WHITE);
+		lblRating.setBackground(Color.BLACK);
+		lblRating.setBounds(462, 110, 70, 34);
+		add(lblRating);
+		
+		user_rating = new JTextField();
+		user_rating.setEditable(false);
+		user_rating.setColumns(10);
+		user_rating.setBounds(625, 100, 220, 44);
+		add(user_rating);
+		
+		JLabel lblRole = new JLabel("Role");
+		lblRole.setForeground(Color.WHITE);
+		lblRole.setFont(new Font("Comic Sans MS", Font.PLAIN, 20));
+		lblRole.setBackground(Color.BLACK);
+		lblRole.setBounds(460, 183, 100, 20);
+		add(lblRole);
+		
+		JLabel lblVehiclesOwned = new JLabel("Vehicles Owned");
+		lblVehiclesOwned.setForeground(Color.WHITE);
+		lblVehiclesOwned.setFont(new Font("Comic Sans MS", Font.PLAIN, 20));
+		lblVehiclesOwned.setBackground(Color.BLACK);
+		lblVehiclesOwned.setBounds(460, 329, 150, 20);
+		add(lblVehiclesOwned);
+		
+		JTextArea vehicles_owned = new JTextArea();
+		vehicles_owned.setBounds(625, 319, 220, 44);
+		add(vehicles_owned);
+		
+		JButton btnAddVehicle = new JButton("Add Vehicle");
+		btnAddVehicle.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					 VehicleReg vr=new VehicleReg();
+					 vr.setVisible(true);
+				}
+					
+				catch(Exception e) {
+					System.out.println(e);
+				}
+			}
+		});
+		
+		
+		
+		btnAddVehicle.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
+		btnAddVehicle.setBounds(625, 392, 220, 50);
+		add(btnAddVehicle);
+		
+		user_age = new JTextField();
+		user_age.setEditable(false);
+		user_age.setColumns(10);
+		user_age.setBounds(625, 246, 220, 44);
+		add(user_age);
+		
+		user_role = new JTextField();
+		user_role.setEditable(false);
+		user_role.setColumns(10);
+		user_role.setBounds(625, 173, 220, 44);
+		add(user_role);
+
+		
+		vehicles_owned.setEditable(false);
+
+		JTextArea user_address = new JTextArea();
+		user_address.setBounds(160, 392, 220, 50);
+		add(user_address);
+		user_address.setEditable(false);
+		
+		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vehiclepoolingdb", "root", "");
 			Statement stmt = con.createStatement();
-			String sql = "Select User_id,Fname,Lname,Mname,Gender,Role,Bdate,Email_id from user where User_id='"
-					+ Login.userid.getText() + "'";
-			// String sql1 = "Select U_phone_no from user_contact where User_id='"+
-			// Login.userid.getText()+"'";
-			user_name.setEditable(false);
-			user_email.setEditable(false);
-			user_phoneno.setEditable(false);
-			user_gender.setEditable(false);
-			// user_phoneno.setEditable(false);
-			user_dob.setEditable(false);
-			user_id.setEditable(false);
-			
-			JLabel lblRating = new JLabel("Rating");
-			lblRating.setFont(new Font("Comic Sans MS", Font.PLAIN, 20));
-			lblRating.setForeground(Color.WHITE);
-			lblRating.setBackground(Color.BLACK);
-			lblRating.setBounds(462, 110, 70, 34);
-			add(lblRating);
-			
-			user_rating = new JTextField();
-			user_rating.setEditable(false);
-			user_rating.setColumns(10);
-			user_rating.setBounds(625, 100, 220, 44);
-			add(user_rating);
-			
-			JLabel lblRole = new JLabel("Role");
-			lblRole.setForeground(Color.WHITE);
-			lblRole.setFont(new Font("Comic Sans MS", Font.PLAIN, 20));
-			lblRole.setBackground(Color.BLACK);
-			lblRole.setBounds(460, 183, 100, 20);
-			add(lblRole);
-			
-			JLabel lblVehiclesOwned = new JLabel("Vehicles Owned");
-			lblVehiclesOwned.setForeground(Color.WHITE);
-			lblVehiclesOwned.setFont(new Font("Comic Sans MS", Font.PLAIN, 20));
-			lblVehiclesOwned.setBackground(Color.BLACK);
-			lblVehiclesOwned.setBounds(460, 329, 150, 20);
-			add(lblVehiclesOwned);
-			
-			JTextArea vehicles_owned = new JTextArea();
-			vehicles_owned.setBounds(625, 319, 220, 44);
-			add(vehicles_owned);
-			
-			JButton btnAddVehicle = new JButton("Add Vehicle");
-			btnAddVehicle.addActionListener(new ActionListener() {
-				@Override
-				public void actionPerformed(ActionEvent arg0) {
-					try {
-						 VehicleReg vr=new VehicleReg();
-						 vr.setVisible(true);
-					}
-						
-					catch(Exception e) {
-						System.out.println(e);
-					}
-				}
-			});
-			
-			
-			
-			btnAddVehicle.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
-			btnAddVehicle.setBounds(625, 392, 220, 50);
-			add(btnAddVehicle);
-			
-			user_age = new JTextField();
-			user_age.setEditable(false);
-			user_age.setColumns(10);
-			user_age.setBounds(625, 246, 220, 44);
-			add(user_age);
-			
-			user_role = new JTextField();
-			user_role.setEditable(false);
-			user_role.setColumns(10);
-			user_role.setBounds(625, 173, 220, 44);
-			add(user_role);
-			
-			JTextArea user_address = new JTextArea();
-			user_address.setBounds(160, 392, 220, 50);
-			add(user_address);
+			Statement stmt1 = con.createStatement();
+			Statement stmt3 = con.createStatement();
+			String sql = "Select * from user where User_id="
+					+ Login.userid.getText();
+			 String sql1 = "Select U_phone_no from user_contact where User_id="+Login.userid.getText();
 			ResultSet rs = stmt.executeQuery(sql);
-			// ResultSet rs1 = stmt.executeQuery(sql1);
+			 ResultSet rs1 = stmt1.executeQuery(sql1);
+			 int areacode = 0;
+			 int userid = 0;
 			while (rs.next()) {
 				user_name.setText(rs.getString("Fname") + " " + rs.getString("Mname") + " " + rs.getString("Lname"));
 				user_email.setText(rs.getString("Email_id"));
 				user_role.setText(rs.getString("Role"));
-				//user_phoneno.setText(rs.getString("U_phone_no"));
 				user_gender.setText(rs.getString("Gender"));
 				user_dob.setText(rs.getString("Bdate"));
 				user_id.setText("" + rs.getInt("User_id"));
-
+				areacode = rs.getInt("Areacode");
+				userid = rs.getInt("User_id");
 			}
+			
+			String sql3 = "Select * from user_address where Areacode="+areacode;
+			ResultSet rs3 = stmt3.executeQuery(sql3);
+			while(rs3.next()){
+				user_address.setText(rs3.getInt("Areacode")+" , "+rs3.getInt("Pincode")+" , "+rs3.getString("Address")
+				+" , "+rs3.getString("City")+" , "+rs3.getString("State"));
+			}
+			String phone = "";
+			int i=0;
+			while(rs1.next()){
+				if(i==0){
+					phone = phone +"  "+rs1.getInt("U_phone_no");
+					i++;
+				}
+				else {
+					phone = phone+" , "+rs1.getInt("U_phone_no");
+				}
+			}
+			
+			user_phoneno.setText(phone);
+			
 			String sql2 = "Select Age from user_age where Bdate='" + user_dob.getText() + "'";
 			ResultSet rs2 = stmt.executeQuery(sql2);
-			// while(rs1.next()){
-			// numbers[0] = rs1.getLong("U_phone_no");
-			// user_phoneno.setText(""+rs1.getLong("U_phone_no"));
-			// }
-
 			while (rs2.next()) {
 				user_age.setText("" + rs2.getInt("Age"));
 			}
-
+			
+			String sql4 = "Select * from vehicle_lic where V_user_id="+userid;
+			ResultSet rs4 = stmt3.executeQuery(sql4);
+			String v = "";
+			while(rs4.next()){
+				Statement stmt4 = con.createStatement();
+				String sql5 = "Select Type from vehicle_desc where Vehicle_id="+rs4.getInt("Vehicle_id");
+				ResultSet rs5 = stmt4.executeQuery(sql5);
+				while(rs5.next()){
+					v = v + " , " + rs5.getString("Type"); 
+				}
+			}
+			vehicles_owned.setText(v);
+			
+			String sql5 = "SELECT AVG(`Rating`) FROM `feedback`,`rides_in` where `feedback`.`F_trip_id`=`rides_in`.`R_trip_id` AND `Status`=0 AND `F_user_id`<>"+Login.userid.getText()+" AND `F_trip_id` IN (SELECT `R_trip_id` WHERE `R_user_id`="+Login.userid.getText()+")";
+			ResultSet rs5 = stmt3.executeQuery(sql5);
+			while(rs5.next()){
+				user_rating.setText(rs5.getInt("AVG(`Rating`)")+"");
+			}
+			
 			con.close();
-			// user_name.setText();
 		} catch (Exception e) {
 			System.out.println(e);
 		}

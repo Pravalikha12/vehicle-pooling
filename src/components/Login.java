@@ -758,19 +758,29 @@ public class Login extends JFrame {
 					Class.forName("com.mysql.jdbc.Driver");
 					Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vehiclepoolingdb", "root",
 							"");
-					Statement stmt = con.createStatement();
-					String sql = "Select User_id,U_passwd from user where User_id='" + userid.getText()
-							+ "' and U_passwd='" + pwdPass.getText().toString() + "'";
+					Statement stmt = con.createStatement();		
+					String sql1 = "Select Admin_id,A_password from admin where Admin_id=" + userid.getText()
+					+ " and A_password='" + pwdPass.getText().toString() + "'";
+					ResultSet rs1 = stmt.executeQuery(sql1);
+					if (rs1.next()) {
+						JOptionPane.showMessageDialog(null, "Welcome, Admin");
+						Admin admin = new Admin();
+						setVisible(false);
+						admin.setVisible(true);
+					} else {
+					String sql = "Select User_id,U_passwd from user where User_id=" + userid.getText()
+						+ " and U_passwd='" + pwdPass.getText().toString() + "'";	
 					ResultSet rs = stmt.executeQuery(sql);
 					if (rs.next()) {
-						JOptionPane.showMessageDialog(null, "Login successful!");
+						JOptionPane.showMessageDialog(null, "Login successful! Welcome to Namma Ride");
 						Layout layout = new Layout();
 						layout.setVisible(true);
 						setVisible(false);
 					}
-
 					else
 						JOptionPane.showMessageDialog(null, "Incorrect Username or Password!");
+					}
+					
 					con.close();
 
 				} catch (Exception e) {
@@ -778,29 +788,10 @@ public class Login extends JFrame {
 				}
 			}
 
-		});
-		contentPane.add(panel);
+		});contentPane.add(panel);
 
-		JPanel panel_3 = new JPanel();
-		panel_3.setFont(new Font("Tahoma", Font.PLAIN, 50));
-		panel_3.setBounds(new Rectangle(0, 13, 424, 63));
-		panel_3.setBackground(Color.BLACK);
-		panel_3.setForeground(Color.RED);
-		panel_3.setBounds(0, 0, 2000, 77);
-		panel.add(panel_3);
-		panel_3.setLayout(null);
+	JPanel panel_3 = new JPanel();panel_3.setFont(new Font("Tahoma",Font.PLAIN,50));panel_3.setBounds(new Rectangle(0,13,424,63));panel_3.setBackground(Color.BLACK);panel_3.setForeground(Color.RED);panel_3.setBounds(0,0,2000,77);panel.add(panel_3);panel_3.setLayout(null);
 
-		JLabel lblNammaRide = new JLabel("Namma Ride");
-		lblNammaRide.setVerticalTextPosition(SwingConstants.TOP);
-		lblNammaRide.setVerticalAlignment(SwingConstants.TOP);
-		lblNammaRide.setBorder(new LineBorder(new Color(0, 0, 0), 4));
-		lblNammaRide.setIconTextGap(8);
-		lblNammaRide.setHorizontalTextPosition(SwingConstants.LEFT);
-		lblNammaRide.setHorizontalAlignment(SwingConstants.LEFT);
-		lblNammaRide.setFont(new Font("Monotype Corsiva", Font.BOLD | Font.ITALIC, 60));
-		lblNammaRide.setBackground(new Color(240, 240, 240));
-		lblNammaRide.setForeground(Color.RED);
-		lblNammaRide.setBounds(0, 0, 424, 77);
-		panel_3.add(lblNammaRide);
-	}
-}
+	JLabel lblNammaRide = new JLabel(
+			"Namma Ride");lblNammaRide.setVerticalTextPosition(SwingConstants.TOP);lblNammaRide.setVerticalAlignment(SwingConstants.TOP);lblNammaRide.setBorder(new LineBorder(new Color(0,0,0),4));lblNammaRide.setIconTextGap(8);lblNammaRide.setHorizontalTextPosition(SwingConstants.LEFT);lblNammaRide.setHorizontalAlignment(SwingConstants.LEFT);lblNammaRide.setFont(new Font("Monotype Corsiva",Font.BOLD|Font.ITALIC,60));lblNammaRide.setBackground(new Color(240,240,240));lblNammaRide.setForeground(Color.RED);lblNammaRide.setBounds(0,0,424,77);panel_3.add(lblNammaRide);
+}}
