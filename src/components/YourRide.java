@@ -27,6 +27,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.border.LineBorder;
+import javax.swing.ImageIcon;
 //import com.bbn.openmap.MapBean;
 //import com.bbn.openmap.layer.shape.ShapeLayer;
 
@@ -58,27 +59,29 @@ public class YourRide extends JPanel {
 		
 		JLabel lblTripId = new JLabel("Trip Id");
 		lblTripId.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
-		lblTripId.setBounds(551, 105, 89, 30);
+		lblTripId.setBounds(530, 105, 89, 30);
 		add(lblTripId);
 		lblTripId.setForeground(new Color(0, 0, 128));
 		lblTripId.setBackground(Color.YELLOW);
 		
 		JLabel lblTripStatus = new JLabel("Trip Status");
 		lblTripStatus.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
-		lblTripStatus.setBounds(48, 105, 114, 22);
+		lblTripStatus.setBounds(35, 105, 114, 30);
 		add(lblTripStatus);
 		lblTripStatus.setForeground(new Color(0, 0, 128));
 		lblTripStatus.setBackground(new Color(30, 144, 255));
 		
 		trip_id = new JTextField();
-		trip_id.setBounds(661, 88, 234, 60);
+		trip_id.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		trip_id.setBounds(634, 91, 286, 60);
 		add(trip_id);
 		trip_id.setForeground(Color.BLACK);
 		trip_id.setBackground(Color.WHITE);
 		trip_id.setColumns(10);
 		
 		trip_status = new JTextField();
-		trip_status.setBounds(185, 88, 234, 60);
+		trip_status.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		trip_status.setBounds(185, 88, 286, 60);
 		add(trip_status);
 		trip_status.setForeground(Color.BLACK);
 		trip_status.setBackground(Color.WHITE);

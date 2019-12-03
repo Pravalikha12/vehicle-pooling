@@ -70,10 +70,10 @@ public class Layout extends JFrame {
 		Feedback feedback = new Feedback();
 
 		JPanel panel = new JPanel();
-		panel.setBackground(new Color(0, 0, 139));
+		panel.setBackground(new Color(30, 144, 255));
 		System.out.println("before internal frame");
 
-		panel.setBounds(0, 78, 336, 900);
+		panel.setBounds(0, 78, 325, 709);
 		contentPane.add(panel);
 		panel.setLayout(null);
 
@@ -104,7 +104,7 @@ public class Layout extends JFrame {
 			north.removeMouseMotionListener(actions[i]);
 
 		JButton btnFeedback = new JButton("Feedback");
-		btnFeedback.setBorder(new LineBorder(new Color(30, 144, 255), 5));
+		btnFeedback.setBorder(new LineBorder(new Color(0, 0, 128), 4));
 		btnFeedback.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
 		btnFeedback.setBackground(Color.WHITE);
 		btnFeedback.setForeground(new Color(0, 0, 139));
@@ -122,7 +122,7 @@ public class Layout extends JFrame {
 		});
 
 		JButton btnOfferARide = new JButton("Offer A Ride");
-		btnOfferARide.setBorder(new LineBorder(new Color(30, 144, 255), 5));
+		btnOfferARide.setBorder(new LineBorder(new Color(0, 0, 128), 4));
 		btnOfferARide.setForeground(new Color(0, 0, 139));
 		btnOfferARide.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
 		btnOfferARide.setBackground(Color.WHITE);
@@ -140,7 +140,7 @@ public class Layout extends JFrame {
 		});
 
 		JButton btnJoinARide = new JButton("Join A Ride");
-		btnJoinARide.setBorder(new LineBorder(new Color(30, 144, 255), 5));
+		btnJoinARide.setBorder(new LineBorder(new Color(0, 0, 128), 4));
 		btnJoinARide.setForeground(new Color(0, 0, 139));
 		btnJoinARide.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
 		btnJoinARide.setBackground(Color.WHITE);
@@ -161,7 +161,7 @@ public class Layout extends JFrame {
 		});
 
 		JButton btnViewProfile = new JButton("View Profile");
-		btnViewProfile.setBorder(new LineBorder(new Color(30, 144, 255), 5));
+		btnViewProfile.setBorder(new LineBorder(new Color(0, 0, 128), 4));
 		btnViewProfile.setForeground(new Color(0, 0, 139));
 		btnViewProfile.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
 		btnViewProfile.setBackground(Color.WHITE);
@@ -179,7 +179,7 @@ public class Layout extends JFrame {
 		});
 
 		JButton btnDashboard = new JButton("Dashboard");
-		btnDashboard.setBorder(new LineBorder(new Color(30, 144, 255), 5));
+		btnDashboard.setBorder(new LineBorder(new Color(0, 0, 128), 4));
 		btnDashboard.setForeground(new Color(0, 0, 139));
 		btnDashboard.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
 		btnDashboard.setBackground(Color.WHITE);
@@ -197,7 +197,7 @@ public class Layout extends JFrame {
 		});
 
 		JButton btnYourRide = new JButton("Your Ride");
-		btnYourRide.setBorder(new LineBorder(new Color(30, 144, 255), 5));
+		btnYourRide.setBorder(new LineBorder(new Color(0, 0, 128), 4));
 		btnYourRide.setForeground(new Color(0, 0, 139));
 		btnYourRide.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
 		btnYourRide.setBackground(Color.WHITE);
@@ -214,7 +214,7 @@ public class Layout extends JFrame {
 		JLabel label_1 = new JLabel("All Rights Reserved 2019 \u00A9 ");
 		label_1.setHorizontalTextPosition(SwingConstants.CENTER);
 		label_1.setHorizontalAlignment(SwingConstants.CENTER);
-		label_1.setForeground(Color.WHITE);
+		label_1.setForeground(new Color(0, 0, 128));
 		label_1.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		label_1.setBackground(Color.BLACK);
 		label_1.setBounds(0, 540, 336, 30);
@@ -233,7 +233,7 @@ public class Layout extends JFrame {
 		JPanel panel_1 = new JPanel();
 		panel_1.setLayout(null);
 		panel_1.setForeground(new Color(30, 144, 255));
-		panel_1.setBackground(new Color(30, 144, 255));
+		panel_1.setBackground(new Color(0, 0, 128));
 		panel_1.setBounds(0, 0, 1368, 78);
 		contentPane.add(panel_1);
 
@@ -243,11 +243,11 @@ public class Layout extends JFrame {
 		label.setIconTextGap(8);
 		label.setHorizontalTextPosition(SwingConstants.LEFT);
 		label.setHorizontalAlignment(SwingConstants.LEFT);
-		label.setForeground(new Color(0, 0, 128));
+		label.setForeground(new Color(30, 144, 255));
 		label.setFont(new Font("Monotype Corsiva", Font.BOLD | Font.ITALIC, 60));
 		label.setBorder(new LineBorder(new Color(30, 144, 255), 0));
 		label.setBackground(SystemColor.menu);
-		label.setBounds(0, 0, 424, 78);
+		label.setBounds(500, 0, 318, 78);
 		panel_1.add(label);
 
 	}

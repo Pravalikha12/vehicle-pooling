@@ -76,7 +76,7 @@ public class ViewProfile extends JPanel {
 		lblAge.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
 		lblAge.setForeground(new Color(0, 0, 128));
 		lblAge.setBackground(Color.WHITE);
-		lblAge.setBounds(460, 256, 100, 30);
+		lblAge.setBounds(470, 256, 100, 30);
 		add(lblAge);
 
 		user_name = new JTextField();
@@ -130,7 +130,7 @@ public class ViewProfile extends JPanel {
 		user_id = new JTextField();
 		user_id.setForeground(Color.BLACK);
 		user_id.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		user_id.setBounds(625, 27, 220, 44);
+		user_id.setBounds(650, 27, 220, 44);
 		add(user_id);
 		user_id.setColumns(10);
 
@@ -138,7 +138,7 @@ public class ViewProfile extends JPanel {
 		lblUserId.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
 		lblUserId.setBackground(Color.BLACK);
 		lblUserId.setForeground(new Color(0, 0, 128));
-		lblUserId.setBounds(460, 37, 100, 20);
+		lblUserId.setBounds(470, 37, 100, 20);
 		add(lblUserId);
 
 		user_name.setEditable(false);
@@ -150,37 +150,42 @@ public class ViewProfile extends JPanel {
 		user_id.setEditable(false);
 
 		JLabel lblRating = new JLabel("Rating");
-		lblRating.setFont(new Font("Comic Sans MS", Font.PLAIN, 20));
-		lblRating.setForeground(Color.WHITE);
+		lblRating.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
+		lblRating.setForeground(new Color(0, 0, 128));
 		lblRating.setBackground(Color.BLACK);
-		lblRating.setBounds(462, 110, 70, 34);
+		lblRating.setBounds(470, 110, 70, 34);
 		add(lblRating);
 
 		user_rating = new JTextField();
+		user_rating.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		user_rating.setEditable(false);
 		user_rating.setColumns(10);
-		user_rating.setBounds(625, 100, 220, 44);
+		user_rating.setBounds(650, 100, 220, 44);
 		add(user_rating);
 
 		JLabel lblRole = new JLabel("Role");
-		lblRole.setForeground(Color.WHITE);
-		lblRole.setFont(new Font("Comic Sans MS", Font.PLAIN, 20));
+		lblRole.setForeground(new Color(0, 0, 128));
+		lblRole.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
 		lblRole.setBackground(Color.BLACK);
-		lblRole.setBounds(460, 183, 100, 20);
+		lblRole.setBounds(470, 183, 100, 20);
 		add(lblRole);
 
-		JLabel lblVehiclesOwned = new JLabel("Vehicles Owned");
-		lblVehiclesOwned.setForeground(Color.WHITE);
-		lblVehiclesOwned.setFont(new Font("Comic Sans MS", Font.PLAIN, 20));
+		JLabel lblVehiclesOwned = new JLabel("Vehicles \nOwned");
+		lblVehiclesOwned.setForeground(new Color(0, 0, 128));
+		lblVehiclesOwned.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
 		lblVehiclesOwned.setBackground(Color.BLACK);
-		lblVehiclesOwned.setBounds(460, 329, 150, 20);
+		lblVehiclesOwned.setBounds(470, 335, 158, 44);
 		add(lblVehiclesOwned);
 
 		JTextArea vehicles_owned = new JTextArea();
-		vehicles_owned.setBounds(625, 319, 220, 44);
+		vehicles_owned.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		vehicles_owned.setForeground(Color.BLACK);
+		vehicles_owned.setBounds(650, 319, 220, 105);
 		add(vehicles_owned);
 
 		JButton btnAddVehicle = new JButton("Add Vehicle");
+		btnAddVehicle.setBorder(new LineBorder(new Color(0, 0, 128), 4));
+		btnAddVehicle.setForeground(new Color(0, 0, 128));
 		btnAddVehicle.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -196,25 +201,30 @@ public class ViewProfile extends JPanel {
 		});
 
 		btnAddVehicle.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
-		btnAddVehicle.setBounds(625, 392, 220, 50);
+		btnAddVehicle.setBounds(650, 447, 220, 50);
 		add(btnAddVehicle);
 
 		user_age = new JTextField();
+		user_age.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		user_age.setEditable(false);
 		user_age.setColumns(10);
-		user_age.setBounds(625, 246, 220, 44);
+		user_age.setBounds(650, 246, 220, 44);
 		add(user_age);
 
 		user_role = new JTextField();
+		user_role.setForeground(Color.BLACK);
+		user_role.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		user_role.setEditable(false);
 		user_role.setColumns(10);
-		user_role.setBounds(625, 173, 220, 44);
+		user_role.setBounds(650, 173, 220, 44);
 		add(user_role);
 
 		vehicles_owned.setEditable(false);
 
 		JTextArea user_address = new JTextArea();
-		user_address.setBounds(160, 392, 220, 50);
+		user_address.setForeground(Color.BLACK);
+		user_address.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		user_address.setBounds(160, 392, 220, 105);
 		add(user_address);
 		user_address.setEditable(false);
 

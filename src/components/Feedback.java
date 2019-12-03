@@ -41,7 +41,7 @@ public class Feedback extends JPanel {
 		trip_id.setBackground(Color.WHITE);
 		trip_id.setBounds(478, 39, 417, 60);
 		add(trip_id);
-		trip_id.setFont(new Font("Comic Sans MS", Font.PLAIN, 20));
+		trip_id.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		trip_id.setColumns(10);
 
 		suggestion = new JTextField();
@@ -49,7 +49,7 @@ public class Feedback extends JPanel {
 		suggestion.setBackground(Color.WHITE);
 		suggestion.setBounds(478, 349, 417, 73);
 		add(suggestion);
-		suggestion.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
+		suggestion.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		suggestion.setColumns(10);
 
 		JLabel lblTripid = new JLabel("Trip-id");
@@ -81,7 +81,7 @@ public class Feedback extends JPanel {
 		review.setBackground(Color.WHITE);
 		review.setBounds(478, 236, 417, 73);
 		add(review);
-		review.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
+		review.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		review.setColumns(10);
 
 		JButton btnSubmit = new JButton("Submit");
@@ -136,7 +136,7 @@ public class Feedback extends JPanel {
 		add(rating);
 		//rating.setModel(new DefaultComboBoxModel(
 		//		new String[] { "5 (Excellent)", "4 (Very Good)", "3 (Good)", "2 (Satisfactory)", "1 (Poor)" }));
-		rating.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
+		rating.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		rating.setMaximumRowCount(5);
 
 		JButton btnClear = new JButton("Clear");
@@ -154,6 +154,12 @@ public class Feedback extends JPanel {
 			}
 		});
 		btnClear.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
+		
+		JLabel lblExcellent = new JLabel("(5 - Excellent, 1 - Poor)");
+		lblExcellent.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
+		lblExcellent.setForeground(new Color(0, 0, 128));
+		lblExcellent.setBounds(180, 175, 240, 25);
+		add(lblExcellent);
 
 	}
 }

@@ -85,17 +85,19 @@ public class OfferARide extends JPanel {
 		setLayout(null);
 
 		offerDest = new JTextField();
+		offerDest.setForeground(Color.BLACK);
 		offerDest.setBounds(194, 84, 251, 45);
 		add(offerDest);
 		offerDest.setBackground(Color.WHITE);
-		offerDest.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
+		offerDest.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		offerDest.setColumns(10);
 
 		offerSource = new JTextField();
+		offerSource.setForeground(Color.BLACK);
 		offerSource.setBounds(194, 158, 251, 45);
 		add(offerSource);
 		offerSource.setBackground(Color.WHITE);
-		offerSource.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
+		offerSource.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		offerSource.setColumns(10);
 
 		JButton btnOffer = new JButton("Offer");
@@ -110,17 +112,20 @@ public class OfferARide extends JPanel {
 		JButton btnViewRequests = new JButton("View Requests");
 		btnViewRequests.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
 		btnViewRequests.setBorder(new LineBorder(new Color(0, 0, 128), 4));
-		btnViewRequests.setBounds(529, 214, 353, 45);
+		btnViewRequests.setBounds(529, 214, 366, 45);
 		add(btnViewRequests);
 		btnViewRequests.setBackground(Color.WHITE);
 		btnViewRequests.setForeground(new Color(0, 0, 128));
 
 		dateChooser = new JDateChooser();
+		dateChooser.setForeground(Color.BLACK);
 		dateChooser.setBounds(194, 223, 251, 45);
 		add(dateChooser);
 		dateChooser.setBackground(Color.WHITE);
 
 		spinner = new JSpinner();
+		spinner.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		spinner.setForeground(Color.BLACK);
 		spinner.setBounds(194, 297, 251, 45);
 		add(spinner);
 		spinner.setBackground(Color.WHITE);
@@ -129,7 +134,9 @@ public class OfferARide extends JPanel {
 		spinner.setEditor(editor);
 
 		status_user_id = new JTextField();
-		status_user_id.setBounds(731, 158, 151, 41);
+		status_user_id.setForeground(Color.BLACK);
+		status_user_id.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		status_user_id.setBounds(694, 158, 201, 41);
 		add(status_user_id);
 		status_user_id.setBackground(Color.WHITE);
 		status_user_id.setColumns(10);
@@ -167,7 +174,9 @@ public class OfferARide extends JPanel {
 		btnEndTheRide.setBackground(Color.WHITE);
 
 		status_trip_id = new JTextField();
-		status_trip_id.setBounds(731, 84, 151, 40);
+		status_trip_id.setForeground(Color.BLACK);
+		status_trip_id.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		status_trip_id.setBounds(694, 84, 201, 40);
 		add(status_trip_id);
 		status_trip_id.setBackground(Color.WHITE);
 		status_trip_id.setColumns(10);
@@ -233,12 +242,17 @@ public class OfferARide extends JPanel {
 		add(txtUserId);
 
 		searchUserId = new JTextField();
-		searchUserId.setBounds(529, 444, 151, 40);
+		searchUserId.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		searchUserId.setForeground(Color.BLACK);
+		searchUserId.setBounds(529, 444, 180, 40);
 		add(searchUserId);
 		searchUserId.setColumns(10);
 
-		JButton btnViewUserProfile = new JButton("View User Profile");
-		btnViewUserProfile.setBounds(712, 444, 170, 40);
+		JButton btnViewUserProfile = new JButton("View Profile");
+		btnViewUserProfile.setBorder(new LineBorder(new Color(0, 0, 128), 4));
+		btnViewUserProfile.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
+		btnViewUserProfile.setForeground(new Color(0, 0, 128));
+		btnViewUserProfile.setBounds(725, 444, 170, 40);
 		add(btnViewUserProfile);
 
 		btnViewUserProfile.addActionListener(new ActionListener() {
@@ -252,10 +266,10 @@ public class OfferARide extends JPanel {
 		});
 
 		JLabel lblToViewOther = new JLabel("Enter User Id to view their profile");
-		lblToViewOther.setFont(new Font("Comic Sans MS", Font.BOLD | Font.ITALIC, 16));
+		lblToViewOther.setFont(new Font("Comic Sans MS", Font.BOLD | Font.ITALIC, 18));
 		lblToViewOther.setHorizontalAlignment(SwingConstants.CENTER);
 		lblToViewOther.setBackground(Color.WHITE);
-		lblToViewOther.setForeground(Color.WHITE);
+		lblToViewOther.setForeground(new Color(0, 0, 128));
 		lblToViewOther.setBounds(43, 434, 402, 55);
 		add(lblToViewOther);
 

@@ -89,7 +89,7 @@ public class Admin extends JFrame {
 				
 		});
 		btnNewButton.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
-		btnNewButton.setBounds(632, 208, 250, 50);
+		btnNewButton.setBounds(632, 161, 250, 50);
 		panel.add(btnNewButton);
 		
 		JButton btnViewRides = new JButton("View Rides");
@@ -101,7 +101,7 @@ public class Admin extends JFrame {
 			}
 		});
 		btnViewRides.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
-		btnViewRides.setBounds(987, 208, 250, 50);
+		btnViewRides.setBounds(632, 236, 250, 50);
 		panel.add(btnViewRides);
 		
 		JButton btnDeleteUsers = new JButton("Delete Users");
@@ -126,7 +126,7 @@ public class Admin extends JFrame {
 			}
 		});
 		btnDeleteUsers.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
-		btnDeleteUsers.setBounds(987, 458, 250, 50);
+		btnDeleteUsers.setBounds(980, 161, 250, 50);
 		panel.add(btnDeleteUsers);
 		
 		JButton btnViewFeedback = new JButton("View Feedbacks");
@@ -139,7 +139,7 @@ public class Admin extends JFrame {
 			}
 		});
 		btnViewFeedback.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
-		btnViewFeedback.setBounds(632, 342, 250, 50);
+		btnViewFeedback.setBounds(632, 311, 250, 50);
 		panel.add(btnViewFeedback);
 		
 		JLabel lblAdmin = new JLabel("");
@@ -159,13 +159,15 @@ public class Admin extends JFrame {
 		txtWelcomeToNamma.setColumns(10);
 		
 		feedback_user_id = new JTextField();
-		feedback_user_id.setBounds(805, 477, 116, 20);
+		feedback_user_id.setBounds(1009, 311, 176, 40);
 		panel.add(feedback_user_id);
 		feedback_user_id.setColumns(10);
 		
 		JLabel lblEnterTheUser = new JLabel("Enter the User Id");
-		lblEnterTheUser.setBackground(Color.BLUE);
-		lblEnterTheUser.setBounds(645, 474, 116, 20);
+		lblEnterTheUser.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
+		lblEnterTheUser.setForeground(new Color(0, 0, 128));
+		lblEnterTheUser.setBackground(new Color(0, 0, 128));
+		lblEnterTheUser.setBounds(1015, 252, 170, 20);
 		panel.add(lblEnterTheUser);
 	}
 	public void showUserData() {

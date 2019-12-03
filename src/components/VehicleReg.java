@@ -88,6 +88,7 @@ public class VehicleReg extends JFrame {
 		panel.add(label);
 
 		vnumber = new JTextField();
+		vnumber.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		vnumber.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusLost(FocusEvent arg0) {
@@ -110,6 +111,7 @@ public class VehicleReg extends JFrame {
 		panel.add(label_1);
 
 		vmodel = new JTextField();
+		vmodel.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		vmodel.setColumns(10);
 		vmodel.setBounds(318, 250, 230, 50);
 		panel.add(vmodel);
@@ -121,6 +123,7 @@ public class VehicleReg extends JFrame {
 		panel.add(label_2);
 
 		vcapacity = new JTextField();
+		vcapacity.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		vcapacity.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusLost(FocusEvent arg0) {
@@ -141,6 +144,7 @@ public class VehicleReg extends JFrame {
 		panel.add(label_3);
 
 		licenseno = new JTextField();
+		licenseno.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		licenseno.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusLost(FocusEvent arg0) {
@@ -162,6 +166,7 @@ public class VehicleReg extends JFrame {
 		panel.add(label_4);
 
 		vcolor = new JTextField();
+		vcolor.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		vcolor.setColumns(10);
 		vcolor.setBounds(902, 250, 230, 50);
 		panel.add(vcolor);
@@ -287,7 +292,8 @@ public class VehicleReg extends JFrame {
 		panel.add(btnClear);
 
 		rdbtn2 = new JRadioButton("2 Wheeler");
-		rdbtn2.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
+		rdbtn2.setForeground(Color.BLACK);
+		rdbtn2.setFont(new Font("Tahoma", Font.BOLD, 14));
 		rdbtn2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
@@ -301,7 +307,7 @@ public class VehicleReg extends JFrame {
 		panel.add(rdbtn2);
 
 		rdbtn4 = new JRadioButton("4 Wheeler");
-		rdbtn4.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
+		rdbtn4.setFont(new Font("Tahoma", Font.BOLD, 14));
 		rdbtn4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 

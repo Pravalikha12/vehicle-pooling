@@ -131,17 +131,17 @@ public class Login extends JFrame {
 
 		JPanel panel = new JPanel();
 		panel.setFont(new Font("Monotype Corsiva", Font.ITALIC, 11));
-		panel.setBackground(new Color(0, 0, 128));
+		panel.setBackground(new Color(30, 144, 255));
 		panel.setBounds(0, 0, 2000, 952);
 
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		tabbedPane.setBounds(340, 90, 920, 540);
+		tabbedPane.setBounds(340, 79, 920, 551);
 
 		JPanel panel_5 = new JPanel();
 		panel_5.setBounds(new Rectangle(0, 78, 558, 900));
 		panel_5.setBackground(new Color(30, 144, 255));
-		panel_5.setBounds(10, 90, 312, 540);
+		panel_5.setBounds(0, 79, 340, 551);
 		panel.setLayout(null);
 		panel.add(panel_5);
 		panel_5.setLayout(null);
@@ -152,13 +152,14 @@ public class Login extends JFrame {
 		txtpnThisAVehicle.setFont(new Font("Comic Sans MS", Font.ITALIC, 18));
 		txtpnThisAVehicle.setText(
 				"ABOUT US\r\nThis a vehicle pooling service\r\nprovided by Namma Ride\r\nFamous in the BMSCE campus\r\nused by every faculty\r\nloved by all students\r\nRegister now for this amazing service");
-		txtpnThisAVehicle.setBounds(15, 29, 280, 233);
+		txtpnThisAVehicle.setBounds(15, 29, 297, 233);
 		txtpnThisAVehicle.setEditable(false);
 		panel_5.add(txtpnThisAVehicle);
 
 		JLabel lblLogo = new JLabel("");
-		lblLogo.setIcon(new ImageIcon("C:\\Users\\Pranathi\\Desktop\\vehicle-pooling\\image\\bms.png"));
-		lblLogo.setBounds(58, 299, 200, 202);
+		lblLogo.setBorder(new LineBorder(new Color(0, 0, 128), 4));
+		lblLogo.setIcon(new ImageIcon("C:\\Users\\Prateeka\\Desktop\\vehicle-pooling\\image\\bms.png"));
+		lblLogo.setBounds(58, 312, 208, 189);
 		panel_5.add(lblLogo);
 		panel.add(tabbedPane);
 
@@ -241,6 +242,31 @@ public class Login extends JFrame {
 		address.setBounds(662, 25, 215, 35);
 		address.setColumns(10);
 
+		
+		
+		dob = new JTextField();
+		dob.addFocusListener(new FocusAdapter() {
+
+			@Override
+			public void focusLost(FocusEvent arg0) {
+				if ((!(dob.getText().matches(redob)))) {
+					errordob.setText("Invalid date of birth");
+				}
+			}
+		});
+		dob.setBackground(new Color(255, 255, 255));
+		dob.setText("yyyy-mm-dd");
+		dob.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
+		dob.setColumns(10);
+		dob.setBounds(171, 400, 215, 35);
+		panel_1.add(dob);
+		
+		
+		
+		
+		
+		
+		
 		city = new JTextField();
 		city.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		city.setBounds(662, 70, 215, 35);
@@ -586,22 +612,7 @@ public class Login extends JFrame {
 		btnViewAreacode.setBounds(448, 201, 154, 30);
 		panel_1.add(btnViewAreacode);
 
-		dob = new JTextField();
-		dob.addFocusListener(new FocusAdapter() {
-
-			@Override
-			public void focusLost(FocusEvent arg0) {
-				if ((!(dob.getText().matches(redob)))) {
-					errordob.setText("Invalid date of birth");
-				}
-			}
-		});
-		dob.setBackground(new Color(255, 255, 255));
-		dob.setText("yyyy-mm-dd");
-		dob.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
-		dob.setColumns(10);
-		dob.setBounds(171, 400, 215, 35);
-		panel_1.add(dob);
+		
 
 		JButton btnClear = new JButton("Reset");
 		btnClear.setForeground(new Color(0, 0, 128));
@@ -738,23 +749,25 @@ public class Login extends JFrame {
 		lblUserId.setFont(new Font("Comic Sans MS", Font.BOLD, 25));
 		lblUserId.setForeground(new Color(0, 0, 128));
 		lblUserId.setBackground(new Color(30, 144, 255));
-		lblUserId.setBounds(406, 71, 137, 30);
+		lblUserId.setBounds(440, 100, 137, 30);
 
 		JLabel lblPassword = new JLabel("Password");
 		lblPassword.setFont(new Font("Comic Sans MS", Font.BOLD, 25));
 		lblPassword.setBackground(new Color(30, 144, 255));
 		lblPassword.setOpaque(true);
 		lblPassword.setForeground(new Color(0, 0, 128));
-		lblPassword.setBounds(406, 236, 137, 26);
+		lblPassword.setBounds(440, 260, 137, 26);
 		userid = new JTextField();
-		userid.setFont(new Font("Comic Sans MS", Font.PLAIN, 25));
-		userid.setBounds(228, 117, 459, 85);
+		userid.setForeground(Color.BLACK);
+		userid.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		userid.setBounds(280, 150, 459, 85);
 
 		userid.setColumns(10);
 
 		pwdPass = new JPasswordField();
-		pwdPass.setFont(new Font("Comic Sans MS", Font.PLAIN, 25));
-		pwdPass.setBounds(228, 278, 459, 85);
+		pwdPass.setForeground(Color.BLACK);
+		pwdPass.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		pwdPass.setBounds(280, 310, 459, 85);
 
 		panel_2.setLayout(null);
 		panel_2.add(pwdPass);
@@ -764,8 +777,18 @@ public class Login extends JFrame {
 		btnLogin.setBorder(new LineBorder(new Color(0, 0, 128), 3));
 		btnLogin.setForeground(new Color(0, 0, 139));
 		btnLogin.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
-		btnLogin.setBounds(303, 407, 300, 50);
+		btnLogin.setBounds(360, 430, 300, 50);
 		panel_2.add(btnLogin);
+		
+		JLabel label = new JLabel("");
+		label.setIcon(new ImageIcon("C:\\Users\\Prateeka\\Desktop\\vehicle-pooling\\image\\usericon.png"));
+		label.setBounds(136, 150, 89, 85);
+		panel_2.add(label);
+		
+		JLabel label_1 = new JLabel("");
+		label_1.setIcon(new ImageIcon("C:\\Users\\Prateeka\\Desktop\\vehicle-pooling\\image\\pwdicon.png"));
+		label_1.setBounds(136, 310, 96, 85);
+		panel_2.add(label_1);
 
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -809,7 +832,7 @@ public class Login extends JFrame {
 		panel_3.setBorder(null);
 		panel_3.setFont(new Font("Tahoma", Font.PLAIN, 50));
 		panel_3.setBounds(new Rectangle(0, 13, 424, 63));
-		panel_3.setBackground(new Color(30, 144, 255));
+		panel_3.setBackground(new Color(0, 0, 128));
 		panel_3.setForeground(new Color(30, 144, 255));
 		panel_3.setBounds(0, 0, 2000, 77);
 		panel.add(panel_3);
@@ -824,8 +847,8 @@ public class Login extends JFrame {
 		lblNammaRide.setHorizontalAlignment(SwingConstants.LEFT);
 		lblNammaRide.setFont(new Font("Monotype Corsiva", Font.BOLD | Font.ITALIC, 60));
 		lblNammaRide.setBackground(new Color(240, 240, 240));
-		lblNammaRide.setForeground(new Color(0, 0, 128));
-		lblNammaRide.setBounds(0, 0, 424, 77);
+		lblNammaRide.setForeground(new Color(30, 144, 255));
+		lblNammaRide.setBounds(500, 0, 318, 78);
 		panel_3.add(lblNammaRide);
 	}
 }

@@ -58,10 +58,11 @@ public class JoinARide extends JPanel {
 		setLayout(null);
 		
 		JoinDest = new JTextField();
+		JoinDest.setForeground(Color.BLACK);
 		JoinDest.setBounds(124, 80, 291, 39);
 		add(JoinDest);
 		JoinDest.setBackground(Color.WHITE);
-		JoinDest.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
+		JoinDest.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		JoinDest.setColumns(10);
 		
 		JLabel lblTo = new JLabel("To");
@@ -77,10 +78,11 @@ public class JoinARide extends JPanel {
 		lblFrom.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
 		
 		JoinSource = new JTextField();
+		JoinSource.setForeground(Color.BLACK);
 		JoinSource.setBounds(124, 157, 291, 39);
 		add(JoinSource);
 		JoinSource.setBackground(Color.WHITE);
-		JoinSource.setFont(new Font("Comic Sans MS", Font.PLAIN, 14));
+		JoinSource.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		JoinSource.setColumns(10);
 		
 		JButton btnViewAvailableRides = new JButton("View Available Rides");
@@ -92,13 +94,15 @@ public class JoinARide extends JPanel {
 		btnViewAvailableRides.setBackground(Color.WHITE);
 		
 		JLabel lblEnterTheTrip = new JLabel("Enter the trip Id ");
-		lblEnterTheTrip.setBounds(461, 79, 193, 39);
+		lblEnterTheTrip.setBounds(497, 80, 193, 39);
 		add(lblEnterTheTrip);
 		lblEnterTheTrip.setFont(new Font("Comic Sans MS", Font.BOLD, 20));
 		lblEnterTheTrip.setHorizontalAlignment(SwingConstants.CENTER);
 		lblEnterTheTrip.setForeground(new Color(0, 0, 128));
 		
 		requestTripId = new JTextField();
+		requestTripId.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		requestTripId.setForeground(Color.BLACK);
 		requestTripId.setBounds(705, 79, 190, 44);
 		add(requestTripId);
 		requestTripId.setBackground(Color.WHITE);
@@ -108,7 +112,7 @@ public class JoinARide extends JPanel {
 		btnRequest.setBorder(new LineBorder(new Color(0, 0, 128), 4));
 		btnRequest.setForeground(new Color(0, 0, 128));
 		btnRequest.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
-		btnRequest.setBounds(510, 156, 143, 44);
+		btnRequest.setBounds(505, 154, 143, 44);
 		add(btnRequest);
 		btnRequest.setBackground(Color.WHITE);
 		
@@ -124,16 +128,21 @@ public class JoinARide extends JPanel {
 		btnCancelRide.setBorder(new LineBorder(new Color(0, 0, 128), 4));
 		btnCancelRide.setForeground(new Color(0, 0, 128));
 		btnCancelRide.setFont(new Font("Comic Sans MS", Font.BOLD, 18));
-		btnCancelRide.setBounds(699, 157, 149, 43);
+		btnCancelRide.setBounds(746, 155, 149, 43);
 		add(btnCancelRide);
 		btnCancelRide.setBackground(Color.WHITE);
 		
 		searchUserId = new JTextField();
+		searchUserId.setForeground(Color.BLACK);
+		searchUserId.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		searchUserId.setColumns(10);
-		searchUserId.setBounds(51, 364, 151, 40);
+		searchUserId.setBounds(36, 364, 193, 40);
 		add(searchUserId);
 		
 		JButton btnViewUserProfile = new JButton("View User Profile");
+		btnViewUserProfile.setBorder(new LineBorder(new Color(0, 0, 128), 4));
+		btnViewUserProfile.setForeground(new Color(0, 0, 128));
+		btnViewUserProfile.setFont(new Font("Comic Sans MS", Font.BOLD, 16));
 		btnViewUserProfile.setBounds(283, 364, 170, 40);
 		add(btnViewUserProfile);
 		
@@ -146,13 +155,14 @@ public class JoinARide extends JPanel {
 				}
 			}});
 		
-		JLabel label = new JLabel("To view other users profile of the \r\nrequested users enter their profile");
-		label.setHorizontalAlignment(SwingConstants.CENTER);
-		label.setForeground(Color.WHITE);
-		label.setFont(new Font("Comic Sans MS", Font.BOLD | Font.ITALIC, 16));
-		label.setBackground(Color.WHITE);
-		label.setBounds(51, 298, 402, 55);
-		add(label);
+		JLabel lblToViewProfile = new JLabel("To view profile of the \r\nrequested users enter their userid"
+				+ "");
+		lblToViewProfile.setHorizontalAlignment(SwingConstants.CENTER);
+		lblToViewProfile.setForeground(new Color(0, 0, 128));
+		lblToViewProfile.setFont(new Font("Comic Sans MS", Font.BOLD | Font.ITALIC, 18));
+		lblToViewProfile.setBackground(Color.WHITE);
+		lblToViewProfile.setBounds(15, 304, 522, 55);
+		add(lblToViewProfile);
 		
 		
 		
