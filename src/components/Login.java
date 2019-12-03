@@ -76,7 +76,7 @@ public class Login extends JFrame {
 	private int acode;
 	private BigInteger p1;
 	private BigInteger p2;
-	private String reemail = "^[A-Z a-z 0-9]+@bmsce.ac.in";
+	private String reemail = "^[A-Z a-z 0-9]+.[A-Z a-z 0-9]+@bmsce.ac.in";
 	private String redob = "(19|20)\\d\\d[-/](0[1-9]|1[012])[-/]([1-9]|[12][0-9]|3[01])";
 
 	private JLabel errordob;
@@ -774,8 +774,8 @@ public class Login extends JFrame {
 					Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vehiclepoolingdb", "root",
 							"");
 					Statement stmt = con.createStatement();
-					String sql1 = "Select Admin_id,A_password from admin where Admin_id=" + userid.getText()
-							+ " and A_password='" + pwdPass.getText().toString() + "'";
+					String sql1 = "Select Admin_id,A_passwd from admin where Admin_id=" + userid.getText()
+							+ " and A_passwd='" + pwdPass.getText().toString() + "'";
 					ResultSet rs1 = stmt.executeQuery(sql1);
 					if (rs1.next()) {
 						JOptionPane.showMessageDialog(null, "Welcome, Admin");
