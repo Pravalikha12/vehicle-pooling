@@ -457,15 +457,13 @@ public class OfferARide extends JPanel {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vehiclepoolingdb", "root", "");
 			String sql = "select * from rides_in where R_user_id<>" + Login.userid.getText();
-			System.out.println("error here");
 			String sql1 = "select * from trip where Trip_id = " + status_trip_id.getText();
-			System.out.println("Or here");
+			System.out.println(status_trip_id.getText());
+			System.out.println(status_user_id.getText());
 			PreparedStatement ps = con.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
-			System.out.println("or here");
 			PreparedStatement ps1 = con.prepareStatement(sql1);
 			ResultSet rs1 = ps1.executeQuery();
-			System.out.println("or here");
 
 			int i = 0;
 			while (rs1.next()) {
@@ -479,7 +477,7 @@ public class OfferARide extends JPanel {
 				statusTripId = rs.getInt("R_trip_id");
 				statusStatus = rs.getInt("Status");
 				statusRSeats = rs.getInt("R_seats");
-				if (statusTripId == Integer.parseInt(status_user_id.getText()) && statusStatus == 1)
+				if (statusTripId == Integer.parseInt(status_trip_id.getText()) && statusStatus == 1)
 					model.addRow(new Object[] { statusUserId, statusTripId, "Requested", statusRSeats });
 				i++;
 			}

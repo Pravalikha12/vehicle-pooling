@@ -123,7 +123,7 @@ public class Login extends JFrame {
 	public Login() {
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(200, 150, 1328, 831);
+		setBounds(0, 0, 1380, 750);
 
 		contentPane = new JPanel();
 		setContentPane(contentPane);
@@ -361,6 +361,27 @@ public class Login extends JFrame {
 		});
 		passwd.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		passwd.setBounds(662, 400, 215, 36);
+		
+		dob = new JTextField();
+		dob.addFocusListener(new FocusAdapter() {
+
+			@Override
+			public void focusLost(FocusEvent arg0) {
+				if ((!(dob.getText().matches(redob)))) {
+					errordob.setText("Invalid date of birth");
+				}
+			}
+		});
+		dob.setBackground(new Color(255, 255, 255));
+		dob.setText("yyyy-mm-dd");
+		dob.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
+		dob.setColumns(10);
+		dob.setBounds(171, 400, 215, 35);
+		panel_1.add(dob);
+		
+		
+		
+		
 		panel_1.setLayout(null);
 		// panel_1.add(btnRegister);
 		panel_1.add(FirstName);
@@ -512,6 +533,33 @@ public class Login extends JFrame {
 						pincode = 560001;
 					}
 
+					
+					if (fname.getText().isEmpty()) {
+						errorname.setText("Please enter name ");
+					}
+					if (lname.getText().isEmpty()) {
+						errorname.setText("Please enter name ");
+					}
+					if (email.getText().isEmpty()) {
+						erroremail.setText("Please enter email  Eg. smitha@bmsce.ac.in ");
+					}
+					if (phone1.getText().isEmpty()) {
+						errorphone.setText("Please enter mobile number  Eg. 9547389741");
+					}
+					if (dob.getText().isEmpty()) {
+						errordob.setText("Please enter date of birth  Eg. 1989-02-13");
+					}
+					if (areacode.getText().isEmpty()) {
+						errorcode.setText("Areacode cannot be empty");
+					}
+					if (address.getText().isEmpty() || city.getText().isEmpty() || state.getText().isEmpty()) {
+						erroraddress.setText("Please enter address  Eg. Jayanagar B'lore K'taka");
+					}
+					if (passwd.getText().isEmpty()) {
+						errorpasswd.setText("Password cannot be empty");
+					}
+
+					
 					uid = (int) (System.currentTimeMillis() & 0xfffffff);
 
 					Class.forName("com.mysql.jdbc.Driver");
@@ -549,31 +597,7 @@ public class Login extends JFrame {
 				} catch (Exception e) {
 					System.out.println(e);
 				}
-				if (fname.getText().isEmpty()) {
-					errorname.setText("Please enter name ");
-				}
-				if (lname.getText().isEmpty()) {
-					errorname.setText("Please enter name ");
-				}
-				if (email.getText().isEmpty()) {
-					erroremail.setText("Please enter email  Eg. smitha@bmsce.ac.in ");
-				}
-				if (phone1.getText().isEmpty()) {
-					errorphone.setText("Please enter mobile number  Eg. 9547389741");
-				}
-				if (dob.getText().isEmpty()) {
-					errordob.setText("Please enter date of birth  Eg. 1989-02-13");
-				}
-				if (areacode.getText().isEmpty()) {
-					errorcode.setText("Areacode cannot be empty");
-				}
-				if (address.getText().isEmpty() || city.getText().isEmpty() || state.getText().isEmpty()) {
-					erroraddress.setText("Please enter address  Eg. Jayanagar B'lore K'taka");
-				}
-				if (passwd.getText().isEmpty()) {
-					errorpasswd.setText("Password cannot be empty");
-				}
-			}
+							}
 		});
 
 		btnSignUp.setFont(new Font("Comic Sans MS", Font.BOLD, 20));

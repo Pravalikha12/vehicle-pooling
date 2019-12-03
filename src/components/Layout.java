@@ -11,6 +11,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.border.EmptyBorder;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JInternalFrame;
 import java.awt.Color;
@@ -22,6 +24,8 @@ import javax.swing.border.LineBorder;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
 import java.awt.Font;
+import java.awt.Image;
+
 import javax.swing.SwingConstants;
 
 @SuppressWarnings("serial")
@@ -51,7 +55,7 @@ public class Layout extends JFrame {
 	 */
 	public Layout() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1000, 600);
+		setBounds(0, 0, 1380, 750);
 
 		contentPane = new JDesktopPane();
 		contentPane.setBackground(new Color(30, 144, 255));
@@ -249,6 +253,19 @@ public class Layout extends JFrame {
 		label.setBackground(SystemColor.menu);
 		label.setBounds(500, 0, 318, 78);
 		panel_1.add(label);
+
+		JButton btnLogout = new JButton("");
+		btnLogout.setBorder(new LineBorder(new Color(0, 0, 255), 3));
+		btnLogout.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				setVisible(false);
+				Login newFrame = new Login();
+				newFrame.setVisible(true);
+			}
+		});
+		btnLogout.setBounds(1176, 11, 49, 56);
+		panel_1.add(btnLogout);
+		btnLogout.setIcon(new ImageIcon("C:\\Users\\pranathi\\Desktop\\vehicle-pooling\\image\\logoutIcon.jpg"));
 
 	}
 }

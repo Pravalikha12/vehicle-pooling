@@ -145,7 +145,6 @@ public class ViewProfile extends JPanel {
 		user_email.setEditable(false);
 		user_phoneno.setEditable(false);
 		user_gender.setEditable(false);
-		// user_phoneno.setEditable(false);
 		user_dob.setEditable(false);
 		user_id.setEditable(false);
 
@@ -229,17 +228,20 @@ public class ViewProfile extends JPanel {
 		user_address.setEditable(false);
 
 		try {
+			int areacode = 0;
+			int userid = 0;
+			String phone = "";
+			int i = 0;
+
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vehiclepoolingdb", "root", "");
 			Statement stmt = con.createStatement();
 			Statement stmt1 = con.createStatement();
+			Statement stmt2 = con.createStatement();
 			Statement stmt3 = con.createStatement();
+
 			String sql = "Select * from user where User_id=" + Login.userid.getText();
-			String sql1 = "Select U_phone_no from user_contact where User_id=" + Login.userid.getText();
 			ResultSet rs = stmt.executeQuery(sql);
-			ResultSet rs1 = stmt1.executeQuery(sql1);
-			int areacode = 0;
-			int userid = 0;
 			while (rs.next()) {
 				user_name.setText(rs.getString("Fname") + " " + rs.getString("Mname") + " " + rs.getString("Lname"));
 				user_email.setText(rs.getString("Email_id"));
@@ -251,50 +253,57 @@ public class ViewProfile extends JPanel {
 				userid = rs.getInt("User_id");
 			}
 
+			String sql1 = "Select U_phone_no from user_contact where User_id=" + Login.userid.getText();
+			ResultSet rs1 = stmt1.executeQuery(sql1);
+			while (rs1.next()) {
+				if (i == 0) {
+					phone = phone + "  " + rs1.getLong("U_phone_no");
+					i++;
+				} else {
+					phone = phone + " , " + rs1.getLong("U_phone_no");
+				}
+			}
+			user_phoneno.setText(phone);
+
 			String sql3 = "Select * from user_address where Areacode=" + areacode;
 			ResultSet rs3 = stmt3.executeQuery(sql3);
 			while (rs3.next()) {
 				user_address.setText(rs3.getInt("Areacode") + " , " + rs3.getInt("Pincode") + " , "
 						+ rs3.getString("Address") + " , " + rs3.getString("City") + " , " + rs3.getString("State"));
 			}
-			String phone = "";
-			int i = 0;
-			while (rs1.next()) {
-				if (i == 0) {
-					phone = phone + "  " + rs1.getInt("U_phone_no");
-					i++;
-				} else {
-					phone = phone + " , " + rs1.getInt("U_phone_no");
-				}
-			}
-
-			user_phoneno.setText(phone);
 
 			String sql2 = "Select Age from user_age where Bdate='" + user_dob.getText() + "'";
-			ResultSet rs2 = stmt.executeQuery(sql2);
+			ResultSet rs2 = stmt2.executeQuery(sql2);
 			while (rs2.next()) {
-				user_age.setText("" + rs2.getInt("Age"));
+				user_age.setText(rs2.getInt("Age") + "");
+				System.out.println(user_age.getText());
 			}
 
 			String sql4 = "Select * from vehicle_lic where V_user_id=" + userid;
 			ResultSet rs4 = stmt3.executeQuery(sql4);
 			String v = "";
+			int y = 0;
 			while (rs4.next()) {
 				Statement stmt4 = con.createStatement();
 				String sql5 = "Select Type from vehicle_desc where Vehicle_id=" + rs4.getInt("Vehicle_id");
 				ResultSet rs5 = stmt4.executeQuery(sql5);
 				while (rs5.next()) {
-					v = v + " , " + rs5.getString("Type");
+					if (y == 0) {
+						v = rs5.getString("Type");
+						y = 1;
+					} else
+						v = v + " , " + rs5.getString("Type");
 				}
 			}
 			vehicles_owned.setText(v);
 
-			String sql5 = "SELECT AVG(`Rating`) FROM `feedback`,`rides_in` where `feedback`.`F_trip_id`=`rides_in`.`R_trip_id` AND `Status`=0 AND `F_user_id`<>"
+			Statement stmt6 = con.createStatement();
+			String sql6 = "SELECT AVG(`Rating`) FROM `feedback`,`rides_in` where `feedback`.`F_trip_id`=`rides_in`.`R_trip_id` AND `Status`=0 AND `F_user_id`<>"
 					+ Login.userid.getText() + " AND `F_trip_id` IN (SELECT `R_trip_id` WHERE `R_user_id`="
 					+ Login.userid.getText() + ")";
-			ResultSet rs5 = stmt3.executeQuery(sql5);
-			while (rs5.next()) {
-				user_rating.setText(rs5.getInt("AVG(`Rating`)") + "");
+			ResultSet rs6 = stmt6.executeQuery(sql6);
+			while (rs6.next()) {
+				user_rating.setText(rs6.getInt("AVG(`Rating`)") + "");
 			}
 
 			con.close();
