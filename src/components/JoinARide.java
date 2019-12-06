@@ -45,7 +45,7 @@ public class JoinARide extends JPanel {
 	private JFrame frame;
 	private JFrame frame20;
 	private static JTable table;
-	private String[] columnNames = {"Trip_id","Trip_time","Trip_date", "Source", "Destination", "Available_seats"};
+	private String[] columnNames = {"Rider's Id","Rider's Name","Trip_id","Trip_time","Trip_date", "Source", "Destination"};
 	LocalDate today = LocalDate.now();
 	public static JTextField requestTripId;
 	private JTextField searchUserId;
@@ -179,7 +179,7 @@ public class JoinARide extends JPanel {
 						capacity = rsForSeats.getInt("R_seats");
 						capacity++;
 					}
-					String sqlForCancel = "Update rides_in set Status = 3 where R_trip_id="+requestTripId.getText()+" and R_user_id="+Login.userid.getText();
+					String sqlForCancel = "Update rides_in set Status = 'Rejected' where R_trip_id="+requestTripId.getText()+" and R_user_id="+Login.userid.getText();
 					int rsForCancel = stmt.executeUpdate(sqlForCancel);
 					if(rsForCancel>0){
 						JOptionPane.showMessageDialog(null, "Ride Cancelled.");
@@ -196,23 +196,37 @@ public class JoinARide extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				try {
 					String status_name="";
+					int rider_id = 0;
+					String rider_name = "";
 					Class.forName("com.mysql.jdbc.Driver");
 					Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vehiclepoolingdb", "root","");
 					Statement stmt = con.createStatement();
-					
 					String sqlForStatus = "Select Status from rides_in where R_trip_id="+requestTripId.getText()+" and R_user_id = "+Login.userid.getText();
 					ResultSet rsForStatus = stmt.executeQuery(sqlForStatus);
+					String sql2 = "select R_user_id,Fname,Mname,Lname from rides_in,user where rides_in.R_user_id=user.User_id and Status = 'Offered' and R_trip_id="
+							+requestTripId.getText();
+					PreparedStatement stmt2 = con.prepareStatement(sql2);
+					ResultSet rs2 = stmt2.executeQuery();
+					while(rs2.next()){
+						rider_id = rs2.getInt("R_user_id");
+						rider_name = rs2.getString("Fname")+" "+rs2.getString("Mname")+" "+rs2.getString("Lname");
+					}
 					while(rsForStatus.next()){
-						int status = rsForStatus.getInt("Status");
-						if(status==2){
-							JOptionPane.showMessageDialog(null, "Ride Accepted with Trip Id "+requestTripId.getText());
+						String status = rsForStatus.getString("Status");
+						if(status.equals("Accepted")){
+							JOptionPane.showMessageDialog(null, "Ride Accepted by "+rider_name);
 						} 
-						else if(status==1){
-							JOptionPane.showMessageDialog(null, "Ride is not accepted yet. Please wait or reject this ride and select another one");
+						else if(status.equals("Requested")){
+							JOptionPane.showMessageDialog(null, "Ride is not accepted yet by "+rider_name+". Please wait or reject this ride and select another one");
 						}
-						else if(status==3){
-							JOptionPane.showMessageDialog(null, "Your ride has been rejected. Please find another ride.");
-
+						else if(status.equals("Rejected")){
+							JOptionPane.showMessageDialog(null, "Your ride has been rejected by "+rider_name+". Please find another ride.");
+						}
+						else if(status.equals("Started")){
+							JOptionPane.showMessageDialog(null, "Your ride has been is going. Enjoy the ride!");							
+						}
+						else if(status.equals("Ended")){
+							JOptionPane.showMessageDialog(null, "Your ride finished. Hope you enjoyed!");
 						}
 					}
 				} catch(Exception e){
@@ -232,10 +246,9 @@ public class JoinARide extends JPanel {
 					ResultSet rsForSeats = stmt.executeQuery(sqlForSeats);
 					while(rsForSeats.next()){
 						capacity = rsForSeats.getInt("R_seats");
-						System.out.println(capacity);
 					}
 					String sqlForRequest = "Insert into rides_in(R_user_id,R_trip_id,Status,R_seats) values("+Login.userid.getText()+","+requestTripId.getText()
-					+","+1+","+capacity+")";
+					+",'Requested',"+capacity+")";
 					int rsForRequest = stmt.executeUpdate(sqlForRequest);
 					if(rsForRequest>0){
 						JOptionPane.showMessageDialog(null, "Ride requested. Click the check status button to know if accepted.");
@@ -286,6 +299,8 @@ public class JoinARide extends JPanel {
 		String destination = "";
 		String se = JoinSource.getText();
 		String dest = JoinDest.getText();
+		int rider_id = 0;
+		String rider_name = "";
 		int avail_seats = 0;
 		try
 		{ 
@@ -301,7 +316,7 @@ public class JoinARide extends JPanel {
 				source = rs.getString("Source");
 				destination = rs.getString("Destination"); 
 				trip_id = rs.getInt("Trip_id");
-				avail_seats = rs.getInt("Avail_seats");
+//				avail_seats = rs.getInt("Avail_seats");
 				DateTimeFormatter formatter = DateTimeFormatter.ofPattern("uuuu-MM-dd");
 				formatter = formatter.withLocale(Locale.ENGLISH); 
 				LocalDate date = LocalDate.parse(t_date, formatter);
@@ -316,9 +331,24 @@ public class JoinARide extends JPanel {
 
 				LocalDateTime date1 = LocalDateTime.parse(trip_time, formatter2);
 				LocalDateTime date2 = LocalDateTime.parse(curr_time, formatter2);
-				
+				String sql1 = "select distinct R_seats from rides_in where R_trip_id="+trip_id;
+				PreparedStatement stmt = con.prepareStatement(sql1);
+				ResultSet rs1 = stmt.executeQuery();
+				while(rs1.next()){
+					avail_seats = rs1.getInt("R_seats");
+				}
+				String sql2 = "select R_user_id,Fname,Mname,Lname from rides_in,user where rides_in.R_user_id=user.User_id and Status = 'Offered' and R_trip_id="+trip_id;
+				PreparedStatement stmt2 = con.prepareStatement(sql2);
+				ResultSet rs2 = stmt2.executeQuery();
+				while(rs2.next()){
+					rider_id = rs2.getInt("R_user_id");
+					rider_name = rs2.getString("Fname")+" "+rs2.getString("Mname")+" "+rs2.getString("Lname");
+				}
 				if(date1.isAfter(date2)&&avail_seats>0)
-					model.addRow(new Object[]{trip_id,t_time,t_date,source,destination,avail_seats});
+					model.addRow(new Object[]{rider_id,rider_name,trip_id,t_time,t_date,source,destination});
+				else if(avail_seats<1)
+					JOptionPane.showMessageDialog(null, "No Available Rides, please try again after sometime","Error",
+							JOptionPane.ERROR_MESSAGE);		
 				i++; 
 			}
 			if(i <1){
@@ -339,7 +369,7 @@ public class JoinARide extends JPanel {
 		}
 		frame.getContentPane().add(scroll);
 		frame.setVisible(true);
-		frame.setSize(800,400);
+		frame.setBounds(400,550,800,100);
 	}
 	
 	
@@ -393,6 +423,6 @@ public class JoinARide extends JPanel {
 		}
 		frame.getContentPane().add(scroll);
 		frame.setVisible(true);
-		frame.setSize(800, 400);
+		frame.setBounds(400,550,800,100);
 	}
 }

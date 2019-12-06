@@ -77,7 +77,7 @@ public class Login extends JFrame {
 	private BigInteger p1;
 	private BigInteger p2;
 	private String reemail = "^[A-Z a-z 0-9]+.[A-Z a-z 0-9]+@bmsce.ac.in";
-	private String redob = "(19|20)\\d\\d[-/](0[1-9]|1[012])[-/]([1-9]|[12][0-9]|3[01])";
+	private String redob = "(19|20)\\d\\d[-/](0[1-9]|1[012])[-/]((0[1-9])|[12][0-9]|3[01])";
 
 	private JLabel errordob;
 	private JLabel errorphone;
@@ -158,7 +158,7 @@ public class Login extends JFrame {
 
 		JLabel lblLogo = new JLabel("");
 		lblLogo.setBorder(new LineBorder(new Color(0, 0, 128), 4));
-		lblLogo.setIcon(new ImageIcon("C:\\Users\\Prateeka\\Desktop\\vehicle-pooling\\image\\bms.png"));
+		lblLogo.setIcon(new ImageIcon("C:\\Users\\pranathi\\Desktop\\vehicle-pooling\\image\\bms.png"));
 		lblLogo.setBounds(58, 312, 208, 189);
 		panel_5.add(lblLogo);
 		panel.add(tabbedPane);
@@ -244,29 +244,14 @@ public class Login extends JFrame {
 
 		
 		
-		dob = new JTextField();
-		dob.addFocusListener(new FocusAdapter() {
-
-			@Override
-			public void focusLost(FocusEvent arg0) {
-				if ((!(dob.getText().matches(redob)))) {
-					errordob.setText("Invalid date of birth");
-				}
-			}
-		});
-		dob.setBackground(new Color(255, 255, 255));
-		dob.setText("yyyy-mm-dd");
-		dob.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
-		dob.setColumns(10);
-		dob.setBounds(171, 400, 215, 35);
-		panel_1.add(dob);
-		
-		
-		
-		
-		
-		
-		
+//		dob = new JTextField();
+//		dob.setBackground(new Color(255, 255, 255));
+//		dob.setText("yyyy-mm-dd");
+//		dob.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
+//		dob.setColumns(10);
+//		dob.setBounds(171, 400, 215, 35);
+//		panel_1.add(dob);
+			
 		city = new JTextField();
 		city.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
 		city.setBounds(662, 70, 215, 35);
@@ -363,6 +348,13 @@ public class Login extends JFrame {
 		passwd.setBounds(662, 400, 215, 36);
 		
 		dob = new JTextField();
+		dob.setBackground(new Color(255, 255, 255));
+		dob.setText("yyyy-mm-dd");
+		dob.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
+		dob.setColumns(10);
+		dob.setBounds(171, 400, 215, 35);
+		panel_1.add(dob);
+		
 		dob.addFocusListener(new FocusAdapter() {
 
 			@Override
@@ -372,12 +364,6 @@ public class Login extends JFrame {
 				}
 			}
 		});
-		dob.setBackground(new Color(255, 255, 255));
-		dob.setText("yyyy-mm-dd");
-		dob.setFont(new Font("Comic Sans MS", Font.PLAIN, 16));
-		dob.setColumns(10);
-		dob.setBounds(171, 400, 215, 35);
-		panel_1.add(dob);
 		
 		
 		

@@ -280,12 +280,19 @@ public class OfferARide extends JPanel {
 					Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vehiclepoolingdb", "root",
 							"");
 					Statement stmt = con.createStatement();
-					String sqlForStatus = "Update rides_in set Status=5 where R_trip_id=" + status_trip_id.getText();
+					String sqlForStatus = "Update rides_in set Status='EndedByRider' where R_trip_id=" + status_trip_id.getText() 
+						+" and R_user_id="+Login.userid.getText();
 					int rsForStatus = stmt.executeUpdate(sqlForStatus);
 					if (rsForStatus > 0) {
 						JOptionPane.showMessageDialog(null,
 								"Ride with trip_id=" + status_trip_id.getText() + " has ended.");
 					}
+					String sqlForStatus1 = "Update rides_in set Status='Ended' where R_trip_id=" + status_trip_id.getText() 
+					+" and R_user_id<>"+Login.userid.getText();
+				int rsForStatus1 = stmt.executeUpdate(sqlForStatus1);
+				if(rsForStatus1>0){
+					
+				}
 				} catch (Exception e) {
 					System.out.println(e);
 				}
@@ -298,7 +305,7 @@ public class OfferARide extends JPanel {
 					Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vehiclepoolingdb", "root",
 							"");
 					Statement stmt = con.createStatement();
-					String sqlForStatus = "Update rides_in set Status=4 where R_trip_id=" + status_trip_id.getText();
+					String sqlForStatus = "Update rides_in set Status='Started' where R_trip_id=" + status_trip_id.getText();
 					int rsForStatus = stmt.executeUpdate(sqlForStatus);
 					if (rsForStatus > 0) {
 						JOptionPane.showMessageDialog(null, "Ride is ongoing with trip_id=" + status_trip_id.getText());
@@ -324,7 +331,7 @@ public class OfferARide extends JPanel {
 						status_name = rsForName.getString("Fname") + " " + rsForName.getString("Mname") + " "
 								+ rsForName.getString("Lname");
 					}
-					String sqlForReject = "Update rides_in set Status=3 where R_trip_id=" + status_trip_id.getText()
+					String sqlForReject = "Update rides_in set Status='Rejected' where R_trip_id=" + status_trip_id.getText()
 							+ " and R_user_id=" + status_user_id.getText();
 					int rsForReject = stmt.executeUpdate(sqlForReject);
 					if (rsForReject > 0) {
@@ -350,11 +357,16 @@ public class OfferARide extends JPanel {
 						status_name = rsForName.getString("Fname") + " " + rsForName.getString("Mname") + " "
 								+ rsForName.getString("Lname");
 					}
-					String sqlForAccept = "Update rides_in set Status=2 where R_trip_id=" + status_trip_id.getText()
+					String sqlForAccept = "Update rides_in set Status='Accepted' where R_trip_id=" + status_trip_id.getText()
 							+ " and R_user_id=" + status_user_id.getText();
 					int rsForAccept = stmt.executeUpdate(sqlForAccept);
 					if (rsForAccept > 0) {
 						JOptionPane.showMessageDialog(null, "Ride Accepted for user " + status_name);
+						String sqlForAvailSeats = "Update rides_in set R_seats=R_seats-1 where R_trip_id=" + status_trip_id.getText();
+						int rsForAvailSeats = stmt.executeUpdate(sqlForAvailSeats);
+						if(rsForAvailSeats>0){
+							
+						}
 					}
 				} catch (Exception e) {
 					System.out.println(e);
@@ -379,43 +391,48 @@ public class OfferARide extends JPanel {
 
 					int capacity = 0;
 					int temp = 0;
-					date = fmt.format(dateChooser.getDate());
-					String time = ((DateEditor) editor).getFormat().format(spinner.getValue()).toString();
-					Class.forName("com.mysql.jdbc.Driver");
-					Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vehiclepoolingdb", "root",
-							"");
-					Statement stmt = con.createStatement();
-					String sqlForVid = "Select Vehicle_id from vehicle_lic where V_user_id = '" + Login.userid.getText()
-							+ "'";
-					ResultSet rsForVid = stmt.executeQuery(sqlForVid);
-					while (rsForVid.next()) {
-						temp = rsForVid.getInt("Vehicle_id");
+					if(offerSource.getText().equals("BMSCE")||offerDest.getText().equals("BMSCE")){
+						date = fmt.format(dateChooser.getDate());
+						String time = ((DateEditor) editor).getFormat().format(spinner.getValue()).toString();
+						Class.forName("com.mysql.jdbc.Driver");
+						Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vehiclepoolingdb", "root",
+								"");
+						Statement stmt = con.createStatement();
+						String sqlForVid = "Select Vehicle_id from vehicle_lic where V_user_id = '" + Login.userid.getText()
+								+ "'";
+						ResultSet rsForVid = stmt.executeQuery(sqlForVid);
+						while (rsForVid.next()) {
+							temp = rsForVid.getInt("Vehicle_id");
+						}
+	
+						String sqlForSeats = "Select Capacity from vehicle_desc where Vehicle_id = '" + temp + "'";
+						ResultSet rsForSeats = stmt.executeQuery(sqlForSeats);
+						while (rsForSeats.next()) {
+							capacity = rsForSeats.getInt("Capacity");
+						}
+						capacity -= 1;
+						String sql = "Insert into trip(Trip_id,T_date,T_time,Source,Destination,Avail_seats)" + "values("
+								+ (tid) + ",'" + date + "','" + time + "','" + offerSource.getText() + "','"
+								+ offerDest.getText() + "'," + capacity + ")";
+						int rs = stmt.executeUpdate(sql);
+						if (rs > 0)
+							JOptionPane.showMessageDialog(null, "Ride offered! Your trip id is " + tid);
+						else
+							JOptionPane.showMessageDialog(null, "Failed to offer a ride");
+	
+						String sqlForRidesIn = "Insert into rides_in(R_user_id,R_trip_id,Status,R_seats) values("
+								+ Login.userid.getText() + "," + tid + ",'Offered'," + (capacity) + ")";
+						int rsForRidesIn = stmt.executeUpdate(sqlForRidesIn);
+						if (rsForRidesIn > 0) {
+							System.out.println("Done");
+						}
+						con.close();
 					}
-
-					String sqlForSeats = "Select Capacity from vehicle_desc where Vehicle_id = '" + temp + "'";
-					ResultSet rsForSeats = stmt.executeQuery(sqlForSeats);
-					while (rsForSeats.next()) {
-						capacity = rsForSeats.getInt("Capacity");
+					else{
+						JOptionPane.showMessageDialog(null, "Either one of locations must be 'BMSCE'");
 					}
-					capacity -= 1;
-					String sql = "Insert into trip(Trip_id,T_date,T_time,Source,Destination,Avail_seats)" + "values("
-							+ (tid) + ",'" + date + "','" + time + "','" + offerSource.getText() + "','"
-							+ offerDest.getText() + "'," + capacity + ")";
-					int rs = stmt.executeUpdate(sql);
-					if (rs > 0)
-						JOptionPane.showMessageDialog(null, "Ride offered! Your trip id is " + tid);
-					else
-						JOptionPane.showMessageDialog(null, "Failed to offer a ride");
-
-					String sqlForRidesIn = "Insert into rides_in(R_user_id,R_trip_id,Status,R_seats) values("
-							+ Login.userid.getText() + "," + tid + "," + 0 + "," + (capacity) + ")";
-					int rsForRidesIn = stmt.executeUpdate(sqlForRidesIn);
-					if (rsForRidesIn > 0) {
-						System.out.println("Done");
-					}
-					// con.close();
-
-				} catch (Exception e) {
+				} 
+				catch (Exception e) {
 					System.out.println(e);
 				}
 			}
@@ -437,7 +454,7 @@ public class OfferARide extends JPanel {
 		scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
 		int statusUserId = 0;
 		int statusTripId = 0;
-		int statusStatus = 0;
+		String statusStatus = "";
 		int statusRSeats = 0;
 
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("uuuu-MM-dd");
@@ -458,8 +475,6 @@ public class OfferARide extends JPanel {
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vehiclepoolingdb", "root", "");
 			String sql = "select * from rides_in where R_user_id<>" + Login.userid.getText();
 			String sql1 = "select * from trip where Trip_id = " + status_trip_id.getText();
-			System.out.println(status_trip_id.getText());
-			System.out.println(status_user_id.getText());
 			PreparedStatement ps = con.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 			PreparedStatement ps1 = con.prepareStatement(sql1);
@@ -475,9 +490,9 @@ public class OfferARide extends JPanel {
 			while (rs.next() && date2.isAfter(date1)) {
 				statusUserId = rs.getInt("R_user_id");
 				statusTripId = rs.getInt("R_trip_id");
-				statusStatus = rs.getInt("Status");
+				statusStatus = rs.getString("Status");
 				statusRSeats = rs.getInt("R_seats");
-				if (statusTripId == Integer.parseInt(status_trip_id.getText()) && statusStatus == 1)
+				if (statusTripId == Integer.parseInt(status_trip_id.getText()) && statusStatus.equals("Requested"))
 					model.addRow(new Object[] { statusUserId, statusTripId, "Requested", statusRSeats });
 				i++;
 			}
@@ -495,7 +510,7 @@ public class OfferARide extends JPanel {
 		}
 		frame.getContentPane().add(scroll);
 		frame.setVisible(true);
-		frame.setSize(800, 400);
+		frame.setBounds(400,550,800,100);
 	}
 
 	public void showTableUsers() {
@@ -548,6 +563,6 @@ public class OfferARide extends JPanel {
 		}
 		frame9.getContentPane().add(scroll);
 		frame9.setVisible(true);
-		frame9.setSize(800, 400);
+		frame9.setBounds(400,550,800,100);
 	}
 }

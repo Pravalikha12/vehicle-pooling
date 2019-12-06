@@ -250,7 +250,7 @@ public class ViewProfile extends JPanel {
 				user_dob.setText(rs.getString("Bdate"));
 				user_id.setText("" + rs.getInt("User_id"));
 				areacode = rs.getInt("Areacode");
-				userid = rs.getInt("User_id");
+//				userid = rs.getInt("User_id");
 			}
 
 			String sql1 = "Select U_phone_no from user_contact where User_id=" + Login.userid.getText();
@@ -279,7 +279,7 @@ public class ViewProfile extends JPanel {
 				System.out.println(user_age.getText());
 			}
 
-			String sql4 = "Select * from vehicle_lic where V_user_id=" + userid;
+			String sql4 = "Select * from vehicle_lic where V_user_id=" +Login.userid.getText();
 			ResultSet rs4 = stmt3.executeQuery(sql4);
 			String v = "";
 			int y = 0;
@@ -298,12 +298,12 @@ public class ViewProfile extends JPanel {
 			vehicles_owned.setText(v);
 
 			Statement stmt6 = con.createStatement();
-			String sql6 = "SELECT AVG(`Rating`) FROM `feedback`,`rides_in` where `feedback`.`F_trip_id`=`rides_in`.`R_trip_id` AND `Status`=0 AND `F_user_id`<>"
+			String sql6 = "SELECT AVG(`Rating`) FROM `feedback`,`rides_in` where `feedback`.`F_trip_id`=`rides_in`.`R_trip_id` AND `Status`='EndedByRider' AND `F_user_id`<>"
 					+ Login.userid.getText() + " AND `F_trip_id` IN (SELECT `R_trip_id` WHERE `R_user_id`="
 					+ Login.userid.getText() + ")";
 			ResultSet rs6 = stmt6.executeQuery(sql6);
 			while (rs6.next()) {
-				user_rating.setText(rs6.getInt("AVG(`Rating`)") + "");
+				user_rating.setText(rs6.getDouble("AVG(`Rating`)") + "");
 			}
 
 			con.close();

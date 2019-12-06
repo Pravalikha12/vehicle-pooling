@@ -93,26 +93,23 @@ public class Dashboard extends JPanel {
 		String source = "";
 		String dest = "";
 		String otherUsers = "";
-		scroll.setBounds(20, 200, 900, 200);
+		scroll.setBounds(20, 200, 900, 100);
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vehiclepoolingdb", "root", "");
 			Statement stmt1 = con.createStatement();
-			String sql1 = "Select * from rides_in where R_user_id = " + Login.userid.getText() + " and Status=5";
+			String sql1 = "Select * from rides_in where R_user_id = " + Login.userid.getText() + " and (Status='Ended' or Status='EndedByRider')";
 			ResultSet rs1 = stmt1.executeQuery(sql1);
 			while (rs1.next()) {
-				System.out.println("rs1: " + rs1.getInt("R_user_id"));
 				Statement stmt2 = con.createStatement();
 				String sql3 = "Select R_user_id from rides_in where R_trip_id = " + rs1.getInt("R_trip_id");
 				ResultSet rs3 = stmt2.executeQuery(sql3);
 				while (rs3.next()) {
-					System.out.println("rs3: " + rs3.getInt("R_user_id"));
 					Statement stmt3 = con.createStatement();
 					String sql4 = "Select Fname,Mname,Lname from user where User_id = " + rs3.getInt("R_user_id");
 					ResultSet rs4 = stmt3.executeQuery(sql4);
 
 					while (rs4.next()) {
-						System.out.println("rs4: " + rs4.getString("Fname"));
 						otherUsers = otherUsers + " , " + rs4.getString("Fname") + " " + rs4.getString("Mname") + " "
 								+ rs4.getString("Lname");
 					}

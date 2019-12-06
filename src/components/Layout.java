@@ -4,14 +4,12 @@ import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseMotionListener;
-
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.border.EmptyBorder;
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JInternalFrame;
@@ -24,8 +22,6 @@ import javax.swing.border.LineBorder;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
 import java.awt.Font;
-import java.awt.Image;
-
 import javax.swing.SwingConstants;
 
 @SuppressWarnings("serial")
@@ -75,8 +71,6 @@ public class Layout extends JFrame {
 
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(30, 144, 255));
-		System.out.println("before internal frame");
-
 		panel.setBounds(0, 78, 325, 709);
 		contentPane.add(panel);
 		panel.setLayout(null);
@@ -91,8 +85,6 @@ public class Layout extends JFrame {
 		internalFrame.setResizable(false);
 
 		contentPane.add(internalFrame);
-		System.out.println("after internal frame");
-
 		JScrollPane JViewProfile = new JScrollPane(viewProfile, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,
 				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		internalFrame.setContentPane(JViewProfile);
@@ -263,9 +255,9 @@ public class Layout extends JFrame {
 				newFrame.setVisible(true);
 			}
 		});
-		btnLogout.setBounds(1176, 11, 49, 56);
+		btnLogout.setBounds(1254, 11, 49, 56);
 		panel_1.add(btnLogout);
 		btnLogout.setIcon(new ImageIcon("C:\\Users\\pranathi\\Desktop\\vehicle-pooling\\image\\logoutIcon.jpg"));
-
+		
 	}
 }

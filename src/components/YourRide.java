@@ -97,6 +97,13 @@ public class YourRide extends JPanel {
 		txtYourOngoingRide.setHorizontalAlignment(SwingConstants.CENTER);
 		txtYourOngoingRide.setText("Your Ongoing Ride");
 		txtYourOngoingRide.setColumns(10);
+		
+		JButton btnOtherUsersIn = new JButton("Other Users In the Ride");
+		btnOtherUsersIn.setBorder(new LineBorder(new Color(0, 0, 128), 4));
+		btnOtherUsersIn.setForeground(new Color(0, 0, 128));
+		btnOtherUsersIn.setBackground(Color.WHITE);
+		btnOtherUsersIn.setBounds(36, 330, 500, 42);
+		add(btnOtherUsersIn);
 		btnCheckStatus.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try{
@@ -113,9 +120,9 @@ public class YourRide extends JPanel {
 					ResultSet rs1 = stmt.executeQuery(sql1);
 					while(rs1.next()){
 						trip_id.setText(""+rs1.getInt("R_trip_id"));
-						if(rs1.getInt("Status")==4)
+						if(rs1.getString("Status").equals("Started"))
 						trip_status.setText("The ride is on going");
-						else if (rs1.getInt("Status")==5){
+						else if (rs1.getString("Status").equals("Ended")||rs1.getString("Status").equals("EndedByRider")){
 							trip_status.setText("The ride has ended");
 						}
 					}
@@ -155,44 +162,40 @@ public class YourRide extends JPanel {
 		
 	}
 	public void showTableData(){
-		String columnNames[] = {"User Id","Trip Id","Status","Remaining seats"};
-//		frame = new JFrame("All Requests");
-//		frame.getContentPane().setLayout(new BorderLayout()); 
+		String columnNames[] = {"User Id","First Name","Middle Name","Last Name"};
 		DefaultTableModel model = new DefaultTableModel();
 		model.setColumnIdentifiers(columnNames);
 		table = new JTable();
 		table.setModel(model); 
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
-//		table.setFillsViewportHeight(true);
 		JScrollPane scroll = new JScrollPane(table);
 		scroll.setHorizontalScrollBarPolicy(
 		ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		scroll.setVerticalScrollBarPolicy(
 		ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED); 
 		int statusUserId = 0;
-		int statusTripId = 0;
-		int statusStatus = 0;
-		int statusRSeats = 0;
-		scroll.setBounds(20, 200, 400, 100);
-//		add(scroll);
-//		this.add(table);
-		
+		String Fname = "";
+		String Mname = "";
+		String Lname = "";
+		String statusStatus = "";
+		scroll.setBounds(20, 400, 500, 100);		
 		try
 		{ 
 			Class.forName("com.mysql.jdbc.Driver"); 
 			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/vehiclepoolingdb", "root","");
-			String sql = "select * from rides_in where R_trip_id="+trip_id.getText();
+			String sql = "select R_user_id,Status,Fname,Mname,Lname from rides_in,user where rides_in.R_user_id = user.User_id and R_trip_id="+trip_id.getText()
+					+" and R_user_id <>"+Login.userid.getText();
 			PreparedStatement ps = con.prepareStatement(sql);
 			ResultSet rs = ps.executeQuery();
 			int i =0;
 			while(rs.next()){
 				statusUserId = rs.getInt("R_user_id");
-				statusTripId = rs.getInt("R_trip_id");
-				statusStatus = rs.getInt("Status");
-				statusRSeats = rs.getInt("R_seats");
-				String s = "requested";
-				if(statusUserId != Integer.parseInt(Login.userid.getText())&&(statusStatus==4||statusStatus==5))
-					model.addRow(new Object[]{statusUserId,statusTripId,s,statusRSeats});
+				Fname = rs.getString("Fname");
+				Mname = rs.getString("Mname");
+				Lname = rs.getString("Lname");
+				statusStatus = rs.getString("Status");
+				if(statusStatus.equals("Started")||statusStatus.equals("EndedByRider")||statusStatus.equals("Ended"))
+					model.addRow(new Object[]{statusUserId,Fname,Mname,Lname});
 				i++; 
 			}
 			if(i <1){
