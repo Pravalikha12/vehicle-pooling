@@ -93,6 +93,7 @@ public class Dashboard extends JPanel {
 		String source = "";
 		String dest = "";
 		String otherUsers = "";
+		String tempUser = "";
 		scroll.setBounds(20, 200, 900, 100);
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -102,7 +103,7 @@ public class Dashboard extends JPanel {
 			ResultSet rs1 = stmt1.executeQuery(sql1);
 			while (rs1.next()) {
 				Statement stmt2 = con.createStatement();
-				String sql3 = "Select R_user_id from rides_in where R_trip_id = " + rs1.getInt("R_trip_id");
+				String sql3 = "Select R_user_id from rides_in where R_trip_id = " + rs1.getInt("R_trip_id") +" and R_user_id<>"+ Login.userid.getText();
 				ResultSet rs3 = stmt2.executeQuery(sql3);
 				while (rs3.next()) {
 					Statement stmt3 = con.createStatement();
@@ -113,11 +114,14 @@ public class Dashboard extends JPanel {
 						otherUsers = otherUsers + " , " + rs4.getString("Fname") + " " + rs4.getString("Mname") + " "
 								+ rs4.getString("Lname");
 					}
-				}
-				String sql2 = "select * from trip where Trip_id=" + rs1.getInt("R_trip_id");
+									}
+				tempUser = tempUser + otherUsers;
+				otherUsers = "";
+				System.out.println(tempUser);
 
-				PreparedStatement ps = con.prepareStatement(sql2);
-				ResultSet rs = ps.executeQuery();
+				String sql2 = "select * from trip where Trip_id=" + rs1.getInt("R_trip_id");
+				Statement stmt4 = con.createStatement();
+				ResultSet rs = stmt4.executeQuery(sql2);
 				int i = 0;
 				while (rs.next()) {
 					statusTripId = rs.getInt("Trip_id");
@@ -125,7 +129,8 @@ public class Dashboard extends JPanel {
 					t_date = rs.getString("T_date");
 					source = rs.getString("Source");
 					dest = rs.getString("Destination");
-					model.addRow(new Object[] { statusTripId, t_time, t_date, source, dest, otherUsers });
+					model.addRow(new Object[] { statusTripId, t_time, t_date, source, dest, tempUser });
+					tempUser = "";
 					i++;
 				}
 				if (i < 1) {
@@ -139,7 +144,6 @@ public class Dashboard extends JPanel {
 				}
 
 			}
-
 		} catch (Exception ex) {
 			JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
 		}
