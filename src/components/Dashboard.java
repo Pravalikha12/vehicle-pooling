@@ -117,7 +117,6 @@ public class Dashboard extends JPanel {
 									}
 				tempUser = tempUser + otherUsers;
 				otherUsers = "";
-				System.out.println(tempUser);
 
 				String sql2 = "select * from trip where Trip_id=" + rs1.getInt("R_trip_id");
 				Statement stmt4 = con.createStatement();

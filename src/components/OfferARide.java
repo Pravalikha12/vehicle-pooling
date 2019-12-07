@@ -514,7 +514,7 @@ public class OfferARide extends JPanel {
 	}
 
 	public void showTableUsers() {
-		String columnNames[] = { "User Id", "Fname", "Mname", "Lname", "Gender", "Role" };
+		String columnNames[] = { "User Id", "Fname", "Mname", "Lname", "Gender", "Role","Rating" };
 		frame9 = new JFrame("User");
 		frame9.getContentPane().setLayout(new BorderLayout());
 		DefaultTableModel model = new DefaultTableModel();
@@ -546,7 +546,7 @@ public class OfferARide extends JPanel {
 				gender = rs.getString("Gender");
 				mname = rs.getString("Mname");
 				role = rs.getString("Role");
-				model.addRow(new Object[] { userid, fname, mname, lname, gender, role });
+				model.addRow(new Object[] { userid, fname, mname, lname, gender, role,ViewProfile.user_rating.getText()});
 				i++;
 			}
 			if (i < 1) {

@@ -29,7 +29,7 @@ public class ViewProfile extends JPanel {
 	private JTextField user_gender;
 	private JTextField user_dob;
 	private JTextField user_id;
-	private JTextField user_rating;
+	public static JTextField user_rating;
 	private JTextField user_age;
 	private JTextField user_role;
 
