@@ -143,7 +143,7 @@ public class Admin extends JFrame {
 		panel.add(btnViewFeedback);
 		
 		JLabel lblAdmin = new JLabel("");
-		lblAdmin.setIcon(new ImageIcon("C:\\Users\\Prateeka\\Desktop\\JavaDBMS\\adminImg.png"));
+		lblAdmin.setIcon(new ImageIcon("C:\\Users\\Prateeka\\Desktop\\vehicle-pooling\\image\\adminImg.png"));
 		lblAdmin.setForeground(Color.WHITE);
 		lblAdmin.setBounds(77, 124, 393, 308);
 		panel.add(lblAdmin);
